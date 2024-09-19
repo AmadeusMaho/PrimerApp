@@ -12,7 +12,8 @@ export class LoginPage implements OnInit {
 
   ngOnInit() {
   }
-  
+  tempUser : string = 'Usuario1'
+  tempPass : string = 'MiClav3'
 
   user: any = {
     username: '',
@@ -21,9 +22,11 @@ export class LoginPage implements OnInit {
   
   error: boolean = false;
     validar(){
-    if(this.user.username == sessionStorage.getItem('usuario') && this.user.password == sessionStorage.getItem('clave')){
+    if(this.user.username == this.tempUser && this.user.password == this.tempPass){
+      sessionStorage.setItem('usuario', this.user.username);
+      sessionStorage.setItem('password', this.user.password);
       this.router.navigate(['/home']);
-      sessionStorage.setItem('login', 'true');
+      this.error=false
     }
     else{
       this.error = true;

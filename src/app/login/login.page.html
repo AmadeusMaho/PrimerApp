@@ -19,8 +19,7 @@
           <ion-input required #username="ngModel" type="text" placeholder="Usuario" fill="outline" class="ion-margin-bottom" [(ngModel)]="user.username" name="username">
             <ion-icon name="person-outline" slot="start"></ion-icon>
           </ion-input>
-          <a href="cambiarclave" style="margin-bottom: 16px; display:block; text-decoration: none;">¿Olvidaste tu contraseña?</a>
-          <ion-input required #password="ngModel" type="password" placeholder="Contraseña" fill="outline" class="ion-margin-bottom" [(ngModel)]="user.password" name="password">
+          <ion-input required #password="ngModel" type="password" placeholder="Contraseña" fill="outline" class="ion-margin-bottom" required [(ngModel)]="user.password" name="password">
             <ion-icon name="lock-closed-outline" slot="start"></ion-icon>
             <ion-input-password-toggle slot="end"></ion-input-password-toggle>
           </ion-input>
@@ -30,6 +29,11 @@
         <ion-button (click)="validar()" expand="block" type="submit" style="text-transform:none; height: 45px; margin-top: 20px;" *ngIf="!username.errors&&!password.errors">
           Iniciar sesión
         </ion-button>
+        <ion-text color="warning" *ngIf="error" style="text-align: center;">
+          <h1>
+            <ion-icon size="large" name="close-circle-outline" style="vertical-align: middle; text-align: center;"></ion-icon> Credenciales incorrectas, intente nuevamente</h1>
+          <a href="cambiarclave" style="margin-bottom: 16px; display:block; text-decoration: none;">¿Olvidaste tu contraseña?</a>
+        </ion-text>
         </form>
       </ion-col>
     </ion-row>

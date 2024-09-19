@@ -21,21 +21,21 @@ export class CambiarclavePage implements OnInit {
   clave: any = {
     clave1: '',
     clave2: ''
+  }  
+
+  user: any = {
+    username: ''
   }
+
   error: boolean = false;
-  
-
-  volverMenu(){
-    this.router.navigate(['/home']);
-  }
-
-  cambiar(){
-    if(this.clave.clave1 == this.clave.clave2){
-      sessionStorage.setItem('clave', this.clave.clave1 );
-      this.router.navigate(['/home']);
+  exito : boolean = false;
+    
+  enviar(){
+    console.log(sessionStorage.getItem('usuario'))
+    if(this.user.username.trim() == sessionStorage.getItem('usuario')){
+      this.exito = true;
+      this.error=false;
+      console.log(sessionStorage.getItem('usuario'))
     }
-    else{
-      this.error = true;
-    }
-  }
+  }    
 }

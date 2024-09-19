@@ -1,22 +1,26 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
+    <ion-button fill="clear" class="botonvolver" slot="start" routerLink="/home">
+      <ion-icon slot="icon-only" name="arrow-undo"></ion-icon>
+    </ion-button>
     <ion-title>Registrar asistencia</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Registrar asistencia</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<div class="ion-page" style="text-align: center; margin-top: 90px;">
+<ion-content>
+  <h1>Registrar asistencia de {{asign}} </h1>
+  <ion-button (click)="generarqr()" size="large" shape="round" style="margin-top: 50px;" *ngIf="!generado">
+    <ion-icon slot="end" name="qr-code-outline"></ion-icon>
+    Generar QR
+  </ion-button>
+  <img style="margin-top:20px;"class="qr" src="../../assets/img/frame.png" alt="" *ngIf="generado">
+  <ion-button style="margin-top: 50px;" slot="end" fill="fill" shape="round">
+    <ion-icon slot="end" name="arrow-undo-outline"></ion-icon>
+    Volver
+  </ion-button>
 </ion-content>
 
-<ion-footer>
-  <ion-toolbar>
-    <ion-item routerLink="/home">
-      <ion-icon slot="start" name="arrow-undo-outline"></ion-icon>
-      <ion-label>Volver</ion-label>
-    </ion-item>
-  </ion-toolbar>
-</ion-footer>
+</div>
+
+
