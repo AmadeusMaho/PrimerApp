@@ -10,8 +10,44 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Cambiar clave</ion-title>
+      <ion-title size="large">Cambiar contraseña</ion-title>
     </ion-toolbar>
   </ion-header>
-</ion-content>
+  
+  <ion-grid [fixed]="true" style="--ion-grid-padding:5%" *ngIf="!exito">
+    <ion-row>
+      <ion-col>
+        <form>
+          <h1 style="text-align: center; padding-bottom: 20px;">Cambiar contraseña</h1>
+          <ion-input required #username="ngModel" type="text" placeholder="Ingrese su usuario" fill="outline" class="ion-margin-bottom" required [(ngModel)]="user.username" name="username">
+            <ion-icon name="person-outline" slot="start"></ion-icon>
+          </ion-input>
+        <ion-button expand="block" [disabled]="true" style="text-transform:none; height: 45px; margin-top: 20px;" *ngIf="username.errors">
+          Aceptar
+        </ion-button>
+        <ion-button (click)="enviar()" expand="block" type="submit" style="text-transform:none; height: 45px; margin-top: 20px;" *ngIf="!username.errors">
+          Aceptar
+        </ion-button>
+        <ion-text color="warning" *ngIf="error" style="text-align: center;">
+          <h1>
+            <ion-icon size="large" name="close-circle-outline" style="vertical-align: middle; text-align: center;"></ion-icon> Usuario no encontrado</h1>
+        </ion-text>
+        </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
+  <ion-grid [fixed]="true" style="--ion-grid-padding:5%" *ngIf="exito">
+    <ion-row>
+      <ion-col>
+        <ion-icon size="large" name="mail-outline"></ion-icon>
+       <h1>Nueva contraseña enviada.</h1>
+      <h1> Por favor, revisa el correo asociado al usuario ingresado.</h1>
+      <ion-button expand="block" fill="clear" shape="round" routerLink="/login">
+        Volver a iniciar sesión
+      </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

@@ -40,5 +40,17 @@ ngOnInit(){
   }
   
 }
+asignatura_1 : string = 'Arquitectura'
+asignatura_2 : string = 'Estadística'
+asignatura_3 : string = 'Programación de aplicaciones móviles'
+asignatura_4 : string = 'Programación de Base de Datos'
+
+asign: string = '';
+almAsign(asignatura : string){
+  this.asign = asignatura;
+  sessionStorage.setItem('asignatura', this.asign);
+  console.log(sessionStorage.getItem('asignatura'))
+  this.router.navigate((['/regasistencia']))
+}
 }
 

@@ -8,12 +8,29 @@ import { Router } from '@angular/router';
 })
 export class CambiarclavePage implements OnInit {
 
-  constructor(private router:Router) { }
+
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
+  
 
-  volverMenu(){
-    this.router.navigate(['/home']);
+  user: any = {
+    username: '',
+    password: ''
+  }
+  
+  tempUser = 'Usuario1';
+  tempPass = 'MiClav3';
+  error: boolean = false;
+  exito : boolean = false;
+    enviar(){
+    if(this.user.username == this.tempUser){
+      this.exito = true;
+      this.error=false
+    }
+    else{
+      this.error = true;
+    }
   }
 }

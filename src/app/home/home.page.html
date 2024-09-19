@@ -75,32 +75,32 @@
           <ion-list>
             <ion-item>
               <div class="rectangulo1"></div>
-              <ion-label  class="asigntext">Arquitectura</ion-label>
-              <ion-button onclick="" color="tertiary">
+              <ion-label  class="asigntext"> {{asignatura_1}} </ion-label>
+              <ion-button (click)="almAsign(asignatura_1)" color="tertiary">
                 <ion-icon slot="icon-only" name="add"></ion-icon>
               </ion-button>
             </ion-item>
       
             <ion-item>
               <div class="rectangulo2"></div>
-              <ion-label class="asigntext">Estadística</ion-label>
-              <ion-button color="tertiary">
+              <ion-label class="asigntext"> {{asignatura_2}}</ion-label>
+              <ion-button (click)="almAsign(asignatura_2)" color="tertiary">
                 <ion-icon slot="icon-only" name="add"></ion-icon>
               </ion-button>
             </ion-item>
       
             <ion-item>
               <div class="rectangulo3"></div>
-              <ion-label class="asigntext">Programación de aplicaciones móviles</ion-label>
-              <ion-button color="tertiary">
+              <ion-label class="asigntext">{{asignatura_3}}</ion-label>
+              <ion-button (click)="almAsign(asignatura_3)" color="tertiary">
                 <ion-icon slot="icon-only" name="add"></ion-icon>
               </ion-button>
             </ion-item>
       
             <ion-item lines="none">
               <div class="rectangulo4"></div>
-              <ion-label class="asigntext">Programación de Base de Datos</ion-label>
-              <ion-button color="tertiary">
+              <ion-label class="asigntext">{{asignatura_4}}</ion-label>
+              <ion-button (click)="almAsign(asignatura_4)" color="tertiary">
                 <ion-icon slot="icon-only" name="add"></ion-icon>
               </ion-button>
             </ion-item>
