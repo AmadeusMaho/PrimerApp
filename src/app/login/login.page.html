@@ -16,21 +16,20 @@
       <ion-col>
         <form>
           <h1 style="text-align: center; padding-bottom: 20px;">Ingrese con su cuenta</h1>
-          <ion-input type="text" placeholder="Usuario" fill="outline" class="ion-margin-bottom" id="user" errorText="Ingrese un usuario" (keyup)="validar()"
-          [(ngModel)]="userInput">
+          <ion-input required #username="ngModel" type="text" placeholder="Usuario" fill="outline" class="ion-margin-bottom" required [(ngModel)]="user.username" name="username">
             <ion-icon name="person-outline" slot="start"></ion-icon>
           </ion-input>
           <a href="cambiarclave" style="margin-bottom: 16px; display:block; text-decoration: none;">¿Olvidaste tu contraseña?</a>
-          <ion-input required type="password" placeholder="Contraseña" fill="outline" class="ion-margin-bottom" id="password">
+          <ion-input required #password="ngModel" type="password" placeholder="Contraseña" fill="outline" class="ion-margin-bottom" required [(ngModel)]="user.password" name="password">
             <ion-icon name="lock-closed-outline" slot="start"></ion-icon>
             <ion-input-password-toggle slot="end"></ion-input-password-toggle>
           </ion-input>
-        <ion-button expand="block" type="submit" style="text-transform:none; height: 45px; margin-top: 20px;" (click)="validar()">
+        <ion-button expand="block" [disabled]="true" style="text-transform:none; height: 45px; margin-top: 20px;" *ngIf="username.errors||password.errors">
           Iniciar sesión
         </ion-button>
-        <ion-text color="error" *ngIf="error==true">
-          <h1>error</h1>
-        </ion-text>
+        <ion-button expand="block" type="submit" style="text-transform:none; height: 45px; margin-top: 20px;" *ngIf="!username.errors&&!password.errors">
+          Iniciar sesión
+        </ion-button>
         </form>
       </ion-col>
     </ion-row>
