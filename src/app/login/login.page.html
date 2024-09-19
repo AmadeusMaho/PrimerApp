@@ -16,11 +16,11 @@
       <ion-col>
         <form>
           <h1 style="text-align: center; padding-bottom: 20px;">Ingrese con su cuenta</h1>
-          <ion-input required #username="ngModel" type="text" placeholder="Usuario" fill="outline" class="ion-margin-bottom" required [(ngModel)]="user.username" name="username">
+          <ion-input required #username="ngModel" type="text" placeholder="Usuario" fill="outline" class="ion-margin-bottom" [(ngModel)]="user.username" name="username">
             <ion-icon name="person-outline" slot="start"></ion-icon>
           </ion-input>
           <a href="cambiarclave" style="margin-bottom: 16px; display:block; text-decoration: none;">¿Olvidaste tu contraseña?</a>
-          <ion-input required #password="ngModel" type="password" placeholder="Contraseña" fill="outline" class="ion-margin-bottom" required [(ngModel)]="user.password" name="password">
+          <ion-input required #password="ngModel" type="password" placeholder="Contraseña" fill="outline" class="ion-margin-bottom" [(ngModel)]="user.password" name="password">
             <ion-icon name="lock-closed-outline" slot="start"></ion-icon>
             <ion-input-password-toggle slot="end"></ion-input-password-toggle>
           </ion-input>

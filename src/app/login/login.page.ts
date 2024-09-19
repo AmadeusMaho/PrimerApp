@@ -19,13 +19,11 @@ export class LoginPage implements OnInit {
     password: ''
   }
   
-  tempUser = 'Usuario1';
-  tempPass = 'MiClav3';
   error: boolean = false;
     validar(){
-    if(this.user.username == this.tempUser && this.user.password == this.tempPass){
-      sessionStorage.setItem('usuario', this.user.username);
+    if(this.user.username == sessionStorage.getItem('usuario') && this.user.password == sessionStorage.getItem('clave')){
       this.router.navigate(['/home']);
+      sessionStorage.setItem('login', 'true');
     }
     else{
       this.error = true;
