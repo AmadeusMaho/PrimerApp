@@ -1,20 +1,111 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+<ion-menu contentId="menu-content" menuId="menu-content" side="start" type="overlay">
+  <ion-header>
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <ion-title>Opciones</ion-title>
     </ion-toolbar>
   </ion-header>
+  <ion-content>
+    <ion-item routerLink="/mis-asignaturas">
+      <ion-icon slot="start" name="school-outline"></ion-icon>
+      <ion-label>Mis asignaturas</ion-label>
+    </ion-item>
+    <ion-item routerLink="/mis-asistencias">
+      <ion-icon slot="start" name="hand-left-outline"></ion-icon>
+      <ion-label>Mis asistencias</ion-label>
+    </ion-item>
+    <ion-item routerLink="/regasistencia">
+      <ion-icon slot="start" name="clipboard-outline"></ion-icon>
+      <ion-label>Registrar asistencia</ion-label>
+    </ion-item>
+    <ion-item routerLink="/cambiarclave">
+      <ion-icon slot="start" name="key-outline"></ion-icon>
+      <ion-label>Cambiar clave</ion-label>
+    </ion-item>
+    
+  </ion-content>
+</ion-menu>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
-</ion-content>
+<div class="ion-page" id="menu-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button menu="menu-content"></ion-menu-button>
+      </ion-buttons>
+      <ion-title>Inicio</ion-title>
+      <ion-button id="logout" fill="fill" shape="round" slot="end">
+        <ion-icon slot="start" name="log-out-outline"></ion-icon>
+        Cerrar sesión
+      </ion-button>
+      <ion-alert
+        trigger="logout"
+        header="¿Cerrar sesión?"
+        [buttons]="alertButtons"
+></ion-alert>
+    </ion-toolbar>
+
+  </ion-header>
+
+  <ion-content [fullscreen]="true">
+    <ion-header collapse="condense">
+      <ion-toolbar>
+      </ion-toolbar>
+    </ion-header>
+
+    <div class="logoduoc">
+      <img src="../../assets/img/duoc.png" alt="logo">
+    </div>
+    <div class="txtbienv">
+      <h1 class="ion-text-center">Bienvenido usuario</h1>
+    </div>
+    
+    <div class="cards">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title class="ion-text-center">Tus asignaturas hoy</ion-card-title>
+          <ion-card-subtitle class="ion-text-center"><ion-datetime-button fill="clear" datetime="datetime" disabled></ion-datetime-button>
+
+            <ion-modal [keepContentsMounted]="true">
+              <ng-template>
+                <ion-datetime id="datetime"></ion-datetime>
+              </ng-template>
+            </ion-modal>
+          </ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-list>
+            <ion-item>
+              <div class="rectangulo1"></div>
+              <ion-label  class="asigntext">Arquitectura</ion-label>
+              <ion-button onclick="" color="tertiary">
+                <ion-icon slot="icon-only" name="add"></ion-icon>
+              </ion-button>
+            </ion-item>
+      
+            <ion-item>
+              <div class="rectangulo2"></div>
+              <ion-label class="asigntext">Estadística</ion-label>
+              <ion-button color="tertiary">
+                <ion-icon slot="icon-only" name="add"></ion-icon>
+              </ion-button>
+            </ion-item>
+      
+            <ion-item>
+              <div class="rectangulo3"></div>
+              <ion-label class="asigntext">Programación de aplicaciones móviles</ion-label>
+              <ion-button color="tertiary">
+                <ion-icon slot="icon-only" name="add"></ion-icon>
+              </ion-button>
+            </ion-item>
+      
+            <ion-item lines="none">
+              <div class="rectangulo4"></div>
+              <ion-label class="asigntext">Programación de Base de Datos</ion-label>
+              <ion-button color="tertiary">
+                <ion-icon slot="icon-only" name="add"></ion-icon>
+              </ion-button>
+            </ion-item>
+          </ion-list>
+        </ion-card-content>
+      </ion-card>
+    </div>
+    
