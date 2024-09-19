@@ -34,10 +34,11 @@ export class HomePage {
   }
 
 ngOnInit(){
-  this.route.params.subscribe(params => {
-    this.usuario = params['usuario'];
-    console.log('usuario:', this.usuario);
-});
+  const usuarioGuardado = sessionStorage.getItem('usuario');
+  if (usuarioGuardado){
+    this.usuario = usuarioGuardado;
+  }
+  
 }
 }
 

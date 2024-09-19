@@ -24,7 +24,8 @@ export class LoginPage implements OnInit {
   error: boolean = false;
     validar(){
     if(this.user.username == this.tempUser && this.user.password == this.tempPass){
-      this.router.navigate(['/home', {usuario:this.user.username}]);
+      sessionStorage.setItem('usuario', this.user.username);
+      this.router.navigate(['/home']);
     }
     else{
       this.error = true;
