@@ -20,6 +20,7 @@ export class CambiarclavePage implements OnInit {
     password: ''
   }
   
+  
   tempUser = 'Usuario1';
   tempPass = 'MiClav3';
   error: boolean = false;
@@ -31,6 +32,15 @@ export class CambiarclavePage implements OnInit {
     }
     else{
       this.error = true;
+    }
+  }
+
+  volverClave(){
+    if (sessionStorage.getItem('password')){
+      this.router.navigate((['/home']))
+    }
+    else{
+      this.router.navigate((['/login']))
     }
   }
 }
