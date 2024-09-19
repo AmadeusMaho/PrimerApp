@@ -16,22 +16,6 @@ const routes: Routes = [
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   },
   {
-    path: 'menu-principal',
-    loadChildren: () => import('./menu-principal/menu-principal.module').then( m => m.MenuPrincipalPageModule)
-  },
-  {
-    path: 'inicio',
-    loadChildren: () => import('./inicio/inicio.module').then( m => m.InicioPageModule)
-  },
-  {
-    path: 'asignaturas',
-    loadChildren: () => import('./asignaturas/asignaturas.module').then( m => m.AsignaturasPageModule)
-  },
-  {
-    path: 'mis',
-    loadChildren: () => import('./mis/mis.module').then( m => m.MisPageModule)
-  },
-  {
     path: 'mis-asignaturas',
     loadChildren: () => import('./mis-asignaturas/mis-asignaturas.module').then( m => m.MisAsignaturasPageModule)
   },
