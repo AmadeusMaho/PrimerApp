@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -6,8 +8,8 @@ import { Component } from '@angular/core';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-  asignatura: string;
 
+  usuario: string = '';
   public alertButtons = [
     {
       text: 'Cancelar',
@@ -21,18 +23,21 @@ export class HomePage {
       role: 'confirm',
       handler: () => {
         console.log('Sesión cerrada');
+        this.router.navigate(['/login']);
       },
     },
   ];
 
-  async guardarAsig(){
-    
+
+
+  constructor(private router:Router, private route: ActivatedRoute) {
   }
 
-  constructor() {
-    this.asignatura = 'pordefecto';
-  }
-
-  
+ngOnInit(){
+  this.route.params.subscribe(params => {
+    this.usuario = params['usuario'];
+    console.log('usuario:', this.usuario);
+});
+}
 }
 

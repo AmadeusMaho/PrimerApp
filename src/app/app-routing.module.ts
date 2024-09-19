@@ -26,7 +26,7 @@ const routes: Routes = [
   {
     path: 'cambiarclave',
     loadChildren: () => import('./cambiarclave/cambiarclave.module').then( m => m.CambiarclavePageModule)
-  },  {
+  },  {
     path: 'login',
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   },

@@ -27,7 +27,7 @@
         <ion-button expand="block" [disabled]="true" style="text-transform:none; height: 45px; margin-top: 20px;" *ngIf="username.errors||password.errors">
           Iniciar sesión
         </ion-button>
-        <ion-button expand="block" type="submit" style="text-transform:none; height: 45px; margin-top: 20px;" *ngIf="!username.errors&&!password.errors">
+        <ion-button (click)="validar()" expand="block" type="submit" style="text-transform:none; height: 45px; margin-top: 20px;" *ngIf="!username.errors&&!password.errors">
           Iniciar sesión
         </ion-button>
         </form>
