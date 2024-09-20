@@ -7,31 +7,35 @@ import { Router } from '@angular/router';
   styleUrls: ['./cambiarclave.page.scss'],
 })
 export class CambiarclavePage implements OnInit {
-
-
-  constructor(private router: Router) { }
+  login: boolean = false;
+  constructor(private router:Router) { }
 
   ngOnInit() {
-  }
-  
-
-  user: any = {
-    username: '',
-    password: ''
-  }
-  
-  
-  tempUser = 'Usuario1';
-  tempPass = 'MiClav3';
-  error: boolean = false;
-  exito : boolean = false;
-    enviar(){
-    if(this.user.username == this.tempUser){
-      this.exito = true;
-      this.error=false
+    if(sessionStorage.getItem('login')=='true'){
+      this.login=true
     }
     else{
-      this.error = true;
+      this.login=false
+    }
+  }
+  clave: any = {
+    clave1: '',
+    clave2: ''
+  }  
+
+  user: any = {
+    username: ''
+  }
+
+  error: boolean = false;
+  exito : boolean = false;
+    
+  enviar(){
+    console.log(sessionStorage.getItem('usuario'))
+    if(this.user.username.trim() == sessionStorage.getItem('usuario')){
+      this.exito = true;
+      this.error=false;
+      console.log(sessionStorage.getItem('usuario'))
     }
   }
 

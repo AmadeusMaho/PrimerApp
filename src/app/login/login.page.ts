@@ -12,15 +12,14 @@ export class LoginPage implements OnInit {
 
   ngOnInit() {
   }
-  
+  tempUser : string = 'Usuario1'
+  tempPass : string = 'MiClav3'
 
   user: any = {
     username: '',
     password: ''
   }
   
-  tempUser = 'Usuario1';
-  tempPass = 'MiClav3';
   error: boolean = false;
     validar(){
     if(this.user.username == this.tempUser && this.user.password == this.tempPass){

@@ -13,12 +13,12 @@
       <ion-title size="large">Cambiar contraseña</ion-title>
     </ion-toolbar>
   </ion-header>
-  
-  <ion-grid [fixed]="true" style="--ion-grid-padding:5%" *ngIf="!exito">
+
+  <ion-grid [fixed]="true" style="--ion-grid-padding:5%">
     <ion-row>
       <ion-col>
         <form>
-          <h1 style="text-align: center; padding-bottom: 20px;">Cambiar contraseña</h1>
+          <h1 style="text-align: center; padding-bottom: 20px;">Restablecer contraseña</h1>
           <ion-input required #username="ngModel" type="text" placeholder="Ingrese su usuario" fill="outline" class="ion-margin-bottom" required [(ngModel)]="user.username" name="username">
             <ion-icon name="person-outline" slot="start"></ion-icon>
           </ion-input>
@@ -41,13 +41,12 @@
     <ion-row>
       <ion-col>
         <ion-icon size="large" name="mail-outline"></ion-icon>
-       <h1>Nueva contraseña enviada.</h1>
-      <h1> Por favor, revisa el correo asociado al usuario ingresado.</h1>
+       <h1>Se ha enviado un correo para confirmar los cambios</h1>
+       <h1> Por favor, revisa el correo asociado al usuario ingresado.</h1>
       <ion-button expand="block" fill="clear" shape="round" routerLink="/login">
         Volver a iniciar sesión
       </ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>
-
 </ion-content>

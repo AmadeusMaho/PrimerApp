@@ -1,48 +1,69 @@
 <ion-menu contentId="menu-content" menuId="menu-content" side="start" type="overlay">
-  <ion-header>
-    <ion-toolbar>
-      <ion-title>Opciones</ion-title>
-    </ion-toolbar>
-  </ion-header>
   <ion-content>
-    <ion-item routerLink="/mis-asignaturas">
-      <ion-icon slot="start" name="school-outline"></ion-icon>
-      <ion-label>Mis asignaturas</ion-label>
-    </ion-item>
-    <ion-item routerLink="/mis-asistencias">
-      <ion-icon slot="start" name="hand-left-outline"></ion-icon>
-      <ion-label>Mis asistencias</ion-label>
-    </ion-item>
-    <ion-item routerLink="/regasistencia">
-      <ion-icon slot="start" name="checkmark-done-outline"></ion-icon>
-      <ion-label>Registrar asistencia</ion-label>
-    </ion-item>
-    <ion-item routerLink="/cambiarclave">
-      <ion-icon slot="start" name="key-outline"></ion-icon>
-      <ion-label>Cambiar clave</ion-label>
-    </ion-item>
+    <div class="header-content">
+      <ion-item lines="full">
+        <ion-icon name="person-circle-outline" slot="start" style="font-size: 56px;"></ion-icon>
+      <ion-label *ngIf="login==true">
+        <h1>{{usuario}}</h1>
+        <p>{{ usuario + '@duocuc.cl'}}</p>
+      </ion-label>
+      <ion-label *ngIf="login==false">
+        <h1>Invitado</h1>
+        <p><a href="login" style="text-decoration: none;">Iniciar sesión</a></p>
+      </ion-label>
+      </ion-item>      
+    </div>
+    <ion-list lines="none">
+      <ion-item routerLink="/mis-asignaturas">
+        <ion-icon slot="start" name="school-outline" style="margin-top: 10px;"></ion-icon>
+        <ion-label>Mis asignaturas</ion-label>
+      </ion-item>
+      <ion-item routerLink="/mis-asistencias">
+        <ion-icon slot="start" name="hand-left-outline" style="margin-top: 10px;"></ion-icon>
+        <ion-label>Mis asistencias</ion-label>
+      </ion-item>
+      <ion-item routerLink="/regasistencia">
+        <ion-icon slot="start" name="clipboard-outline" style="margin-top: 10px;"></ion-icon>
+        <ion-label>Registrar asistencia</ion-label>
+      </ion-item>
+      <ion-item routerLink="/cambiarclave">
+        <ion-icon slot="start" name="key-outline" style="margin-top: 10px;"></ion-icon>
+        <ion-label>Cambiar clave</ion-label>
+      </ion-item>
+    </ion-list>
+    
     
   </ion-content>
 </ion-menu>
 
 <div class="ion-page" id="menu-content">
   <ion-header>
-    <ion-toolbar>
+    <ion-toolbar *ngIf="login==true">
       <ion-buttons slot="start">
         <ion-menu-button menu="menu-content"></ion-menu-button>
       </ion-buttons>
       <ion-title>Inicio</ion-title>
-      <ion-button id="logout" fill="fill" shape="round" slot="end">
+      <ion-button id="logout" fill="fill" shape="round" slot="end" style="text-transform:none;">
         <ion-icon slot="start" name="log-out-outline"></ion-icon>
         Cerrar sesión
       </ion-button>
       <ion-alert
         trigger="logout"
         header="¿Cerrar sesión?"
-        [buttons]="alertButtons"
-></ion-alert>
+        [buttons]="alertButtons">
+      </ion-alert>
     </ion-toolbar>
 
+    <ion-toolbar *ngIf="login==false">
+      <ion-buttons slot="start">
+        <ion-menu-button menu="menu-content"></ion-menu-button>
+      </ion-buttons>
+      <ion-title>Inicio</ion-title>
+      <ion-button id="log-in" fill="fill" shape="round" slot="end" href="login" style="text-transform:none;">
+        <ion-icon slot="start" name="log-in-outline"></ion-icon>
+        Iniciar sesión
+      </ion-button>
+    </ion-toolbar>
   </ion-header>
 
   <ion-content [fullscreen]="true">
@@ -51,14 +72,14 @@
       </ion-toolbar>
     </ion-header>
 
-    <div class="logoduoc">
+    <div class="logoduoc ion-margin-top" style="margin-top: 30px;">
       <img src="../../assets/img/duoc.png" alt="logo">
     </div>
-    <div class="txtbienv">
+    <div class="txtbienv" *ngIf="login==true">
       <h1 class="ion-text-center">Bienvenido {{ usuario }}</h1>
     </div>
     
-    <div class="cards">
+    <div class="cards" *ngIf="login==true">
       <ion-card>
         <ion-card-header>
           <ion-card-title class="ion-text-center">Tus asignaturas hoy</ion-card-title>
@@ -107,5 +128,11 @@
           </ion-list>
         </ion-card-content>
       </ion-card>
+    </div>
+
+    <div class="ion-text-center ion-margin-top" *ngIf="login==false" style="--ion-margin:50px">
+      <ion-icon name="qr-code-outline" style="font-size: 80px; text-align:center;"></ion-icon>
+      <h1 class="ion-text-center">Inicia sesión para registrar tu asistencia</h1>
+      <a href="login" style="text-decoration: none;">Iniciar sesión</a>
     </div>
     

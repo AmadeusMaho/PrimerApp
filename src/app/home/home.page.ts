@@ -8,8 +8,8 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-
   usuario: string = '';
+  login: boolean = false;
   public alertButtons = [
     {
       text: 'Cancelar',
@@ -23,6 +23,8 @@ export class HomePage {
       role: 'confirm',
       handler: () => {
         console.log('Sesión cerrada');
+        sessionStorage.removeItem('usuario');
+        this.login = false;
         this.router.navigate(['/login']);
       },
     },
@@ -37,6 +39,7 @@ ngOnInit(){
   const usuarioGuardado = sessionStorage.getItem('usuario');
   if (usuarioGuardado){
     this.usuario = usuarioGuardado;
+    this.login = true;
   }
   
 }
