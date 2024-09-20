@@ -11,31 +11,33 @@ export class CambiarclavePage implements OnInit {
   constructor(private router:Router) { }
 
   ngOnInit() {
-    if(sessionStorage.getItem('login')=='true'){
-      this.login=true
-    }
-    else{
-      this.login=false
-    }
   }
-  clave: any = {
-    clave1: '',
-    clave2: ''
-  }  
+  tempUser : string = 'Usuario1'
+  tempPass : string = 'MiClav3'
 
   user: any = {
-    username: ''
+    username: '',
+    password: ''
   }
 
   error: boolean = false;
   exito : boolean = false;
     
   enviar(){
+    if(!sessionStorage.getItem('usuario')){
+      console.log("usuario no existe")
+      sessionStorage.setItem('usuario', this.tempUser);
+      sessionStorage.setItem('password', this.tempPass);
+    }
     console.log(sessionStorage.getItem('usuario'))
     if(this.user.username.trim() == sessionStorage.getItem('usuario')){
       this.exito = true;
       this.error=false;
       console.log(sessionStorage.getItem('usuario'))
+    }
+    else{
+      this.exito = false;
+      this.error=true;
     }
   }    
 }

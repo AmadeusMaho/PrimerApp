@@ -35,18 +35,17 @@
         </form>
       </ion-col>
     </ion-row>
-  </ion-grid>
 
-  <ion-grid [fixed]="true" style="--ion-grid-padding:5%" *ngIf="exito">
-    <ion-row>
-      <ion-col>
+    <ion-card *ngIf="exito">
+      <ion-card-header>
         <ion-icon size="large" name="mail-outline"></ion-icon>
-       <h1>Se ha enviado un correo para confirmar los cambios</h1>
-       <h1> Por favor, revisa el correo asociado al usuario ingresado.</h1>
+        <ion-card-title>Se ha enviado un correo para restablecer su contraseña</ion-card-title>
+        <ion-card-subtitle>Por favor, revisa el correo asociado al usuario ingresado.</ion-card-subtitle>
+      </ion-card-header>
       <ion-button expand="block" fill="clear" shape="round" routerLink="/login">
-        Volver a iniciar sesión
+        Volver al inicio de sesión
       </ion-button>
-      </ion-col>
-    </ion-row>
+    </ion-card>
+
   </ion-grid>
 </ion-content>
