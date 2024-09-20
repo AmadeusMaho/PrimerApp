@@ -37,11 +37,15 @@ export class CambiarclavePage implements OnInit {
       this.error=false;
       console.log(sessionStorage.getItem('usuario'))
     }
+    else{
+      this.error = true;
+    }
   }
 
   volverClave(){
     if (sessionStorage.getItem('password')){
       this.router.navigate((['/home']))
+      this.exito = false;
     }
     else{
       this.router.navigate((['/login']))
