@@ -7,11 +7,58 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Mis asistencias</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <div class="cards">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title class="ion-text-center">Asistencias realizadas</ion-card-title>
+        <ion-card-subtitle class="ion-text-center"> Hoy es {{diaActualText}} {{diaActual}} {{mesActual}} del {{anioActual}}
+        </ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-list>
+
+          <ion-item>
+            <div class="rectangulo1"></div>
+            <ion-label  class="asigntext"> {{asignatura_1}} </ion-label>
+          </ion-item>
+          <ion-item>
+            <div class="rectangulo2"></div>
+            <ion-label class="asigntext"> {{asignatura_2}}</ion-label>
+          </ion-item>
+          <ion-item>
+            <div class="rectangulo3"></div>
+            <ion-label class="asigntext">{{asignatura_3}}</ion-label>
+          </ion-item>
+          <ion-item>
+            <div class="rectangulo4"></div>
+            <ion-label class="asigntext">{{asignatura_6}}</ion-label>
+          </ion-item>
+          <ion-item>
+            <div class="rectangulo5"></div>
+            <ion-label class="asigntext">{{asignatura_5}}</ion-label>
+          </ion-item>
+          <ion-item lines="none">
+            <div class="rectangulo6"></div>
+            <ion-label class="asigntext">{{asignatura_6}}</ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+    </div>
 </ion-content>
+
+<ion-grid> 
+  <ion-row>
+    <ion-col><strong>Asignatura</strong></ion-col>
+    <ion-col><strong>Fecha última clase</strong></ion-col>
+    <ion-col><strong>Estado</strong></ion-col>
+  </ion-row>
+  <ion-row *ngFor="let asistencia of asistencias">
+    <ion-col>{{ asistencia.asignatura }}</ion-col>
+    <ion-col>{{ asistencia.lastAttendance}}</ion-col>
+    <ion-col>{{ asistencia.estado}}</ion-col>
+  </ion-row>
+  <ion-grid> 
+
 
