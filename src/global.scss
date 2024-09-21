@@ -108,3 +108,17 @@
   .qr{
     border-radius: 20px;
   }
+
+  .contenedor-boton-registrar{ 
+      bottom: 20px; 
+      right: 20px; 
+  }
+
+  .botonRegistrar{
+    width: 120px;
+    height: 40px; 
+    border-radius: 5px; 
+    display: flex;
+    align-items: center; 
+    justify-content: center; 
+  }

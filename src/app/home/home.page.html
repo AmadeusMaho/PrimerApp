@@ -42,7 +42,6 @@
       <ion-buttons slot="start">
         <ion-menu-button menu="menu-content"></ion-menu-button>
       </ion-buttons>
-      <ion-title>Inicio</ion-title>
       <ion-button id="logout" fill="fill" shape="round" slot="end" style="text-transform:none;">
         <ion-icon slot="start" name="log-out-outline"></ion-icon>
         Cerrar sesión
@@ -72,7 +71,7 @@
       </ion-toolbar>
     </ion-header>
 
-    <div class="logoduoc ion-margin-top" style="margin-top: 30px;">
+    <div class="logoduoc ion-margin-top" style="margin-top: 12px;">
       <img src="../../assets/img/duoc.png" alt="logo">
     </div>
     <div class="txtbienv" *ngIf="login==true">
@@ -97,37 +96,32 @@
             <ion-item>
               <div class="rectangulo1"></div>
               <ion-label  class="asigntext"> {{asignatura_1}} </ion-label>
-              <ion-button (click)="almAsign(asignatura_1)" color="tertiary">
-                <ion-icon slot="icon-only" name="add"></ion-icon>
-              </ion-button>
             </ion-item>
       
             <ion-item>
               <div class="rectangulo2"></div>
               <ion-label class="asigntext"> {{asignatura_2}}</ion-label>
-              <ion-button (click)="almAsign(asignatura_2)" color="tertiary">
-                <ion-icon slot="icon-only" name="add"></ion-icon>
-              </ion-button>
             </ion-item>
       
             <ion-item>
               <div class="rectangulo3"></div>
               <ion-label class="asigntext">{{asignatura_3}}</ion-label>
-              <ion-button (click)="almAsign(asignatura_3)" color="tertiary">
-                <ion-icon slot="icon-only" name="add"></ion-icon>
-              </ion-button>
             </ion-item>
       
             <ion-item lines="none">
               <div class="rectangulo4"></div>
               <ion-label class="asigntext">{{asignatura_4}}</ion-label>
-              <ion-button (click)="almAsign(asignatura_4)" color="tertiary">
-                <ion-icon slot="icon-only" name="add"></ion-icon>
-              </ion-button>
             </ion-item>
           </ion-list>
         </ion-card-content>
       </ion-card>
+    </div>
+
+    <div class="contenedor-boton-registrar" style="margin-top:20px; margin-bottom: 20px; margin-right: 20px; display: flex; justify-content: flex-end;" *ngIf="login==true">
+      <ion-button size="default" class="botonRegistrar" slot="end" routerLink="/regasistencia">
+        Registrar asistencia
+        <ion-icon name="add"></ion-icon>
+      </ion-button>
     </div>
 
     <div class="ion-text-center ion-margin-top" *ngIf="login==false" style="--ion-margin:50px">
