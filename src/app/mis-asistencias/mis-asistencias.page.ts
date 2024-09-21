@@ -20,6 +20,7 @@ diaActualText : string;
 diaActual : string;
 anioActual : number;
 
+colores = ["#007bff", "#df26d5", "#90e242", "#e99a40", "#5a19dd", "#d63333"];
 
 asistencias = [
   {asignatura: 'Proceso de Portafolio', lastAttendance: '14-09-2024', estado: true},
@@ -47,5 +48,12 @@ asistencias = [
 }
   ngOnInit() {
   }
-
+  colores1(index:number){
+      var i :number = index;
+      if(i >= this.colores.length){
+        i = i-this.colores.length
+      }
+      var color: string = this.colores[i]
+      return color;
+  }
 }
