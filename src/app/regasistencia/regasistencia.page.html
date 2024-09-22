@@ -8,7 +8,7 @@
 </ion-header>
 
 <ion-content>
-  <div *ngIf="!generado" style="text-align: center; margin-top: 50px;">
+  <div *ngIf="!generado" style="text-align: center; margin-top: 15px;">
     
     <div class="cards">
       <ion-card>
@@ -20,7 +20,7 @@
           <ion-list>
             <ion-item *ngFor="let asistencia of asistencias">
               <ion-label>{{ asistencia.asignatura }}</ion-label>
-              <ion-button (click)="mostrarAlerta(asistencia.asignatura)" color="tertiary">
+              <ion-button (click)="mostrarAlerta(asistencia.asignatura)" color="success">
                 <ion-icon slot="icon-only" name="add"></ion-icon>
               </ion-button>
             </ion-item>
@@ -30,7 +30,7 @@
     </div>
   </div>
 
-  <div *ngIf="generado" style="text-align: center; margin-top: 90px;">
+  <div *ngIf="generado" style="text-align: center; margin-top: 30px;">
     <h1 size="5">QR de {{asign}} </h1>
     <h1>Sección: seccion </h1>
     <img style="margin-top:20px;" class="qr" src="../../assets/img/frame.png" alt="QR">
