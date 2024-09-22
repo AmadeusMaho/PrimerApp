@@ -19,25 +19,47 @@ export class RegasistenciaPage implements OnInit {
     console.log(asignatura)
   }
 
+  seccionSeleccionada: string = '';
   generado:boolean=false
-  generarqr(){
-    this.generado = true;
-    console.log('QR generado:', this.generado);
+
+  generarqr(asignatura: string,seccion: string ){
+    setTimeout( () => {  this.generado = true;
+      this.asign = asignatura; this.seccionSeleccionada = seccion;
+      console.log(this.asign, this.seccionSeleccionada);
+      console.log('QR generado:', this.generado);}, 2200);
+   
+    
   }
 
 
   asistencias = [
-  {asignatura: 'Proceso de Portafolio', seccion: '004D', estado: true},
-  {asignatura: 'Programación de Base de Datos', lastAttendance: '12-09-2024', estado: false},
-  {asignatura: 'Ética para el trabajo', lastAttendance: '07-09-2024', estado: true},
-  {asignatura: 'Estadística', lastAttendance: '19-09-2024', estado: true},
-  {asignatura: 'Programación de aplicaciones móviles', lastAttendance: '06-09-2024', estado: true},
-  {asignatura: 'Arquitectura', lastAttendance: '07-09-2024', estado: false}
+  {asignatura: 'Proceso de Portafolio', 
+    secciones:[
+    {seccion: '004D', estado: true},
+    {seccion: '006D', estado: true}]
+  },
+  {asignatura: 'Programación de Base de Datos',   secciones:[
+    {seccion: '002D', estado: true},
+    {seccion: '001D', estado: true},
+    {seccion: '005D', estado: true}]},
+  {asignatura: 'Ética para el trabajo', secciones:[
+    {seccion: '007D', estado: true},
+    {seccion: '002D', estado: true}]},
+  {asignatura: 'Estadística', secciones:[
+    {seccion: '002D', estado: true},
+    {seccion: '001D', estado: true}]},
+  {asignatura: 'Programación de aplicaciones móviles', secciones:[
+    {seccion: '008D', estado: true},
+    {seccion: '004D', estado: true},
+    {seccion: '005D', estado: true}]},
+  {asignatura: 'Arquitectura', secciones:[
+    {seccion: '001D', estado: true},
+    {seccion: '002D', estado: true}]},
 ]
 
 
 
-async mostrarAlerta(asignatura: string) {
+/* async mostrarAlerta(asignatura: string) {
   const alert = await this.alertController.create({
     header: 'Selecciona la sección para ' + asignatura,
     buttons:  [
@@ -65,7 +87,7 @@ async mostrarAlerta(asignatura: string) {
   console.log(sessionStorage.getItem('asignatura'));
 
   await alert.present();
-}
+} */
 botonVolver(){
   this.router.navigate(['/home'])
   this.generado = false;
@@ -96,6 +118,29 @@ const volverQRAlerta = await this.alertController.create({
 });
 await volverQRAlerta.present();
 }
+
 public alertBotonAceptar = ['OK'];
+private values: string[] = ['first', 'second', 'third'];
+accordionGroupChange = (ev: any) => {
+  const collapsedItems = this.values.filter((value) => value !== ev.detail.value);
+  const selectedValue = ev.detail.value;
+
+  console.log(
+    `Expanded: ${selectedValue === undefined ? 'None' : ev.detail.value} | Collapsed: ${collapsedItems.join(', ')}`
+  );
+};
+
+secciones=[
+  {asignatura: 'Proceso de Portafolio', secciones:[
+    { seccion: '006D', estado: true},
+    { seccion: '007D', estado: true},
+  ], estado: true},
+  {asignatura: 'Programación de Base de Datos', secciones:[
+    { seccion: '004D', estado: true},
+    { seccion: '002D', estado: true},
+    { seccion: '001D', estado: true},
+  ], estado: true},
+]
+
 
 }

@@ -22,7 +22,8 @@ export class CambiarclavePage implements OnInit {
 
   error: boolean = false;
   exito : boolean = false;
-    
+  alertButtons = ['Aceptar'];
+  
   enviar(){
     if(!sessionStorage.getItem('usuario')){
       console.log("usuario no existe")
