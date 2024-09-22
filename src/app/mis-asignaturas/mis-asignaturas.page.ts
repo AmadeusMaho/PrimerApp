@@ -57,12 +57,14 @@ asignaturas = [
 }
   ngOnInit() {
   }
+
   colores1(index:number){
-      var i :number = index;
-      if(i >= this.colores.length){
-        i = i-this.colores.length
-      }
-      var color: string = this.colores[i]
-      return color;
-  }
+    var i :number = index;
+    if(i >= this.colores.length){
+      i = i-this.colores.length
+    }
+    var color: string = this.colores[i]
+    return color;
+}
+
 }

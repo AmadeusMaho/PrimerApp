@@ -8,34 +8,21 @@
 </ion-header>
 
 <ion-content>
-  <div class="cards">
-    <ion-card>
-      <ion-card-header>
-        <ion-card-title class="ion-text-center">Asistencias realizadas</ion-card-title>
-        <ion-card-subtitle class="ion-text-center"> Hoy es {{diaActualText}} {{diaActual}} {{mesActual}} del {{anioActual}}
-        </ion-card-subtitle>
-      </ion-card-header>
-      <ion-card-content>
-        <ion-list>
-
-          <ion-item>
-            <ion-label class="asigntext fixedLabel" fixed style="min-width: 40%; text-align: start; font-weight: bold; margin-right: 10px;">Asignatura</ion-label>
-            <ion-label class="asigntext fixedLabel" fixed style="min-width: 30%; text-align: center; font-weight: bold;">Última clase</ion-label>
-            <ion-label class="asigntext fixedLabel" fixed style="min-width: 25%; text-align: center; font-weight: bold;">Estado</ion-label>
+  <ion-grid [fixed]="true" style="--ion-grid-padding:2%">
+      <ion-accordion-group>
+        <ion-accordion *ngFor="let asignatura of asignaturas;let i=index;">
+          <ion-item slot="header">
+            <div class="rectangulo1 ion-align-items-start" style="margin-right: 10px;" [ngStyle]="{'background-color':colores1(i)}"></div>
+            <ion-label>{{asignatura.sigla}}  {{asignatura.asignatura}}</ion-label>
           </ion-item>
-
-          <ion-item *ngFor="let asistencia of asistencias; let i = index;">
-            <div class="rectangulo1 ion-align-items-start" [ngStyle]="{'background-color':colores1(i)}"></div>
-            <ion-label  class="asigntext fixedLabel" fixed style="min-width: 40%; text-align: start;"> {{ asistencia.asignatura }} </ion-label>
-            <ion-label  class="asigntext fixedLabel" fixed style="min-width: 30%; text-align: center;"> {{ asistencia.lastAttendance}} </ion-label>
-            <ion-label  class="asigntext fixedLabel" fixed style="min-width: 25%; text-align: center;"*ngIf="asistencia.estado">Presente</ion-label>
-            <ion-label  class="asigntext fixedLabel" fixed style="min-width: 25%; text-align: center;"*ngIf="!asistencia.estado">Ausente</ion-label>
-          </ion-item>
-          
-        </ion-list>
-      </ion-card-content>
-    </ion-card>
-    </div>
+            <div class="ion-padding" slot="content" *ngFor="let asistencia of filtroAsignaturas(asistencias, asignatura.sigla)">
+              <ion-label>{{asistencia.lastAttendance}}</ion-label>
+              <ion-label style="vertical-align: middle; text-align: start; float: right;" *ngIf="asistencia.estado"><ion-icon color="success" name="checkmark-circle-outline"slot="start" style="vertical-align: middle; margin-right: 5px; text-align: start;"></ion-icon>Presente</ion-label>
+              <ion-label style="vertical-align: middle; text-align: start; margin-right: 5px; float: right;" *ngIf="!asistencia.estado"><ion-icon color="danger" name="close-circle-outline"slot="start" style="vertical-align: middle; margin-right: 5px; text-align: start;"></ion-icon>Ausente</ion-label>
+            </div>
+        </ion-accordion>
+      </ion-accordion-group>
+  </ion-grid>
 </ion-content>
 
 
