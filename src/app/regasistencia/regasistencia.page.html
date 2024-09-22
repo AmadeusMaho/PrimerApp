@@ -17,7 +17,7 @@
 <ion-content>
   <ion-grid fixed>
 
-    <div *ngIf="!generado" style="text-align: center; --ion-grid-padding:2%">
+    <div *ngIf="!generado" style="text-align: center; --ion-grid-padding:2%; margin-top: 15px;">
       <ion-accordion-group>
         <ion-accordion *ngFor="let asistencia of asistencias" [value]="asistencia.asignatura">
           <ion-item slot="header" color="light">
