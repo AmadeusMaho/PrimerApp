@@ -122,3 +122,14 @@
     align-items: center; 
     justify-content: center; 
   }
+
+  .circular-progress {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  svg {
+    transform: rotate(-90deg);
+  }

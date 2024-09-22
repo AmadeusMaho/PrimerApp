@@ -1,3 +1,10 @@
+<head>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+</head>
+
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-button (click)="botonVolver()" fill="clear" class="botonvolver" slot="start" routerLink="/home">
@@ -9,6 +16,7 @@
 
 <ion-content>
   <ion-grid fixed>
+
     <div *ngIf="!generado" style="text-align: center; --ion-grid-padding:2%">
       <ion-accordion-group>
         <ion-accordion *ngFor="let asistencia of asistencias" [value]="asistencia.asignatura">
@@ -31,13 +39,13 @@
 
 
 
-  <div *ngIf="generado" style="text-align: center; margin-top: 30px;">
+  <div *ngIf="generado" class="animate__animated animate__fadeInUp"style="text-align: center; margin-top: 30px;">
     <h1 size="5">QR de {{asign}} </h1>
     <h1>Sección: {{seccionSeleccionada}} </h1>
     <img style="margin-top:20px;" class="qr" src="../../assets/img/frame.png" alt="QR">
   </div>
-  <div *ngIf="generado" style="text-align:center;">
-    <ion-button color="success"style="margin-top: 30px; " fill="solid" shape="round" (click)="volverQR()">
+  <div *ngIf="generado" style="text-align:center;" class="animate__animated animate__fadeInUp">
+    <ion-button color="success"style="margin-top: 30px;" fill="solid" shape="round" (click)="volverQR()">
       <ion-icon size="default"fill="outline"slot="center" name="arrow-undo-outline"></ion-icon>
       Volver
     </ion-button>
