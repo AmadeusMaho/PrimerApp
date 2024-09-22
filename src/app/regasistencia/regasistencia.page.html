@@ -8,22 +8,25 @@
 </ion-header>
 
 <ion-content>
-  <div *ngIf="!generado" style="text-align: center; --ion-grid-padding:2%">
-          <ion-accordion-group>
-            <ion-accordion *ngFor="let asistencia of asistencias" [value]="asistencia.asignatura">
-              <ion-item slot="header" color="light">
-                <ion-label>{{ asistencia.asignatura }}</ion-label>
-              </ion-item>
-              <div class="ion-padding" slot="content" style="display: flex; justify-content: space-between; align-items: center;" *ngFor="let secc of asistencia.secciones">
-                <label style="font-size: large;">{{secc.seccion}} </label>
-                  <ion-button (click)="generarqr(asistencia.asignatura, secc.seccion)" color="success" slot="start"   [id]="'botonQR-' + asistencia.asignatura + '-' + secc.seccion">
-                    <ion-icon slot="icon-only" name="add"></ion-icon>
-                  </ion-button>
-                  <ion-loading  [trigger]="'botonQR-' + asistencia.asignatura + '-' + secc.seccion" message="Generando QR..." duration="2000"></ion-loading>
-              </div>
-            </ion-accordion>
-          </ion-accordion-group>
-  </div>
+  <ion-grid fixed>
+    <div *ngIf="!generado" style="text-align: center; --ion-grid-padding:2%">
+      <ion-accordion-group>
+        <ion-accordion *ngFor="let asistencia of asistencias" [value]="asistencia.asignatura">
+          <ion-item slot="header" color="light">
+            <ion-label>{{ asistencia.asignatura }}</ion-label>
+          </ion-item>
+          <div class="ion-padding" slot="content" style="display: flex; justify-content: space-between; align-items: center;" *ngFor="let secc of asistencia.secciones">
+            <label style="font-size: large;">{{secc.seccion}} </label>
+              <ion-button (click)="generarqr(asistencia.asignatura, secc.seccion)" color="success" slot="start"   [id]="'botonQR-' + asistencia.asignatura + '-' + secc.seccion">
+                <ion-icon slot="icon-only" name="add"></ion-icon>
+              </ion-button>
+              <ion-loading  [trigger]="'botonQR-' + asistencia.asignatura + '-' + secc.seccion" message="Generando QR..." duration="2000"></ion-loading>
+          </div>
+        </ion-accordion>
+      </ion-accordion-group>
+</div>
+  </ion-grid>
+
 
 
 
