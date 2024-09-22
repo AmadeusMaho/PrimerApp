@@ -8,15 +8,7 @@
 </ion-header>
 
 <ion-content>
-  <div *ngIf="!generado" style="text-align: center; margin-top: 5px;">
-    
-    <div class="cards">
-      <ion-card>
-        <ion-card-header>
-          <h1>Selecciona la asignatura:</h1>
-          <ion-card-title>Asignaturas disponibles:</ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
+  <div *ngIf="!generado" style="text-align: center; --ion-grid-padding:2%">
           <ion-accordion-group>
             <ion-accordion *ngFor="let asistencia of asistencias" [value]="asistencia.asignatura">
               <ion-item slot="header" color="light">
@@ -28,13 +20,9 @@
                     <ion-icon slot="icon-only" name="add"></ion-icon>
                   </ion-button>
                   <ion-loading  [trigger]="'botonQR-' + asistencia.asignatura + '-' + secc.seccion" message="Generando QR..." duration="2000"></ion-loading>
-   
               </div>
             </ion-accordion>
           </ion-accordion-group>
-        </ion-card-content>
-      </ion-card>
-    </div>
   </div>
 
 
