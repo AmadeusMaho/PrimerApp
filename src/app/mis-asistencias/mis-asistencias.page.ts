@@ -23,16 +23,26 @@ anioActual : number;
 colores = ["#007bff", "#df26d5", "#90e242", "#e99a40", "#5a19dd", "#d63333"];
 
 asistencias = [
-  {asignatura: 'Proceso de Portafolio', lastAttendance: '14-09-2024', estado: true},
-  {asignatura: 'Programación de Base de Datos', lastAttendance: '12-09-2024', estado: false},
-  {asignatura: 'Ética para el trabajo', lastAttendance: '07-09-2024', estado: true},
-  {asignatura: 'Programación de Base de Datos', lastAttendance: '05-09-2024', estado: true},
-  {asignatura: 'Estadística', lastAttendance: '19-09-2024', estado: true},
-  {asignatura: 'Programación de aplicaciones móviles', lastAttendance: '06-09-2024', estado: true},
-  {asignatura: 'Arquitectura', lastAttendance: '07-09-2024', estado: false},
-  {asignatura: 'Proceso de Portafolio', lastAttendance: '12-08-2024', estado: false}
+  {sigla: 'APY4461', asignatura: 'Proceso de Portafolio', lastAttendance: '14-09-2024', estado: true},
+  {sigla: 'MDY3131', asignatura: 'Programación de Base de Datos', lastAttendance: '12-09-2024', estado: false},
+  {sigla: 'EAY4450', asignatura: 'Ética para el trabajo', lastAttendance: '07-09-2024', estado: true},
+  {sigla: 'MDY3131', asignatura: 'Programación de Base de Datos', lastAttendance: '05-09-2024', estado: true},
+  {sigla: 'MAT4140', asignatura: 'Estadística', lastAttendance: '19-09-2024', estado: true},
+  {sigla: 'PGY4121', asignatura: 'Programación de aplicaciones móviles', lastAttendance: '06-09-2024', estado: true},
+  {sigla: 'ASY4131', asignatura: 'Arquitectura', lastAttendance: '07-09-2024', estado: false},
+  {sigla: 'APY4461', asignatura: 'Proceso de Portafolio', lastAttendance: '12-08-2024', estado: false}
 
 ];
+
+asignaturas = [
+  {sigla: 'APY4461', asignatura: 'Proceso de Portafolio'},
+  {sigla: 'MDY3131', asignatura: 'Programación de Base de Datos'},
+  {sigla: 'EAY4450', asignatura: 'Ética para el trabajo'},
+  {sigla: 'MAT4140', asignatura: 'Estadística'},
+  {sigla: 'PGY4121', asignatura: 'Programación de aplicaciones móviles'},
+  {sigla: 'ASY4131', asignatura: 'Arquitectura'}
+];
+
   constructor() { 
   this.fechaActual = new Date().toLocaleDateString('es-ES',{
     day:'2-digit',
@@ -55,5 +65,8 @@ asistencias = [
       }
       var color: string = this.colores[i]
       return color;
+  }
+  filtroAsignaturas(asistencias: any[], sigla:string): any[] {
+    return asistencias.filter(a => a.sigla == sigla);
   }
 }
