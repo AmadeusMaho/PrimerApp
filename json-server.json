@@ -1,0 +1,29 @@
+{
+    "usuarios":[
+        {"id": 1, "username": "Usuario1", "password": "MiClav3", "profesor": false, "asignaturas":["APY4461","MDY3131","EAY4450","MAT4140","PGY4121"]},
+        {"id": 2, "username": "Profe1", "password": "MiClav3", "profesor": true, "asignaturas":["APY4461","MDY3131","EAY4450","MAT4140","PGY4121","ASY4131"]}
+    ],
+
+    "asignaturas":[
+        {"sigla": "APY4461", "asignatura": "Proceso de Portafolio", "profesor": "Victor Bazel", "seccion": "006D"},
+        {"sigla": "MDY3131", "asignatura": "Programación de Base de Datos", "profesor": "Hoffman Garuda", "seccion": "004D"},
+        {"sigla": "EAY4450", "asignatura": "Ética para el trabajo", "profesor": "Robert Geuse", "seccion": "001D"},
+        {"sigla": "MAT4140", "asignatura": "Estadística", "profesor": "Enrique Stygian", "seccion": "004D"},
+        {"sigla": "PGY4121", "asignatura": "Programación de aplicaciones móviles", "profesor": "Patricio Yañez", "seccion": "004D"},
+        {"sigla": "ASY4131", "asignatura": "Arquitectura", "profesor": "José Luis Pino", "seccion": "004D"}
+    ],
+
+    "asistencias":[
+        {"sigla": "APY4461", "seccion": "006D", "usuario": 1, "fecha": "30-10-2024"},
+        {"sigla": "MDY3131", "seccion": "004D", "usuario": 1, "fecha": "30-10-2024"},
+        {"sigla": "EAY4450", "seccion": "001D", "usuario": 1, "fecha": "29-10-2024"},
+        {"sigla": "MAT4140", "seccion": "004D", "usuario": 1, "fecha": "29-10-2024"},
+        {"sigla": "PGY4121", "seccion": "004D", "usuario": 1, "fecha": "28-10-2024"},
+        {"sigla": "ASY4131", "seccion": "004D", "usuario": 1, "fecha": "28-10-2024"},
+        {"sigla": "MDY3131", "seccion": "004D", "usuario": 1, "fecha": "25-10-2024"},
+        {"sigla": "EAY4450", "seccion": "001D", "usuario": 1, "fecha": "25-10-2024"},
+        {"sigla": "MAT4140", "seccion": "004D", "usuario": 1, "fecha": "25-10-2024"},
+        {"sigla": "PGY4121", "seccion": "004D", "usuario": 1, "fecha": "24-10-2024"},
+        {"sigla": "ASY4131", "seccion": "004D", "usuario": 1, "fecha": "24-10-2024"}
+    ]
+}
