@@ -15,6 +15,7 @@ export class RegasistenciaPage implements OnInit {
 
 
 resultadoScan = '';
+fueEscaneado = false;
 async escanear() {
   const modal = await this.modalController.create({
   component: BarcodeScanningModalComponent,
@@ -30,6 +31,7 @@ async escanear() {
   const {data} = await modal.onWillDismiss();
   if (data){
     this.resultadoScan = data?.barcode?.displayValue;
+    this.fueEscaneado = true;
   }
 }
 
