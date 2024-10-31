@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AlertController, ModalController } from '@ionic/angular';
 import { BarcodeScanningModalComponent } from './barcode-scanning-modal.component';
 import {LensFacing} from '@capacitor-mlkit/barcode-scanning'
 import { HttpClient } from '@angular/common/http';
-
 
 @Component({
   selector: 'app-regasistencia',
@@ -13,7 +12,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class RegasistenciaPage implements OnInit {
 
-  constructor(private router:Router, private alertController:AlertController, private modalController: ModalController, private httpClient: HttpClient) { }
+  constructor(private router:Router, private alertController:AlertController, private modalController: ModalController, private http: HttpClient, private activatedRoute:ActivatedRoute) { }
 
 
 resultadoScan = '';
@@ -46,11 +45,22 @@ async escanear() {
     const asignatura = sessionStorage.getItem('asignatura')
     this.asign = asignatura !== null ? asignatura : ''; //si asignatura es null entonces asignatura vacío
     console.log(asignatura)
+
+    this.http.get('http://localhost:3000/usuarios').subscribe(
+      (data) => {
+        console.log(data)
+        this.usuarios = data;
+      },
+      (error) => {
+        console.log('error al obtener el listado de usuarios', error);
+      }
+    )
   }
+
+
 
   seccionSeleccionada: string = '';
   generado:boolean=false
-
   generarqr(asignatura: string,seccion: string ){
     setTimeout( () => {  this.generado = true;
       this.asign = asignatura; this.seccionSeleccionada = seccion;
@@ -116,6 +126,7 @@ async escanear() {
 
   await alert.present();
 } */
+
 botonVolver(){
   this.router.navigate(['/home'])
   this.generado = false;
@@ -157,6 +168,10 @@ accordionGroupChange = (ev: any) => {
     `Expanded: ${selectedValue === undefined ? 'None' : ev.detail.value} | Collapsed: ${collapsedItems.join(', ')}`
   );
 };
+
+
+usuarios : any = [];
+
 
 secciones=[
   {asignatura: 'Proceso de Portafolio', secciones:[
