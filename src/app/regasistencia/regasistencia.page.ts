@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { AlertController, ModalController } from '@ionic/angular';
 import { BarcodeScanningModalComponent } from './barcode-scanning-modal.component';
 import {LensFacing} from '@capacitor-mlkit/barcode-scanning'
+import { HttpClient } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-regasistencia',
@@ -11,7 +13,7 @@ import {LensFacing} from '@capacitor-mlkit/barcode-scanning'
 })
 export class RegasistenciaPage implements OnInit {
 
-  constructor(private router:Router, private alertController:AlertController, private modalController: ModalController) { }
+  constructor(private router:Router, private alertController:AlertController, private modalController: ModalController, private httpClient: HttpClient) { }
 
 
 resultadoScan = '';
