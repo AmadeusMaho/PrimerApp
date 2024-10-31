@@ -8,6 +8,7 @@ import { RegasistenciaPageRoutingModule } from './regasistencia-routing.module';
 
 import { RegasistenciaPage } from './regasistencia.page';
 import { QRCodeModule } from 'angularx-qrcode';
+import { BarcodeScanningModalComponent } from './barcode-scanning-modal.component';
 
 @NgModule({
   imports: [
@@ -17,6 +18,6 @@ import { QRCodeModule } from 'angularx-qrcode';
     IonicModule,
     RegasistenciaPageRoutingModule
   ],
-  declarations: [RegasistenciaPage]
+  declarations: [RegasistenciaPage, BarcodeScanningModalComponent]
 })
 export class RegasistenciaPageModule {}
