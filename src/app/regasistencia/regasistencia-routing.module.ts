@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { RegasistenciaPage } from './regasistencia.page';
 
+
 const routes: Routes = [
   {
     path: '',

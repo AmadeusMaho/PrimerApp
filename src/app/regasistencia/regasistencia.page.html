@@ -42,9 +42,9 @@
   <div *ngIf="generado" class="animate__animated animate__fadeInUp"style="text-align: center; margin-top: 30px;">
     <h1 size="5">QR de {{asign}} </h1>
     <h1>Sección: {{seccionSeleccionada}} </h1>
-    <img style="margin-top:20px;" class="qr" src="../../assets/img/frame.png" alt="QR">
   </div>
   <div *ngIf="generado" style="text-align:center;" class="animate__animated animate__fadeInUp">
+    <qrcode [qrdata] = "seccionSeleccionada" [width] = "400"></qrcode>
     <ion-button color="success"style="margin-top: 30px;" fill="solid" shape="round" (click)="volverQR()">
       <ion-icon size="default"fill="outline"slot="center" name="arrow-undo-outline"></ion-icon>
       Volver

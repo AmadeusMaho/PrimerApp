@@ -7,9 +7,11 @@ import { IonicModule } from '@ionic/angular';
 import { RegasistenciaPageRoutingModule } from './regasistencia-routing.module';
 
 import { RegasistenciaPage } from './regasistencia.page';
+import { QRCodeModule } from 'angularx-qrcode';
 
 @NgModule({
   imports: [
+    QRCodeModule,
     CommonModule,
     FormsModule,
     IonicModule,
