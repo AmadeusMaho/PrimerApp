@@ -35,7 +35,20 @@
 </div>
   </ion-grid>
 
-
+<div>
+  <h6>Registrar asistencia</h6>
+  <ion-icon slot="start" name="qr-code-outline"></ion-icon>
+  <ion-row>
+    <ion-col size="6">
+      <ion-button (click)="escanear()" class="submit">
+        Escanear QR
+      </ion-button>
+    </ion-col>
+  </ion-row>
+  <div *ngIf="fueEscaneado">
+    <H6>Funciona {{resultadoScan}} </H6>
+  </div>
+</div>
 
 
 

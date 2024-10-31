@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AlertController } from '@ionic/angular';
+import { AlertController, ModalController } from '@ionic/angular';
+import { BarcodeScanningModalComponent } from './barcode-scanning-modal.component';
+import {LensFacing} from '@capacitor-mlkit/barcode-scanning'
 
 @Component({
   selector: 'app-regasistencia',
@@ -9,10 +11,35 @@ import { AlertController } from '@ionic/angular';
 })
 export class RegasistenciaPage implements OnInit {
 
-  constructor(private router:Router, private alertController:AlertController) { }
+  constructor(private router:Router, private alertController:AlertController, private modalController: ModalController) { }
+
+
+resultadoScan = '';
+fueEscaneado = false;
+async escanear() {
+  const modal = await this.modalController.create({
+  component: BarcodeScanningModalComponent,
+  showBackdrop: false,
+  cssClass: 'barcode-scanning-modal',
+  componentProps: { formats: [],
+    lensFacing: LensFacing.Back
+   }
+  });
+
+  await modal.present();
+
+  const {data} = await modal.onWillDismiss();
+  if (data){
+    this.resultadoScan = data?.barcode?.displayValue;
+    this.fueEscaneado = true;
+  }
+}
 
   seleccionado: boolean = false;
   asign: string = '';
+
+
+
   ngOnInit() {
     const asignatura = sessionStorage.getItem('asignatura')
     this.asign = asignatura !== null ? asignatura : ''; //si asignatura es null entonces asignatura vacío
@@ -26,8 +53,7 @@ export class RegasistenciaPage implements OnInit {
     setTimeout( () => {  this.generado = true;
       this.asign = asignatura; this.seccionSeleccionada = seccion;
       console.log(this.asign, this.seccionSeleccionada);
-      console.log('QR generado:', this.generado);}, 2200);
-   
+      console.log('QR generado:', this.generado);}, 2200); 
     
   }
 
