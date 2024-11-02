@@ -16,7 +16,6 @@
 
 <ion-content>
   <ion-grid fixed>
-
     <div *ngIf="!generado" style="text-align: center; --ion-grid-padding:2%; margin-top: 15px;">
       <ion-accordion-group>
         <ion-accordion *ngFor="let asistencia of asistencias" [value]="asistencia.asignatura">
@@ -51,17 +50,24 @@
 </div>
 
 
+<div *ngIf="generado" class="animate__animated animate__fadeInUp"style="text-align: center; margin-top: 30px;">
+  <h1 size="5">QR de {{asign}} </h1>
+  <h1>Sección: {{seccionSeleccionada}} </h1>
+</div>
+<div *ngIf="generado" style="text-align:center;" class="animate__animated animate__fadeInUp">
+  <qrcode [qrdata] = "seccionSeleccionada" [width] = "400"></qrcode>
+  <ion-button color="success"style="margin-top: 30px;" fill="solid" shape="round" (click)="volverQR()">
+    <ion-icon size="default"fill="outline"slot="center" name="arrow-undo-outline"></ion-icon>
+    Volver
+  </ion-button>
+</div>
 
-  <div *ngIf="generado" class="animate__animated animate__fadeInUp"style="text-align: center; margin-top: 30px;">
-    <h1 size="5">QR de {{asign}} </h1>
-    <h1>Sección: {{seccionSeleccionada}} </h1>
-  </div>
-  <div *ngIf="generado" style="text-align:center;" class="animate__animated animate__fadeInUp">
-    <qrcode [qrdata] = "seccionSeleccionada" [width] = "400"></qrcode>
-    <ion-button color="success"style="margin-top: 30px;" fill="solid" shape="round" (click)="volverQR()">
-      <ion-icon size="default"fill="outline"slot="center" name="arrow-undo-outline"></ion-icon>
-      Volver
-    </ion-button>
-  </div>
 
 </ion-content>
+
+
+
+
+
+
+

@@ -38,8 +38,7 @@ async escanear() {
 
   seleccionado: boolean = false;
   asign: string = '';
-
-
+  esProfe : boolean = false;
 
   ngOnInit() {
     const asignatura = sessionStorage.getItem('asignatura')
@@ -50,6 +49,7 @@ async escanear() {
       (data) => {
         console.log(data)
         this.usuarios = data;
+        console.log(this.usuarios)
       },
       (error) => {
         console.log('error al obtener el listado de usuarios', error);
