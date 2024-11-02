@@ -38,12 +38,17 @@ async escanear() {
 
   seleccionado: boolean = false;
   asign: string = '';
-  esProfe : boolean = false;
+  profesor : boolean = false;
 
   ngOnInit() {
     const asignatura = sessionStorage.getItem('asignatura')
     this.asign = asignatura !== null ? asignatura : ''; //si asignatura es null entonces asignatura vacío
     console.log(asignatura)
+    if (sessionStorage.getItem('profesor') == "true"){
+      this.profesor = true;
+    }else{
+      this.profesor = false;
+    }
 
     this.http.get('http://localhost:3000/usuarios').subscribe(
       (data) => {
