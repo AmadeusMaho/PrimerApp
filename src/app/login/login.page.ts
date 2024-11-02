@@ -12,7 +12,6 @@ export class LoginPage implements OnInit {
   constructor(private router: Router, private api:ApirestService) { }
 
   ngOnInit() {
-
   }
   
   user: any = {
@@ -37,7 +36,9 @@ export class LoginPage implements OnInit {
       sessionStorage.setItem('userId', result[0].id);
       sessionStorage.setItem('usuario', result[0].username);
       this.loading = false;
-      this.router.navigate(['/home']);
+      this.router.navigate(['/home']), {
+        queryParams: {refresh: new Date().getTime()}
+     };
     }   
     else{
       this.loading = false;
