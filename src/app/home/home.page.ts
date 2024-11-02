@@ -35,11 +35,17 @@ export class HomePage {
   constructor(private router:Router, private route: ActivatedRoute) {
   }
 
+  profesor: boolean = false;
 ngOnInit(){
   const usuarioGuardado = sessionStorage.getItem('usuario');
   if (usuarioGuardado){
     this.usuario = usuarioGuardado;
     this.login = true;
+    if (sessionStorage.getItem('profesor') == "true"){
+      this.profesor = true;
+    }else{
+      this.profesor = false;
+    }
   }
   
 }
