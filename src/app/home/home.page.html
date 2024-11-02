@@ -95,25 +95,14 @@
         </ion-card-header>
         <ion-card-content>
           <ion-list>
-            <ion-item>
-              <div class="rectangulo1"></div>
-              <ion-label  class="asigntext"> {{asignatura_1}} </ion-label>
+
+            <ion-item *ngFor="let asignatura of horarioDia; let i = index;">
+              <div class="rectangulo1 ion-align-items-start" [ngStyle]="{'background-color':colores1(i)}"></div>
+              <ion-label  class="asigntext fixedLabel" fixed style="min-width: 30%; text-align: start;"> {{asignatura[0]}} </ion-label>
+              <ion-label  class="asigntext fixedLabel" fixed style="min-width: 40%; text-align: center;"> {{asignatura[1]}} </ion-label>
+              <ion-label  class="asigntext fixedLabel" fixed style="min-width: 25%; text-align: center;"> {{asignatura[2]}} </ion-label>
             </ion-item>
-      
-            <ion-item>
-              <div class="rectangulo2"></div>
-              <ion-label class="asigntext"> {{asignatura_2}}</ion-label>
-            </ion-item>
-      
-            <ion-item>
-              <div class="rectangulo3"></div>
-              <ion-label class="asigntext">{{asignatura_3}}</ion-label>
-            </ion-item>
-      
-            <ion-item lines="none">
-              <div class="rectangulo4"></div>
-              <ion-label class="asigntext">{{asignatura_4}}</ion-label>
-            </ion-item>
+        
           </ion-list>
         </ion-card-content>
       </ion-card>

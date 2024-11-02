@@ -42,7 +42,7 @@ export class CambiarclavePage implements OnInit {
   }
 
   volverClave(){
-    if (sessionStorage.getItem('password')){
+    if (sessionStorage.getItem('login')=='true'){
       this.router.navigate((['/home']))
       this.exito = false;
     }

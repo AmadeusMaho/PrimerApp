@@ -13,7 +13,7 @@ export class ApirestService {
   constructor(private httpClient: HttpClient) { }
 
   getUsers(){
-    let url = this.urlAPi2 + "usuarios";
+    let url = this.urlAPi2 + "usuarios/";
     this.listado=[];
     return new Promise((resolve, reject) => {
       this.httpClient.get<[]>(url).subscribe((data: []) => {
@@ -76,8 +76,44 @@ export class ApirestService {
     });
   }
 
-  async getAsignaturaUsuario(id:String){
-    let url = this.urlAPi2 + "usuarios" + id;
+  
+  getAsignaturas(){
+    let url = this.urlAPi + "asignaturas/";
+    this.listado=[];
+    return new Promise((resolve, reject) => {
+      this.httpClient.get<[]>(url).subscribe((data: []) => {
+        resolve(data);
+        this.listado = data;
+      },
+      error =>
+      {
+        console.log("Error en la comunicación con la API");
+      });
+    });
+  }
+
+  async getAsignaturasSigla(sigla1:string){
+    var rx = /^[^-]*/
+    var sigla = rx.exec(sigla1)
+    console.log(sigla)
+    var rx = /[^-]*$/
+    var seccion = rx.exec(sigla1)
+    console.log(seccion)
+    let url = this.urlAPi + "asignaturas?sigla=" + sigla + "&seccion=" + seccion;
+    return new Promise((resolve, reject) => {
+      this.httpClient.get(url).subscribe((data: any) => {
+        resolve(data);
+        this.item = data;
+      },
+      error =>
+      {
+        console.log("Error en la comunicación con la API");
+      });
+    });
+  }
+
+  async getHorario(id:String){
+    let url = this.urlAPi + "horario?id=" + id;
     return new Promise((resolve, reject) => {
       this.httpClient.get(url).subscribe((data: any) => {
         resolve(data);
