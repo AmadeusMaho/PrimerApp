@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApirestService } from '../apirest.service';
 
 @Component({
   selector: 'app-mis-asignaturas',
@@ -22,18 +23,6 @@ anioActual : number;
 
 colores = ["#007bff", "#df26d5", "#90e242", "#e99a40", "#5a19dd", "#d63333"];
 
-asistencias = [
-  {asignatura: 'Proceso de Portafolio', lastAttendance: '14-09-2024', estado: true},
-  {asignatura: 'Programación de Base de Datos', lastAttendance: '12-09-2024', estado: false},
-  {asignatura: 'Ética para el trabajo', lastAttendance: '07-09-2024', estado: true},
-  {asignatura: 'Programación de Base de Datos', lastAttendance: '05-09-2024', estado: true},
-  {asignatura: 'Estadística', lastAttendance: '19-09-2024', estado: true},
-  {asignatura: 'Programación de aplicaciones móviles', lastAttendance: '06-09-2024', estado: true},
-  {asignatura: 'Arquitectura', lastAttendance: '07-09-2024', estado: false},
-  {asignatura: 'Proceso de Portafolio', lastAttendance: '12-08-2024', estado: false}
-
-];
-
 asignaturas = [
   {asignatura: 'Proceso de Portafolio', profesor: 'Victor Bazel', seccion: '006D'},
   {asignatura: 'Programación de Base de Datos', profesor: 'Hoffman Garuda', seccion: '004D'},
@@ -56,6 +45,7 @@ asignaturas = [
   this.diaActualText = new Date().toLocaleDateString('es-ES', { weekday: 'long'});
 }
   ngOnInit() {
+
   }
 
   colores1(index:number){
