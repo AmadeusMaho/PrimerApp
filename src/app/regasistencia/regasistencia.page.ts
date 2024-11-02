@@ -4,6 +4,7 @@ import { AlertController, ModalController } from '@ionic/angular';
 import { BarcodeScanningModalComponent } from './barcode-scanning-modal.component';
 import {LensFacing} from '@capacitor-mlkit/barcode-scanning'
 import { HttpClient } from '@angular/common/http';
+import { ApirestService } from '../apirest.service';
 
 @Component({
   selector: 'app-regasistencia',
@@ -12,7 +13,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class RegasistenciaPage implements OnInit {
 
-  constructor(private router:Router, private alertController:AlertController, private modalController: ModalController, private http: HttpClient, private activatedRoute:ActivatedRoute) { }
+  constructor(private api:ApirestService, private router:Router, private alertController:AlertController, private modalController: ModalController, private http: HttpClient, private activatedRoute:ActivatedRoute) { }
 
 
 resultadoScan = '';
@@ -31,8 +32,10 @@ async escanear() {
 
   const {data} = await modal.onWillDismiss();
   if (data){
+    const fechaActual = new Date();
     this.resultadoScan = data?.barcode?.displayValue;
     this.fueEscaneado = true;
+    this.api.addAsistencia("APY1234",this.resultadoScan,sessionStorage.getItem('userId') ?? '',fechaActual)
   }
 }
 

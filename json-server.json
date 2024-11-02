@@ -1,29 +1,172 @@
 {
-    "usuarios":[
-        {"id": 1, "username": "Usuario1", "password": "MiClav3", "profesor": false, "asignaturas":["APY4461","MDY3131","EAY4450","MAT4140","PGY4121"]},
-        {"id": 2, "username": "Profe1", "password": "MiClav3", "profesor": true, "asignaturas":["APY4461","MDY3131","EAY4450","MAT4140","PGY4121","ASY4131"]}
-    ],
-
-    "asignaturas":[
-        {"id": 1,"sigla": "APY4461", "asignatura": "Proceso de Portafolio", "profesor": "Victor Bazel", "seccion": "006D"},
-        {"id": 2,"sigla": "MDY3131", "asignatura": "Programación de Base de Datos", "profesor": "Hoffman Garuda", "seccion": "004D"},
-        {"id": 3,"sigla": "EAY4450", "asignatura": "Ética para el trabajo", "profesor": "Robert Geuse", "seccion": "001D"},
-        {"id": 4,"sigla": "MAT4140", "asignatura": "Estadística", "profesor": "Enrique Stygian", "seccion": "004D"},
-        {"id": 5,"sigla": "PGY4121", "asignatura": "Programación de aplicaciones móviles", "profesor": "Patricio Yañez", "seccion": "004D"},
-        {"id": 6, "sigla": "ASY4131", "asignatura": "Arquitectura", "profesor": "José Luis Pino", "seccion": "004D"}
-    ],
-
-    "asistencias":[
-        {"id": 11,"sigla": "APY4461", "seccion": "006D", "usuario": 1, "fecha": "30-10-2024"},
-        {"id": 10,"sigla": "MDY3131", "seccion": "004D", "usuario": 1, "fecha": "30-10-2024"},
-        {"id": 9,"sigla": "EAY4450", "seccion": "001D", "usuario": 1, "fecha": "29-10-2024"},
-        {"id": 8,"sigla": "MAT4140", "seccion": "004D", "usuario": 1, "fecha": "29-10-2024"},
-        {"id": 7,"sigla": "PGY4121", "seccion": "004D", "usuario": 1, "fecha": "28-10-2024"},
-        {"id": 6,"sigla": "ASY4131", "seccion": "004D", "usuario": 1, "fecha": "28-10-2024"},
-        {"id": 5,"sigla": "MDY3131", "seccion": "004D", "usuario": 1, "fecha": "25-10-2024"},
-        {"id": 4,"sigla": "EAY4450", "seccion": "001D", "usuario": 1, "fecha": "25-10-2024"},
-        {"id": 3,"sigla": "MAT4140", "seccion": "004D", "usuario": 1, "fecha": "25-10-2024"},
-        {"id": 2,"sigla": "PGY4121", "seccion": "004D", "usuario": 1, "fecha": "24-10-2024"},
-        {"id": 1, "sigla": "ASY4131", "seccion": "004D", "usuario": 1, "fecha": "24-10-2024"}
-    ]
+  "usuarios": [
+    {
+      "id": "1",
+      "username": "Usuario1",
+      "password": "MiClav3",
+      "profesor": false,
+      "asignaturas": [
+        "APY4461",
+        "MDY3131",
+        "EAY4450",
+        "MAT4140",
+        "PGY4121"
+      ]
+    },
+    {
+      "id": "2",
+      "username": "Profe1",
+      "password": "MiClav3",
+      "profesor": true,
+      "asignaturas": [
+        "APY4461",
+        "MDY3131",
+        "EAY4450",
+        "MAT4140",
+        "PGY4121",
+        "ASY4131"
+      ]
+    }
+  ],
+  "asignaturas": [
+    {
+      "id": "1",
+      "sigla": "APY4461",
+      "asignatura": "Proceso de Portafolio",
+      "profesor": "Victor Bazel",
+      "seccion": "006D"
+    },
+    {
+      "id": "2",
+      "sigla": "MDY3131",
+      "asignatura": "Programación de Base de Datos",
+      "profesor": "Hoffman Garuda",
+      "seccion": "004D"
+    },
+    {
+      "id": "3",
+      "sigla": "EAY4450",
+      "asignatura": "Ética para el trabajo",
+      "profesor": "Robert Geuse",
+      "seccion": "001D"
+    },
+    {
+      "id": "4",
+      "sigla": "MAT4140",
+      "asignatura": "Estadística",
+      "profesor": "Enrique Stygian",
+      "seccion": "004D"
+    },
+    {
+      "id": "5",
+      "sigla": "PGY4121",
+      "asignatura": "Programación de aplicaciones móviles",
+      "profesor": "Patricio Yañez",
+      "seccion": "004D"
+    },
+    {
+      "id": "6",
+      "sigla": "ASY4131",
+      "asignatura": "Arquitectura",
+      "profesor": "José Luis Pino",
+      "seccion": "004D"
+    }
+  ],
+  "asistencias": [
+    {
+      "id": "11",
+      "sigla": "APY4461",
+      "seccion": "006D",
+      "usuario": 1,
+      "fecha": "30-10-2024"
+    },
+    {
+      "id": "10",
+      "sigla": "MDY3131",
+      "seccion": "004D",
+      "usuario": 1,
+      "fecha": "30-10-2024"
+    },
+    {
+      "id": "9",
+      "sigla": "EAY4450",
+      "seccion": "001D",
+      "usuario": 1,
+      "fecha": "29-10-2024"
+    },
+    {
+      "id": "8",
+      "sigla": "MAT4140",
+      "seccion": "004D",
+      "usuario": 1,
+      "fecha": "29-10-2024"
+    },
+    {
+      "id": "7",
+      "sigla": "PGY4121",
+      "seccion": "004D",
+      "usuario": 1,
+      "fecha": "28-10-2024"
+    },
+    {
+      "id": "6",
+      "sigla": "ASY4131",
+      "seccion": "004D",
+      "usuario": 1,
+      "fecha": "28-10-2024"
+    },
+    {
+      "id": "5",
+      "sigla": "MDY3131",
+      "seccion": "004D",
+      "usuario": 1,
+      "fecha": "25-10-2024"
+    },
+    {
+      "id": "4",
+      "sigla": "EAY4450",
+      "seccion": "001D",
+      "usuario": 1,
+      "fecha": "25-10-2024"
+    },
+    {
+      "id": "3",
+      "sigla": "MAT4140",
+      "seccion": "004D",
+      "usuario": 1,
+      "fecha": "25-10-2024"
+    },
+    {
+      "id": "2",
+      "sigla": "PGY4121",
+      "seccion": "004D",
+      "usuario": 1,
+      "fecha": "24-10-2024"
+    },
+    {
+      "id": "1",
+      "sigla": "ASY4131",
+      "seccion": "004D",
+      "usuario": 1,
+      "fecha": "24-10-2024"
+    },
+    {
+      "id": "5900",
+      "sigla": "APY1234",
+      "usuarioId": "1",
+      "fecha": "2024-11-02T15:08:04.333Z"
+    },
+    {
+      "id": "39ea",
+      "sigla": "APY1234",
+      "usuarioId": "1",
+      "fecha": "2024-11-02T15:56:44.327Z"
+    },
+    {
+      "id": "c4c4",
+      "sigla": "APY1234",
+      "usuarioId": "1",
+      "fecha": "2024-11-02T15:56:50.718Z"
+    }
+  ]
 }
