@@ -8,7 +8,7 @@ export class ApirestService {
   listado = [];
   item: any;
   private urlAPi = 'http://localhost:3000/';
-  private urlAPi2 = 'https://36dc-190-114-42-245.ngrok-free.app/';
+  private urlAPi2 = 'http://192.168.18.126:3000/';
   
   constructor(private httpClient: HttpClient) { }
 
@@ -22,13 +22,13 @@ export class ApirestService {
       },
       error =>
       {
-        console.log("Error en la comunicación con la API " + url);
+        console.log("Error en la comunicación con la API " + this.listado);
       });
     });
   }
 
   async getUserId(id:String){
-    let url = this.urlAPi2 + "usuarios" + id;
+    let url = this.urlAPi2 + "usuarios/" + id;
     return new Promise((resolve, reject) => {
       this.httpClient.get(url).subscribe((data: any) => {
         resolve(data);
@@ -36,7 +36,7 @@ export class ApirestService {
       },
       error =>
       {
-        console.log("Error en la comunicación con la API");
+        console.log("Error en la comunicación con la API" + this.item);
       });
     });
   }
@@ -50,7 +50,7 @@ export class ApirestService {
       },
       error =>
       {
-        console.log("Error en la comunicación con la API");
+        console.log("Error en la comunicación con la API" + this.item );
       });
     });
   }
@@ -70,7 +70,7 @@ export class ApirestService {
       },
       error =>
       {
-        console.log("Error en la comunicación con la API");
+        console.log("Error en la comunicación con la API" + this.item );
         reject(error);
       });
     });
@@ -85,7 +85,7 @@ export class ApirestService {
       },
       error =>
       {
-        console.log("Error en la comunicación con la API");
+        console.log("Error en la comunicación con la API" + this.item  );
       });
     });
   }
