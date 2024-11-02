@@ -35,6 +35,7 @@ export class LoginPage implements OnInit {
       sessionStorage.setItem('login', 'true');
       sessionStorage.setItem('userId', result[0].id);
       sessionStorage.setItem('usuario', result[0].username);
+      sessionStorage.setItem('profesor', result[0].profesor);
       this.loading = false;
       this.router.navigate(['/home']), {
         queryParams: {refresh: new Date().getTime()}

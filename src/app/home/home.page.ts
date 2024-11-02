@@ -30,6 +30,7 @@ export class HomePage {
         console.log('Sesión cerrada');
         sessionStorage.removeItem('usuario');
         sessionStorage.removeItem('userId');
+        sessionStorage.removeItem('profesor');
         sessionStorage.setItem('login', 'false');
         this.router.navigate(['/login']);
       },
@@ -42,12 +43,18 @@ export class HomePage {
     this.diaActualText = new Date().toLocaleDateString('en-US', { weekday: 'short'});
   }
 
+  profesor: boolean = false;
 ngOnInit(){
   if(sessionStorage.getItem('login')=='true'){
     this.login = true;
     const usuarioGuardado = sessionStorage.getItem('usuario');
     if (usuarioGuardado){
-      this.usuario = usuarioGuardado;   
+      this.usuario = usuarioGuardado;
+      if (sessionStorage.getItem('profesor') == "true"){
+        this.profesor = true;
+      }
+      else{
+        this.profesor = false;}   
     }
   }
   this.getHorario()

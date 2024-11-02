@@ -17,7 +17,7 @@
 <ion-content>
   <ion-grid fixed>
 
-    <div *ngIf="!generado" style="text-align: center; --ion-grid-padding:2%; margin-top: 15px;">
+    <div *ngIf="!generado && profesor" style="text-align: center; --ion-grid-padding:2%; margin-top: 15px;">
       <ion-accordion-group>
         <ion-accordion *ngFor="let asistencia of asistencias" [value]="asistencia.asignatura">
           <ion-item slot="header" color="light">
@@ -33,35 +33,47 @@
         </ion-accordion>
       </ion-accordion-group>
 </div>
+
+
+
+<div *ngIf="!generado && !profesor" style="text-align: center; --ion-grid-padding:2%; margin-top: 15px; justify-content: center;">
+  <h1> Usa la cámara para escánear el QR de tu profesor.</h1>
+  <ion-img class="submit animate__animated animate__zoomInUp" style="width: 50%; height:50%; margin: auto; margin-top:20px" src="../../assets/img/ScanME.png"></ion-img>
+  <ion-row class="ion-justify-content-center" style="margin-top: 15px">
+      <ion-col size="6" class="ion-text-center">
+        <ion-button size="large"(click)="escanear()" class="submit animate__animated animate__bounce">
+          <ion-icon slot="start" name="qr-code-outline"></ion-icon>
+          Escanear QR
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    <div *ngIf="fueEscaneado">
+      <H6>Funciona {{resultadoScan}} </H6>
+    </div>
+      </div>
   </ion-grid>
 
-<div>
-  <h6>Registrar asistencia</h6>
-  <ion-icon slot="start" name="qr-code-outline"></ion-icon>
-  <ion-row>
-    <ion-col size="6">
-      <ion-button (click)="escanear()" class="submit">
-        Escanear QR
-      </ion-button>
-    </ion-col>
-  </ion-row>
-  <div *ngIf="fueEscaneado">
-    <H6>Funciona {{resultadoScan}} </H6>
-  </div>
+
+
+
+<div *ngIf="generado" class="animate__animated animate__fadeInUp"style="text-align: center; margin-top: 30px;">
+  <h1 size="5">QR de {{asign}} </h1>
+  <h1>Sección: {{seccionSeleccionada}} </h1>
+</div>
+<div *ngIf="generado" style="text-align:center;" class="animate__animated animate__fadeInUp">
+  <qrcode [qrdata] = "seccionSeleccionada" [width] = "400"></qrcode>
+  <ion-button color="success"style="margin-top: 30px;" fill="solid" shape="round" (click)="volverQR()">
+    <ion-icon size="default"fill="outline"slot="center" name="arrow-undo-outline"></ion-icon>
+    Volver
+  </ion-button>
 </div>
 
 
-
-  <div *ngIf="generado" class="animate__animated animate__fadeInUp"style="text-align: center; margin-top: 30px;">
-    <h1 size="5">QR de {{asign}} </h1>
-    <h1>Sección: {{seccionSeleccionada}} </h1>
-  </div>
-  <div *ngIf="generado" style="text-align:center;" class="animate__animated animate__fadeInUp">
-    <qrcode [qrdata] = "seccionSeleccionada" [width] = "400"></qrcode>
-    <ion-button color="success"style="margin-top: 30px;" fill="solid" shape="round" (click)="volverQR()">
-      <ion-icon size="default"fill="outline"slot="center" name="arrow-undo-outline"></ion-icon>
-      Volver
-    </ion-button>
-  </div>
-
 </ion-content>
+
+
+
+
+
+
+
