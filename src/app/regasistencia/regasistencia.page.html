@@ -47,7 +47,7 @@
       </ion-col>
     </ion-row>
     <div *ngIf="fueEscaneado">
-      <H6>Funciona {{resultadoScan}} </H6>
+      <H6>Datos del QR: {{resultadoScan}} </H6>
     </div>
       </div>
   </ion-grid>
@@ -60,7 +60,9 @@
   <h1>Sección: {{seccionSeleccionada}} </h1>
 </div>
 <div *ngIf="generado" style="text-align:center;" class="animate__animated animate__fadeInUp">
-  <qrcode [qrdata] = "asign + seccionSeleccionada" [width] = "400"></qrcode>
+  <qrcode [qrdata] = "qrData" [width] = "400"></qrcode>
+  <h1>El QR contiene:</h1>
+  <ion-input type="text"  [(ngModel)]="qrData"></ion-input>
   <ion-button color="success"style="margin-top: 30px;" fill="solid" shape="round" (click)="volverQR()">
     <ion-icon size="default"fill="outline"slot="center" name="arrow-undo-outline"></ion-icon>
     Volver
