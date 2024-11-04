@@ -25,6 +25,7 @@ export class CambiarclavePage implements OnInit {
 
   error: boolean = false;
   exito : boolean = false;
+  loading: boolean = false;
   alertButtons = ['Aceptar'];
   
   async enviar(){
@@ -39,11 +40,12 @@ export class CambiarclavePage implements OnInit {
           await this.api.modClave(this.user.password.trim(), this.api.item)
           this.exito = true;
           this.error=false;
+          this.loading = true;
           sessionStorage.removeItem('usuario');
           sessionStorage.removeItem('userId');
           sessionStorage.removeItem('profesor');
           sessionStorage.setItem('login', 'false');
-          setTimeout(() => this.router.navigate(['/login']), 2000
+          setTimeout(() => this.router.navigate(['/login']), 4000
           );
           
         }

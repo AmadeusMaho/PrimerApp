@@ -31,7 +31,8 @@
           Aceptar
         </ion-button>
         <ion-button (click)="enviar()" expand="block" type="submit" style="text-transform:none; height: 45px; margin-top: 20px;" *ngIf="!password.errors&&!password2.errors">
-          Aceptar
+          <ion-text *ngIf="loading==false">Aceptar</ion-text>
+          <ion-spinner name="dots" *ngIf="loading==true"></ion-spinner>
         </ion-button>
         <ion-text color="warning" *ngIf="error" style="text-align: center; vertical-align: middle;">
           <h1>
@@ -43,13 +44,10 @@
 
     <ion-card *ngIf="exito">
       <ion-card-header>
-        <ion-icon size="large" name="mail-outline"></ion-icon>
-        <ion-card-title>Se ha enviado un correo para restablecer su contraseña</ion-card-title>
-        <ion-card-subtitle>Por favor, revisa el correo asociado al usuario ingresado.</ion-card-subtitle>
+        <ion-icon size="large" name="key-outline"></ion-icon>
+        <ion-card-title>Se ha reestablecido su contraseña</ion-card-title>
+        <ion-card-subtitle>Será redirigido al inicio de sesión.</ion-card-subtitle>
       </ion-card-header>
-      <ion-button expand="block" fill="clear" shape="square" routerLink="/login"style="text-transform:none">
-        Volver al inicio de sesión
-      </ion-button>
     </ion-card>
   </ion-grid>
 </ion-content>
