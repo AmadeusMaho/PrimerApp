@@ -3,7 +3,7 @@
     {
       "id": "1",
       "username": "Usuario1",
-      "password": "MiClav3",
+      "password": "nuevaClave",
       "profesor": false,
       "asignaturas": [
         "APY4461-006D",
@@ -58,21 +58,21 @@
     },
     {
       "id": "5",
-      "sigla": "PGY5223",
+      "sigla": "PGY4121",
       "asignatura": "Programación de aplicaciones móviles",
       "profesor": "Patricio Yañez",
       "seccion": "004D"
     },
     {
       "id": "6",
-      "sigla": "PGY4664",
+      "sigla": "PGY4121",
       "asignatura": "Programación de aplicaciones móviles",
       "profesor": "Patricio Yañez",
       "seccion": "001D"
     },
     {
       "id": "7",
-      "sigla": "PGY4543",
+      "sigla": "PGY4121",
       "asignatura": "Programación de aplicaciones móviles",
       "profesor": "Patricio Yañez",
       "seccion": "002D"
@@ -195,6 +195,13 @@
       "seccion": "PGY3121002D",
       "usuarioId": "1",
       "fecha": "2024-11-04T15:27:27.857Z"
+    },
+    {
+      "id": "6da4",
+      "sigla": "PGY4121",
+      "seccion": "04D",
+      "usuarioId": "1",
+      "fecha": "2024-11-04T16:36:49.397Z"
     }
   ],
   "horario": [

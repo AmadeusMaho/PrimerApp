@@ -32,7 +32,9 @@ export class HomePage {
         sessionStorage.removeItem('userId');
         sessionStorage.removeItem('profesor');
         sessionStorage.setItem('login', 'false');
-        this.router.navigate(['/login']);
+        this.router.navigate(['/login']), {
+          queryParams: {refresh: new Date().getTime()}
+       };
       },
     },
   ];
@@ -89,19 +91,15 @@ async getHorario(){
   if(usuarioId){
     this.userId = usuarioId
   }
-  console.log(this.userId)
   await this.api.getHorario(this.userId)
   this.horario = this.api.item[0];
-  console.log(this.horario);
   for (let i in this.horario.clases){
-    console.log(this.horario.clases[i])
     if(this.horario.clases[i].dias.includes(this.diaActualText)){
       let index = this.horario.clases[i].dias.indexOf(this.diaActualText);
       await this.api.getAsignaturasSigla(this.horario.clases[i].sigla);
       let nombre = this.api.item[0].asignatura;
       let hoy = [this.horario.clases[i].sigla, nombre, this.horario.clases[i].hora[index]]
       this.horarioDia.push(hoy);
-      console.log(this.horarioDia)
     }
   }
 }
