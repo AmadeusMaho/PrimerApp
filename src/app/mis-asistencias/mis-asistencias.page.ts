@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApirestService } from '../apirest.service';
 
 @Component({
   selector: 'app-mis-asistencias',
@@ -6,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./mis-asistencias.page.scss'],
 })
 export class MisAsistenciasPage implements OnInit {
+
+  asistenciasUsuario : any = [];
+
 
 asignatura_1 : string = 'Arquitectura'
 asignatura_2 : string = 'Estadística'
@@ -43,7 +47,7 @@ asignaturas = [
   {sigla: 'ASY4131', asignatura: 'Arquitectura'}
 ];
 
-  constructor() { 
+  constructor(private api: ApirestService) { 
   this.fechaActual = new Date().toLocaleDateString('es-ES',{
     day:'2-digit',
     month: '2-digit',
@@ -56,7 +60,23 @@ asignaturas = [
   this.mesActual = new Date().toLocaleDateString('es-ES', { month: 'long'});
   this.diaActualText = new Date().toLocaleDateString('es-ES', { weekday: 'long'});
 }
+
   ngOnInit() {
+
+    this.asistenciasUsuario = this.api.getAsistenciasId(String(sessionStorage.getItem("usuarioId")))
+    console.log(this.asistenciasUsuario)
+    
+  this.api.getAsistenciasId(String(sessionStorage.getItem("usuarioId"))).subscribe(
+    (data: any) => {
+      this.asistenciasUsuario = data;
+      console.log("Datos de asistencia:", this.asistenciasUsuario);
+    },
+    (error) => {
+      console.error("Error en la comunicación con la API", error);
+    }
+  );
+
+
   }
   colores1(index:number){
       var i :number = index;

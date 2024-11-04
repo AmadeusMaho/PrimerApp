@@ -41,6 +41,12 @@ export class ApirestService {
     });
   }
 
+  
+  getAsistenciasId(usuarioId:String){
+    const url = `${this.urlAPi2}asistencias?usuarioId=${usuarioId}`;
+    return this.httpClient.get(url);
+  }
+
   async getUser(username:String){
     let url = this.urlAPi2 + "usuarios?username=" + username;
     return new Promise((resolve, reject) => {
