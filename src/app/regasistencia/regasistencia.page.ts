@@ -53,11 +53,18 @@ async escanear() {
       this.profesor = false;
     }
 
-    this.http.get('http://localhost:3000/usuarios').subscribe(
-      (data) => {
-        console.log(data)
-        this.usuarios = data;
-        console.log(this.usuarios)
+
+    this.http.get<any[]>('http://localhost:3000/usuarios').subscribe(
+      (data: any[]) => {
+        this.usuario = this.api.getUserId(String(sessionStorage.getItem('userId')));
+        console.log(this.usuario)
+        console.log(this.usuario.asignaturas)
+
+        this.usuario.forEach((asignaturas: string) => {
+          this.asignaturasProfe.push(asignaturas);
+          console.log(this.asignaturas);
+      });
+        
       },
       (error) => {
         console.log('error al obtener el listado de usuarios', error);
@@ -65,6 +72,9 @@ async escanear() {
     )
   }
 
+  asignaturasProfe: any = [];
+  usuario : any = [];
+  asignaturas : any = [];
 
 
   seccionSeleccionada: string = '';
@@ -73,7 +83,7 @@ async escanear() {
     setTimeout( () => {  this.generado = true;
       this.asign = asignatura; this.seccionSeleccionada = seccion;
       console.log(this.asign, this.seccionSeleccionada);
-      console.log('QR generado:', this.generado);}, 2200); 
+      console.log('QR generado:', this.generado);}, 1600); 
     
   }
 
