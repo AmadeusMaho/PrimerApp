@@ -69,8 +69,12 @@ async escanear() {
       this.profesor = false;
     }
     this.cargarAsignaturas(this.asignaturas)
-
+    console.log(localStorage.getItem('asignSelec')?.substring(1,12))
    
+    if(localStorage.getItem('asignSelec')){
+      this.generarqr(String(localStorage.getItem('asignSelec')).substring(0,7),String(localStorage.getItem('asignSelec')?.substring(8,12)))
+      localStorage.removeItem('asignSelec');
+    }
   }
 
   usuario : any = [];
