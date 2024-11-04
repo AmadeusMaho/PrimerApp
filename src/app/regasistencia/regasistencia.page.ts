@@ -5,6 +5,7 @@ import { BarcodeScanningModalComponent } from './barcode-scanning-modal.componen
 import {LensFacing} from '@capacitor-mlkit/barcode-scanning'
 import { HttpClient } from '@angular/common/http';
 import { ApirestService } from '../apirest.service';
+import { fromEvent, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-regasistencia',
@@ -18,7 +19,9 @@ export class RegasistenciaPage implements OnInit {
 
 resultadoScan = '';
 fueEscaneado = false;
-
+click = Subscription
+fechaActual: string = ""
+horaActual: string = ""
 
 // ESCANEO DEL QR, aquí se reciben los datos del QR del profe ///////////////
 async escanear() {
@@ -37,19 +40,18 @@ async escanear() {
   if (data){
 
     //conseguir fecha actual
-    let fechaActual = new Date().toLocaleDateString('es-ES',{
+    this.fechaActual = new Date().toLocaleDateString('es-ES',{
       day:'2-digit',
       month: '2-digit',
       year:'numeric'
     })
-    let horaActual = new Date().toLocaleTimeString('es-ES', {
+    this.horaActual = new Date().toLocaleTimeString('es-ES', {
       hour: '2-digit',
       minute: '2-digit',
       second: '2-digit',
     });
     this.resultadoScan = data?.barcode?.displayValue;
     this.fueEscaneado = true;
-    this.api.addAsistencia(this.resultadoScan.substring(0,7),this.resultadoScan.substring(7,11),sessionStorage.getItem('userId') ?? '',fechaActual + ' Hora: ' +horaActual)
   }
   else{
     this.fueEscaneado = false;
@@ -103,6 +105,11 @@ qrData : any = "";
       this.qrData = this.asign+this.seccionSeleccionada;
       console.log(this.asign, this.seccionSeleccionada);
       console.log('QR generado:', this.generado);}, 1600); 
+  }
+
+  confirmar(){
+    this.api.addAsistencia(this.resultadoScan.substring(0,7),this.resultadoScan.substring(7,11),sessionStorage.getItem('userId') ?? '',this.fechaActual + ' Hora: ' +this.horaActual)
+    this.router.navigate(['/mis-asistencias'])
   }
 
 
