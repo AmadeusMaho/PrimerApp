@@ -47,7 +47,11 @@
       </ion-col>
     </ion-row>
     <div *ngIf="fueEscaneado">
-      <H6>Datos del QR: {{resultadoScan}} </H6>
+      <ion-input type="text" placeholder="Resultado QR">{{resultadoScan}}</ion-input>
+      <ion-button size="default" class="botonRegistrar" slot="end" color="success" style="text-transform:none"(click)="confirmar()">
+        <ion-text>Confirmar asistencia</ion-text>
+        <ion-icon name="checkmark-circle-outline" slot="start"></ion-icon>
+      </ion-button>
     </div>
       </div>
   </ion-grid>
