@@ -47,7 +47,7 @@
       </ion-col>
     </ion-row>
     <div *ngIf="fueEscaneado">
-      <H6>Funciona {{resultadoScan}} </H6>
+      <H6>Datos del QR: {{resultadoScan}} </H6>
     </div>
       </div>
   </ion-grid>
@@ -60,7 +60,9 @@
   <h1>Sección: {{seccionSeleccionada}} </h1>
 </div>
 <div *ngIf="generado" style="text-align:center;" class="animate__animated animate__fadeInUp">
-  <qrcode [qrdata] = "asign + seccionSeleccionada" [width] = "400"></qrcode>
+  <qrcode [qrdata] = "qrData" [width] = "400"></qrcode>
+  <h1>El QR contiene:</h1>
+  <ion-input type="text"  [(ngModel)]="qrData"></ion-input>
   <ion-button color="success"style="margin-top: 30px;" fill="solid" shape="round" (click)="volverQR()">
     <ion-icon size="default"fill="outline"slot="center" name="arrow-undo-outline"></ion-icon>
     Volver
@@ -69,24 +71,6 @@
 
 
 </ion-content>
-
-
-
-
-<ion-accordion-group>
-  <ion-accordion *ngFor="let asignatura of asignaturas " [value]="asignatura.asignatura">
-    <ion-item [button] slot="header" color="light" >
-      <ion-label>{{ asignatura.sigla }}  {{asignatura.seccion}} </ion-label>
-    </ion-item>
-    <div class="ion-padding" slot="content" style="display: flex; justify-content: space-between; align-items: center;" *ngFor="let secc of asignatura.seccion">
-      <label style="font-size: large;">{{secc.seccion}} </label>
-        <ion-button (click)="generarqr(asignatura.asignatura, secc.seccion)" color="success" slot="start"   [id]="'botonQR-' + asignatura.asignatura + '-' + secc.seccion">
-          <ion-icon slot="icon-only" name="add"></ion-icon>
-        </ion-button>
-        <ion-loading  [trigger]="'botonQR-' + asignatura.asignatura + '-' + secc.seccion" message="Generando QR..." duration="1600"></ion-loading>
-    </div>
-  </ion-accordion>
-</ion-accordion-group>
 
 
 

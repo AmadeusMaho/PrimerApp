@@ -55,13 +55,13 @@ export class ApirestService {
     });
   }
 
-  async addAsistencia(sigla:String, seccion:String, usuarioId:String, fecha:Date){
+  async addAsistencia(sigla:String, seccion:String, usuarioId:String, fecha:String){
     const url = this.urlAPi2 + "asistencias?usuario=" + usuarioId;
     const texto = {
       sigla,
       seccion,
       usuarioId,
-      fecha: fecha.toISOString()
+      fecha
     }
     return new Promise((resolve, reject) => {
       this.httpClient.post(url,texto).subscribe((data: any) => {
