@@ -8,16 +8,7 @@ import { ApirestService } from '../apirest.service';
 })
 export class MisAsistenciasPage implements OnInit {
 
-  asistenciasUsuario : any = [];
-
-
-asignatura_1 : string = 'Arquitectura'
-asignatura_2 : string = 'Estadística'
-asignatura_3 : string = 'Programación de aplicaciones móviles'
-asignatura_4 : string = 'Programación de Base de Datos'
-asignatura_5 : string = 'Proceso de Portafolio'
-asignatura_6 : string = 'Ética para el trabajo'
-
+asistenciasUsuario : any = [];
 fechaActual : string;
 mesActual : string;
 diaActualText : string;
@@ -26,26 +17,10 @@ anioActual : number;
 
 colores = ["#007bff", "#df26d5", "#90e242", "#e99a40", "#5a19dd", "#d63333"];
 
-asistencias = [
-  {sigla: 'APY4461', asignatura: 'Proceso de Portafolio', lastAttendance: '14-09-2024', estado: true},
-  {sigla: 'MDY3131', asignatura: 'Programación de Base de Datos', lastAttendance: '12-09-2024', estado: false},
-  {sigla: 'EAY4450', asignatura: 'Ética para el trabajo', lastAttendance: '07-09-2024', estado: true},
-  {sigla: 'MDY3131', asignatura: 'Programación de Base de Datos', lastAttendance: '05-09-2024', estado: true},
-  {sigla: 'MAT4140', asignatura: 'Estadística', lastAttendance: '19-09-2024', estado: true},
-  {sigla: 'PGY4121', asignatura: 'Programación de aplicaciones móviles', lastAttendance: '06-09-2024', estado: true},
-  {sigla: 'ASY4131', asignatura: 'Arquitectura', lastAttendance: '07-09-2024', estado: false},
-  {sigla: 'APY4461', asignatura: 'Proceso de Portafolio', lastAttendance: '12-08-2024', estado: false}
-
-];
-
-asignaturas = [
-  {sigla: 'APY4461', asignatura: 'Proceso de Portafolio'},
-  {sigla: 'MDY3131', asignatura: 'Programación de Base de Datos'},
-  {sigla: 'EAY4450', asignatura: 'Ética para el trabajo'},
-  {sigla: 'MAT4140', asignatura: 'Estadística'},
-  {sigla: 'PGY4121', asignatura: 'Programación de aplicaciones móviles'},
-  {sigla: 'ASY4131', asignatura: 'Arquitectura'}
-];
+siglas:any = [];
+asignaturas:any = [];
+usuario: string = '';
+user: any = [];
 
   constructor(private api: ApirestService) { 
   this.fechaActual = new Date().toLocaleDateString('es-ES',{
@@ -62,11 +37,12 @@ asignaturas = [
 }
 
   ngOnInit() {
+    this.getAsignaturas()
 
     this.asistenciasUsuario = this.api.getAsistenciasId(String(sessionStorage.getItem("usuarioId")))
     console.log(this.asistenciasUsuario)
     
-  this.api.getAsistenciasId(String(sessionStorage.getItem("usuarioId"))).subscribe(
+    this.api.getAsistenciasId(String(sessionStorage.getItem("usuarioId"))).subscribe(
     (data: any) => {
       this.asistenciasUsuario = data;
       console.log("Datos de asistencia:", this.asistenciasUsuario);
@@ -87,6 +63,21 @@ asignaturas = [
       return color;
   }
   filtroAsignaturas(asistencias: any[], sigla:string): any[] {
-    return asistencias.filter(a => a.sigla == sigla);
+    return asistencias.filter(a => a.sigla+'-'+a.seccion == sigla);
   }
+  async getAsignaturas(){
+    const usuarioGuardado = sessionStorage.getItem('usuario');
+    if(usuarioGuardado){
+      this.usuario = usuarioGuardado
+    }
+    await this.api.getUser(this.usuario)
+    this.user = this.api.item[0];
+    this.siglas = this.user.asignaturas
+    for (let i in this.siglas){
+      await this.api.getAsignaturasSigla(this.siglas[i])
+      this.asignaturas.push(this.api.item[0])
+    }
+    console.log(this.asignaturas)
+  }
+  
 }
