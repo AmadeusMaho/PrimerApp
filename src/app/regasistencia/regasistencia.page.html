@@ -50,8 +50,8 @@
       </ion-col>
     </ion-row>
     <div *ngIf="fueEscaneado">
-      <ion-input type="text" placeholder="Resultado QR" [ngModel]="resultadoScan" ></ion-input>
-      <ion-button size="default" class="botonRegistrar" color="success" style="text-transform:none"(click)="confirmar()">
+      <ion-input type="text" placeholder="Resultado QR" [(ngModel)]="resultadoScan" ></ion-input>
+      <ion-button size="default" class="align-items-center" color="success" style="text-transform:none"(click)="confirmar()">
         <ion-text>Confirmar asistencia</ion-text>
         <ion-icon name="checkmark-circle-outline" slot="start"></ion-icon>
       </ion-button>

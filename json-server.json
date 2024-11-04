@@ -3,7 +3,7 @@
     {
       "id": "1",
       "username": "Usuario1",
-      "password": "asd",
+      "password": "MiClav3",
       "profesor": false,
       "asignaturas": [
         "APY4461-006D",
@@ -237,6 +237,13 @@
       "seccion": "004D",
       "usuarioId": "1",
       "fecha": "04/11/2024 Hora: 19:22:02"
+    },
+    {
+      "id": "5403",
+      "sigla": "PGY4121",
+      "seccion": "004D",
+      "usuarioId": "1",
+      "fecha": "04/11/2024 Hora: 20:01:19"
     }
   ],
   "horario": [

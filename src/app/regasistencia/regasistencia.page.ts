@@ -17,7 +17,7 @@ export class RegasistenciaPage implements OnInit {
   constructor(private api:ApirestService, private router:Router, private alertController:AlertController, private modalController: ModalController, private http: HttpClient, private activatedRoute:ActivatedRoute) { }
 
 
-resultadoScan = '';
+resultadoScan: string = '';
 fueEscaneado = false;
 click = Subscription
 fechaActual: string = ""
@@ -108,8 +108,11 @@ qrData : any = "";
   }
 
   confirmar(){
-    this.api.addAsistencia(this.resultadoScan.substring(0,7),this.resultadoScan.substring(7,11),sessionStorage.getItem('userId') ?? '',this.fechaActual + ' Hora: ' +this.horaActual)
-    this.router.navigate(['/mis-asistencias'])
+    if(this.resultadoScan.toString().trim().length>0){
+      console.log(this.resultadoScan.toString().trim())
+      this.api.addAsistencia(this.resultadoScan.substring(0,7),this.resultadoScan.substring(7,11),sessionStorage.getItem('userId') ?? '',this.fechaActual + ' Hora: ' +this.horaActual)
+      this.router.navigate(['/mis-asistencias'])
+    }
   }
 
 
