@@ -10,15 +10,18 @@ import { ApirestService } from '../apirest.service';
 export class CambiarclavePage implements OnInit {
   login: boolean = false;
   constructor(private router:Router, private api:ApirestService) { }
-
   ngOnInit() {
+   
   }
+
   tempUser : string = 'Usuario1'
   tempPass : string = 'MiClav3'
+ 
 
   user: any = {
     password: '',
-    password2: ''
+    password2: '',
+    passwordActual: ''
   }
   userId="";
   user1:any=[]
@@ -31,10 +34,13 @@ export class CambiarclavePage implements OnInit {
   async enviar(){
     if(sessionStorage.getItem('login')=='true'){
       const usuarioGuardado = sessionStorage.getItem('userId');
+      await this.api.getUser(String(sessionStorage.getItem('usuario')));
+      let result = this.api.item
+      console.log(result[0].password)
       if (usuarioGuardado){
         this.userId = usuarioGuardado;
         console.log(this.userId)
-        if(this.user.password.trim()==this.user.password2.trim()){
+        if(this.user.password.trim()==this.user.password2.trim() && this.user.passwordActual.trim()== result[0].password){
           await this.api.getUserId(this.userId)
           console.log(this.api.item)
           await this.api.modClave(this.user.password.trim(), this.api.item)
