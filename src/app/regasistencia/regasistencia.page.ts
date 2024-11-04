@@ -59,7 +59,7 @@ async escanear() {
   seleccionado: boolean = false;
   asign: string = '';
   profesor : boolean = false;
-
+  login : boolean = false;
   ngOnInit() {
     const asignatura = sessionStorage.getItem('asignatura')
     this.asign = asignatura !== null ? asignatura : ''; //si asignatura es null entonces asignatura vacío
@@ -75,7 +75,13 @@ async escanear() {
       this.generarqr(String(localStorage.getItem('asignSelec')).substring(0,7),String(localStorage.getItem('asignSelec')?.substring(8,12)))
       localStorage.removeItem('asignSelec');
     }
+
+
+    if(sessionStorage.getItem('login')=='true'){
+      this.login = true;
+    }
   }
+
 
   usuario : any = [];
   asignaturas : any = [];
@@ -87,6 +93,7 @@ async escanear() {
   seccionSeleccionada: string = '';
   generado:boolean=false
 
+  
 
   // GENERAR QR, asigna la información elegida por el profesor y genera el QR para el escaneo //////////////////////////////////
 qrData : any = "";

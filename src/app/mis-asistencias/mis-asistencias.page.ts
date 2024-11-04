@@ -36,7 +36,7 @@ titulo: string = 'Mis asistencias';
   this.mesActual = new Date().toLocaleDateString('es-ES', { month: 'long'});
   this.diaActualText = new Date().toLocaleDateString('es-ES', { weekday: 'long'});
 }
-
+login : boolean = false;
   ngOnInit() {
     if (sessionStorage.getItem('profesor') == "true"){
       this.profesor = true;
@@ -56,7 +56,9 @@ titulo: string = 'Mis asistencias';
       console.error("Error en la comunicación con la API", error);
     }
   );
-
+  if(sessionStorage.getItem('login')=='true'){
+    this.login = true;
+  }
 
   }
   colores1(index:number){

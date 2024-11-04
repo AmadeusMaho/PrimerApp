@@ -14,7 +14,7 @@
     </ion-toolbar>
   </ion-header>
 
-  <ion-grid [fixed]="true" style="--ion-grid-padding:5%">
+  <ion-grid [fixed]="true" style="--ion-grid-padding:5%" *ngIf="login==true">
     <ion-row>
       <ion-col>
         <form>
@@ -54,4 +54,12 @@
       </ion-card-header>
     </ion-card>
   </ion-grid>
+
+  <div class="ion-text-center ion-margin-top" *ngIf="login==false" style="--ion-margin:50px">
+    <ion-icon name="qr-code-outline" style="font-size: 80px; text-align:center;"></ion-icon>
+    <h1 class="ion-text-center">Inicia sesión para cambiar tu contraseña</h1>
+    <a href="login" style="text-decoration: none;">Iniciar sesión</a>
+  </div>
+  
+
 </ion-content>

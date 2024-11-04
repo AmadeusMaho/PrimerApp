@@ -18,7 +18,7 @@
     </ion-toolbar>
   </ion-header>
 
-  <div class="cards">
+  <div class="cards" *ngIf="login==true">
     <ion-card>
       <ion-card-header>
         <ion-card-title class="ion-text-center">Asignaturas</ion-card-title>
@@ -30,14 +30,14 @@
 
           <ion-item>
             <ion-label class="asigntext fixedLabel" fixed style="min-width: 40%; text-align: start; font-weight: bold; margin-right: 10px;">Asignatura</ion-label>
-            <ion-label class="asigntext fixedLabel" fixed style="min-width: 30%; text-align: center; font-weight: bold;" *nfIf="!profesor">Profesor</ion-label>
+            <ion-label class="asigntext fixedLabel" fixed style="min-width: 30%; text-align: center; font-weight: bold;" *ngIf="!profesor">Profesor</ion-label>
             <ion-label class="asigntext fixedLabel" fixed style="min-width: 25%; text-align: center; font-weight: bold;">Sección</ion-label>
           </ion-item>
 
           <ion-item *ngFor="let asignatura of asignaturas; let i = index;">
             <div class="rectangulo1 ion-align-items-start" [ngStyle]="{'background-color':colores1(i)}"></div>
             <ion-label  class="asigntext fixedLabel" fixed style="min-width: 40%; text-align: start;"> {{ asignatura.asignatura}} </ion-label>
-            <ion-label  class="asigntext fixedLabel" fixed style="min-width: 30%; text-align: center;" *nfIf="!profesor"> {{ asignatura.profesor}} </ion-label>
+            <ion-label  class="asigntext fixedLabel" fixed style="min-width: 30%; text-align: center;" *ngIf="!profesor"> {{ asignatura.profesor}} </ion-label>
             <ion-label  class="asigntext fixedLabel" fixed style="min-width: 25%; text-align: center;"> {{asignatura.seccion}} </ion-label>
           </ion-item>
           
@@ -46,10 +46,18 @@
     </ion-card>
     </div>
   
-    <div class="contenedor-boton-registrar" style="margin-top:20px; margin-bottom: 20px; margin-right: 20px; display: flex; justify-content: flex-end;">
+    <div *ngIf="login==true" class="contenedor-boton-registrar" style="margin-top:20px; margin-bottom: 20px; margin-right: 20px; display: flex; justify-content: flex-end;">
       <ion-button size="default" class="botonRegistrar" slot="end" routerLink="/regasistencia">
         Registrar asistencia
         <ion-icon name="add"></ion-icon>
       </ion-button>
     </div>
+
+    <div class="ion-text-center ion-margin-top" *ngIf="login==false" style="--ion-margin:50px">
+      <ion-icon name="qr-code-outline" style="font-size: 80px; text-align:center;"></ion-icon>
+      <h1 class="ion-text-center">Inicia sesión para ver tus asignaturas</h1>
+      <a href="login" style="text-decoration: none;">Iniciar sesión</a>
+    </div>
+    
+  
 </ion-content>

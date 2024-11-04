@@ -75,8 +75,6 @@ ngOnInit(){
 
 marcarAsign(asignatura :string, nombre : string){
   localStorage.setItem('asignSelec', asignatura)
-  localStorage.setItem('asignNombreSelec', nombre)
-  localStorage.setItem('Desdehome', "true")
   this.router.navigate(['/regasistencia'])
 
 }

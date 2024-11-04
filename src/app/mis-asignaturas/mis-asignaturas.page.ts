@@ -35,13 +35,17 @@ colores = ["#007bff", "#df26d5", "#90e242", "#e99a40", "#5a19dd", "#d63333"];
   this.mesActual = new Date().toLocaleDateString('es-ES', { month: 'long'});
   this.diaActualText = new Date().toLocaleDateString('es-ES', { weekday: 'long'});
 }
-
+login : boolean = false;
   ngOnInit() {
     if (sessionStorage.getItem('profesor') == "true"){
       this.profesor = true;
     }
     this.getAsignaturas()
+    if(sessionStorage.getItem('login')=='true'){
+      this.login = true;
+    }
   }
+  
 
   colores1(index:number){
     var i :number = index;

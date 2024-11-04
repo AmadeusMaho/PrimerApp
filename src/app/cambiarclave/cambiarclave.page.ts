@@ -12,6 +12,9 @@ export class CambiarclavePage implements OnInit {
   constructor(private router:Router, private api:ApirestService) { }
   ngOnInit() {
    
+    if(sessionStorage.getItem('login')=='true'){
+      this.login = true;
+    }
   }
 
   tempUser : string = 'Usuario1'
