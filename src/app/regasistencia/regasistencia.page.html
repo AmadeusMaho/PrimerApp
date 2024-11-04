@@ -38,25 +38,32 @@
     </ion-card>
   </ion-grid>
   <ion-grid fixed>
-<div *ngIf="!generado && !profesor && login" style="text-align: center; --ion-grid-padding:2%; margin-top: 15px; justify-content: center;">
-  <h1> Usa la cámara para escánear el QR de tu profesor.</h1>
-  <ion-img class="submit animate__animated animate__zoomInUp" style="width: 50%; height:50%; margin: auto; margin-top:20px" src="../../assets/img/ScanME.png"></ion-img>
-  <ion-row class="ion-justify-content-center" style="margin-top: 15px">
-      <ion-col size="6" class="ion-text-center">
-        <ion-button size="large"(click)="escanear()" class="submit animate__animated animate__bounce">
-          <ion-icon slot="start" name="qr-code-outline"></ion-icon>
-          Escanear QR
-        </ion-button>
-      </ion-col>
-    </ion-row>
-    <div *ngIf="fueEscaneado">
-      <ion-input type="text" placeholder="Resultado QR" [(ngModel)]="resultadoScan" ></ion-input>
-      <ion-button size="default" class="align-items-center" color="success" style="text-transform:none"(click)="confirmar()">
-        <ion-text>Confirmar asistencia</ion-text>
-        <ion-icon name="checkmark-circle-outline" slot="start"></ion-icon>
-      </ion-button>
+    <div *ngIf="!generado && !profesor && login" style="text-align: center; --ion-grid-padding:2%; margin-top: 15px;">
+      <h1> Usa la cámara para escánear el QR de tu profesor.</h1>
+      <ion-img class="submit animate__animated animate__zoomInUp" 
+               style="width: 50%; height: 50%; margin: auto; margin-top: 20px" 
+               src="../../assets/img/ScanME.png">
+      </ion-img>
+      
+      <ion-row class="ion-justify-content-center" style="margin-top: 15px;">
+        <ion-col size="auto" class="ion-text-center">
+          <ion-button size="large" (click)="escanear()" class="submit animate__animated animate__bounce">
+            <ion-icon slot="start" name="qr-code-outline"></ion-icon>
+            Escanear QR
+          </ion-button>
+        </ion-col>
+        
+        <ion-col size="12" class="ion-text-center">
+          <div *ngIf="fueEscaneado" style="display: flex; flex-direction: column; align-items: center; margin-top: 15px;">
+            <ion-input type="text" placeholder="Resultado QR" [ngModel]="resultadoScan" style="margin-bottom: 15px; width: 80%;"></ion-input>
+            <ion-button size="default" color="success" style="text-transform: none; width: 80%;" (click)="confirmar()">
+              <ion-icon name="checkmark-circle-outline" slot="start"></ion-icon>
+              Confirmar asistencia
+            </ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
     </div>
-      </div>
   </ion-grid>
 
   <div class="ion-text-center ion-margin-top" *ngIf="login==false" style="--ion-margin:50px">

@@ -7,8 +7,8 @@ import { Injectable } from '@angular/core';
 export class ApirestService {
   listado = [];
   item: any;
-  private urlAPi2 = 'http://localhost:3000/';
-  private urlAPi= 'http://192.168.100.5:3000/';
+  private urlAPi = 'http://localhost:3000/';
+  private urlAPi2= 'http://192.168.100.5:3000/';
   
   constructor(private httpClient: HttpClient) { }
 
