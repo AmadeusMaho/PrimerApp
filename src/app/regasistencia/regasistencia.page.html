@@ -19,7 +19,7 @@
     <div *ngIf="!generado && profesor" style="text-align: center; --ion-grid-padding:2%; margin-top: 15px;">
       <h1>estoy en modo profe</h1>
       <ion-accordion-group>
-        <ion-accordion *ngFor="let asignatura of asignaturas " [value]="asignatura.asignatura">
+        <ion-accordion *ngFor="let asignatura of asignaturas" [value]="asignatura.asignatura">
           <ion-item [button] slot="header" color="light" >
             <ion-label>{{ asignatura.sigla }}  {{asignatura.seccion}} </ion-label>
           </ion-item>

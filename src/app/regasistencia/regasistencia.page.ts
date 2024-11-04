@@ -53,23 +53,8 @@ async escanear() {
       this.profesor = false;
     }
 
-
-    this.http.get<any[]>('http://localhost:3000/usuarios').subscribe(
-      (data: any[]) => {
-        this.usuario = this.api.getUserId(String(sessionStorage.getItem('userId')));
-        console.log(this.usuario)
-        console.log(this.usuario.asignaturas)
-
-        this.usuario.forEach((asignaturas: string) => {
-          this.asignaturasProfe.push(asignaturas);
-          console.log(this.asignaturas);
-      });
-        
-      },
-      (error) => {
-        console.log('error al obtener el listado de usuarios', error);
-      }
-    )
+    this.cargarAsignaturas()
+   
   }
 
   asignaturasProfe: any = [];
@@ -84,8 +69,25 @@ async escanear() {
       this.asign = asignatura; this.seccionSeleccionada = seccion;
       console.log(this.asign, this.seccionSeleccionada);
       console.log('QR generado:', this.generado);}, 1600); 
-    
   }
+
+
+
+  async cargarAsignaturas() {
+    try {
+      this.usuario = await this.api.getUserId(String(sessionStorage.getItem('userId')));
+      this.usuario.asignaturas.forEach((asignatura: string) => {
+        this.asignaturasProfe.push(asignatura);
+      });
+      console.log(this.asignaturasProfe);
+    } catch (error) {
+      console.log('Error al cargar las asignaturas:', error);
+    }
+  }
+
+  
+
+
 
 
   asistencias = [
@@ -143,6 +145,28 @@ async escanear() {
   console.log(sessionStorage.getItem('asignatura'));
 
   await alert.present();
+
+
+
+
+
+
+  this.http.get<any[]>('http://localhost:3000/usuarios').subscribe(
+      (data: any[]) => {
+        this.usuario = this.api.getUserId(String(sessionStorage.getItem('userId')));
+        console.log(this.usuario)
+        console.log(this.usuario.asignaturas)
+
+        this.usuario.asignaturas.forEach((asignaturas: string) => {
+          this.asignaturasProfe.push(asignaturas);
+          console.log(this.asignaturas);
+      });
+        
+      },
+      (error) => {
+        console.log('error al obtener el listado de usuarios', error);
+      }
+    )
 } */
 
 botonVolver(){
