@@ -55,7 +55,7 @@
         
         <ion-col size="12" class="ion-text-center">
           <div *ngIf="fueEscaneado" style="display: flex; flex-direction: column; align-items: center; margin-top: 15px;">
-            <ion-input type="text" placeholder="Resultado QR" [ngModel]="resultadoScan" style="margin-bottom: 15px; width: 80%;"></ion-input>
+            <ion-input type="text" placeholder="Resultado QR" [(ngModel)]="resultadoScan" style="margin-bottom: 15px; width: 80%;"></ion-input>
             <ion-button size="default" color="success" style="text-transform: none; width: 80%;" (click)="confirmar()">
               <ion-icon name="checkmark-circle-outline" slot="start"></ion-icon>
               Confirmar asistencia

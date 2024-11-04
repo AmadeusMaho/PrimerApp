@@ -244,6 +244,27 @@
       "seccion": "004D",
       "usuarioId": "1",
       "fecha": "04/11/2024 Hora: 20:01:19"
+    },
+    {
+      "id": "c951",
+      "sigla": "sdsdsd",
+      "seccion": "",
+      "usuarioId": "1",
+      "fecha": "04/11/2024 Hora: 20:16:49"
+    },
+    {
+      "id": "e9d6",
+      "sigla": "sdfdsfd",
+      "seccion": "sf",
+      "usuarioId": "1",
+      "fecha": "04/11/2024 Hora: 20:18:14"
+    },
+    {
+      "id": "0f06",
+      "sigla": "sdsdsds",
+      "seccion": "d",
+      "usuarioId": "1",
+      "fecha": "04/11/2024 Hora: 20:26:35"
     }
   ],
   "horario": [

@@ -42,8 +42,10 @@ login : boolean = false;
       this.profesor = true;
       this.titulo = "Clases registradas"
     }
-    this.getAsignaturas()
-
+    console.log(this.getAsignaturas())
+    console.log(this.cargarAsistencias())
+    
+    
     this.asistenciasUsuario = this.api.getAsistenciasId(String(sessionStorage.getItem("usuarioId")))
     console.log(this.asistenciasUsuario)
     
@@ -72,6 +74,16 @@ login : boolean = false;
   filtroAsignaturas(asistencias: any[], sigla:string): any[] {
     return asistencias.filter(a => a.sigla+'-'+a.seccion == sigla);
   }
+
+  async cargarAsistencias() {
+    try {
+      const usuarioId = String(sessionStorage.getItem("usuarioId"));
+      this.asistenciasUsuario = await this.api.getAsistenciasId(usuarioId).toPromise();
+      console.log("Datos de asistencia:", this.asistenciasUsuario);
+    } catch (error) {
+      console.error("Error en la comunicación con la API", error);
+    }
+  }
   async getAsignaturas(){
     const usuarioGuardado = sessionStorage.getItem('usuario');
     if(usuarioGuardado){
@@ -85,6 +97,10 @@ login : boolean = false;
       this.asignaturas.push(this.api.item[0])
     }
     console.log(this.asignaturas)
+
+    
   }
+
+  
   
 }
