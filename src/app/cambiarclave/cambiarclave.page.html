@@ -19,6 +19,10 @@
       <ion-col>
         <form>
           <h1 style="text-align: center; padding-bottom: 20px;">Restablecer contraseña</h1>
+          <ion-input required #password="ngModel" type="password" placeholder="Contraseña actual" fill="outline" class="ion-margin-bottom" required [(ngModel)]="user.passwordActual" name="passwordActual">
+            <ion-icon name="lock-closed-outline" slot="start"></ion-icon>
+            <ion-input-password-toggle slot="end"></ion-input-password-toggle>
+          </ion-input>
           <ion-input required #password="ngModel" type="password" placeholder="Contraseña nueva" fill="outline" class="ion-margin-bottom" required [(ngModel)]="user.password" name="password">
             <ion-icon name="lock-closed-outline" slot="start"></ion-icon>
             <ion-input-password-toggle slot="end"></ion-input-password-toggle>
