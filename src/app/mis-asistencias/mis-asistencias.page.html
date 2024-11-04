@@ -3,7 +3,7 @@
     <ion-button fill="clear" class="botonvolver" slot="start" routerLink="/home">
       <ion-icon slot="icon-only" name="arrow-undo"></ion-icon>
     </ion-button>
-    <ion-title>Mis asistencias</ion-title>
+    <ion-title>{{titulo}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -17,7 +17,8 @@
           </ion-item>
           <div class="ion-padding" slot="content" *ngFor="let asistencia of filtroAsignaturas(asistenciasUsuario, asignatura.sigla+'-'+asignatura.seccion)">
             <ion-label>{{asistencia.fecha}}</ion-label>
-            <ion-label style="vertical-align: middle; text-align: start; float: right;" *ngIf="!asistencia.estado"><ion-icon color="success" name="checkmark-circle-outline"slot="start" style="vertical-align: middle; margin-right: 5px; text-align: start;"></ion-icon>Presente</ion-label>
+            <ion-label style="vertical-align: middle; text-align: start; float: right;" *ngIf="!asistencia.estado&&!profesor"><ion-icon color="success" name="checkmark-circle-outline"slot="start" style="vertical-align: middle; margin-right: 5px; text-align: start;"></ion-icon>Presente</ion-label>
+            <ion-label style="vertical-align: middle; text-align: start; float: right;" *ngIf="!asistencia.estado&&profesor"><ion-icon color="success" name="checkmark-circle-outline"slot="start" style="vertical-align: middle; margin-right: 5px; text-align: start;"></ion-icon>Clase registrada</ion-label>
             <ion-label style="vertical-align: middle; text-align: start; margin-right: 5px; float: right;" *ngIf="asistencia.estado"><ion-icon color="danger" name="close-circle-outline"slot="start" style="vertical-align: middle; margin-right: 5px; text-align: start;"></ion-icon>Ausente</ion-label>
           </div>
         </ion-accordion>

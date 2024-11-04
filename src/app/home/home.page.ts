@@ -15,6 +15,8 @@ export class HomePage {
   horario: any = []
   horarioDia: any = []
   diaActualText: string = ""
+  saludo:string="Bienvenido, ";
+  imgUrl:string="";
   public alertButtons = [
     {
       text: 'Cancelar',
@@ -57,6 +59,14 @@ ngOnInit(){
         this.profesor = false;}   
     }
   }
+  let darkmode = window.matchMedia("(prefers-color-scheme: dark)");
+  if (darkmode.matches){
+    this.imgUrl="../../assets/img/duoc-dark.png"
+  }
+  else{
+    this.imgUrl="../../assets/img/duoc-light.png"
+  }
+  this.getSaludo()
   this.getHorario()
 }
 
@@ -99,6 +109,20 @@ async getHorario(){
       let hoy = [this.horario.clases[i].sigla, nombre, this.horario.clases[i].hora[index]]
       this.horarioDia.push(hoy);
     }
+  }
+}
+
+getSaludo(){
+  let date = new Date()
+  var hora = date.getHours()
+  if (hora<12&&hora>=6){
+    this.saludo="Buenos días, "
+  }
+  else if (hora>=12&&hora<20){
+    this.saludo="Buenas tardes, "
+  }
+  else if (hora>=20&&hora<6){
+    this.saludo="Buenas noches, "
   }
 }
 }

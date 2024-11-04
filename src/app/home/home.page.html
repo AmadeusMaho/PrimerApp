@@ -20,9 +20,13 @@
         <ion-icon slot="start" name="school-outline" style="margin-top: 10px;"></ion-icon>
         <ion-label>Mis asignaturas</ion-label>
       </ion-item>
-      <ion-item routerLink="/mis-asistencias">
+      <ion-item routerLink="/mis-asistencias" *ngIf="!profesor">
         <ion-icon slot="start" name="hand-left-outline" style="margin-top: 10px;"></ion-icon>
         <ion-label>Mis asistencias</ion-label>
+      </ion-item>
+      <ion-item routerLink="/mis-asistencias" *ngIf="profesor">
+        <ion-icon slot="start" name="checkbox-outline" style="margin-top: 10px;"></ion-icon>
+        <ion-label>Clases registradas</ion-label>
       </ion-item>
       <ion-item routerLink="/regasistencia">
         <ion-icon slot="start" name="clipboard-outline" style="margin-top: 10px;"></ion-icon>
@@ -73,11 +77,11 @@
       </ion-toolbar>
     </ion-header>
 
-    <div class="logoduoc ion-margin-top" style="margin-top: 12px;">
-      <img src="../../assets/img/duoc.png" alt="logo">
+    <div class="logoduoc ion-margin-top align-items-center" style="margin-top: 12px;">
+      <img src={{imgUrl}} alt="logo">
     </div>
     <div class="txtbienv" *ngIf="login==true">
-      <h1 class="ion-text-center">Bienvenido {{ usuario }}</h1>
+      <h1 class="ion-text-center">{{saludo}}{{ usuario }}</h1>
     </div>
     
     <div class="cards" *ngIf="login==true">

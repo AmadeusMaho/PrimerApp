@@ -14,13 +14,14 @@ mesActual : string;
 diaActualText : string;
 diaActual : string;
 anioActual : number;
-
+profesor: boolean = false;
 colores = ["#007bff", "#df26d5", "#90e242", "#e99a40", "#5a19dd", "#d63333"];
 
 siglas:any = [];
 asignaturas:any = [];
 usuario: string = '';
 user: any = [];
+titulo: string = 'Mis asistencias';
 
   constructor(private api: ApirestService) { 
   this.fechaActual = new Date().toLocaleDateString('es-ES',{
@@ -37,6 +38,10 @@ user: any = [];
 }
 
   ngOnInit() {
+    if (sessionStorage.getItem('profesor') == "true"){
+      this.profesor = true;
+      this.titulo = "Clases registradas"
+    }
     this.getAsignaturas()
 
     this.asistenciasUsuario = this.api.getAsistenciasId(String(sessionStorage.getItem("usuarioId")))
