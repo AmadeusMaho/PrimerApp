@@ -48,6 +48,8 @@ export class HomePage {
 
   profesor: boolean = false;
 ngOnInit(){
+
+
   if(sessionStorage.getItem('login')=='true'){
     this.login = true;
     const usuarioGuardado = sessionStorage.getItem('usuario');
@@ -71,7 +73,11 @@ ngOnInit(){
   this.getHorario()
 }
 
-marcarAsign(){
+marcarAsign(asignatura :string, nombre : string){
+  localStorage.setItem('asignSelec', asignatura)
+  localStorage.setItem('asignNombreSelec', nombre)
+  localStorage.setItem('Desdehome', "true")
+  this.router.navigate(['/regasistencia'])
 
 }
 asignaturas:any=[]
@@ -126,4 +132,3 @@ getSaludo(){
   }
 }
 }
-
