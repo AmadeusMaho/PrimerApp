@@ -52,6 +52,8 @@ async escanear() {
     });
     this.resultadoScan = data?.barcode?.displayValue;
     this.fueEscaneado = true;
+    this.api.addAsistencia(this.resultadoScan.substring(0,7),this.resultadoScan.substring(7,11),sessionStorage.getItem('userId') ?? '',this.fechaActual + ' Hora: ' +this.horaActual)
+    this.router.navigate(['/mis-asistencias'])
   }
   else{
     this.fueEscaneado = false;
