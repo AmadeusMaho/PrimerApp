@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { ApirestService } from '../apirest.service';
+import { RegasistenciaPage } from '../regasistencia/regasistencia.page';
 
 @Component({
   selector: 'app-home',
@@ -60,12 +61,11 @@ ngOnInit(){
   this.getHorario()
 }
 
+marcarAsign(){
+
+}
 asignaturas:any=[]
 colores = ["#007bff", "#df26d5", "#90e242", "#e99a40", "#5a19dd", "#d63333"];
-asignatura_1 : string = 'Arquitectura'
-asignatura_2 : string = 'Estadística'
-asignatura_3 : string = 'Programación de aplicaciones móviles'
-asignatura_4 : string = 'Programación de Base de Datos'
 
 asign: string = '';
 almAsign(asignatura : string){
