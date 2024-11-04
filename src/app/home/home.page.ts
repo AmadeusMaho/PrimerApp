@@ -32,9 +32,7 @@ export class HomePage {
         sessionStorage.removeItem('userId');
         sessionStorage.removeItem('profesor');
         sessionStorage.setItem('login', 'false');
-        this.router.navigate(['/login']), {
-          queryParams: {refresh: new Date().getTime()}
-       };
+        this.router.navigate(['/login'])
       },
     },
   ];

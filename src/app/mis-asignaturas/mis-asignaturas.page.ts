@@ -18,6 +18,7 @@ siglas:any = [];
 asignaturas:any = [];
 usuario: string = '';
 user: any = [];
+profesor:boolean=false;
 
 colores = ["#007bff", "#df26d5", "#90e242", "#e99a40", "#5a19dd", "#d63333"];
 
@@ -36,6 +37,9 @@ colores = ["#007bff", "#df26d5", "#90e242", "#e99a40", "#5a19dd", "#d63333"];
 }
 
   ngOnInit() {
+    if (sessionStorage.getItem('profesor') == "true"){
+      this.profesor = true;
+    }
     this.getAsignaturas()
   }
 
