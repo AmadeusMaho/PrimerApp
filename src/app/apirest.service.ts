@@ -41,10 +41,19 @@ export class ApirestService {
     });
   }
 
-  
-  getAsistenciasId(usuarioId:String){
-    const url = `${this.urlAPi}asistencias?usuarioId=${usuarioId}`;
-    return this.httpClient.get(url);
+  async getAsistenciasId(usuarioId:String){
+    this.listado=[];
+    const url = this.urlAPi+"asistencias?usuarioId="+usuarioId;
+    return new Promise((resolve, reject) => {
+      this.httpClient.get<[]>(url).subscribe((data: []) => {
+        resolve(data);
+        data.forEach(item => { this.listado.push(item);})
+      },
+      error =>
+      {
+        console.log("Error en la comunicación con la API" + this.item);
+      });
+    });
   }
 
   async getUser(username:String){
@@ -101,10 +110,8 @@ export class ApirestService {
   async getAsignaturasSigla(sigla1:string){
     var rx = /^[^-]*/
     var sigla = rx.exec(sigla1)
-    console.log(sigla)
     var rx = /[^-]*$/
     var seccion = rx.exec(sigla1)
-    console.log(seccion)
     let url = this.urlAPi + "asignaturas?sigla=" + sigla + "&seccion=" + seccion;
     return new Promise((resolve, reject) => {
       this.httpClient.get(url).subscribe((data: any) => {

@@ -22,6 +22,7 @@ asignaturas:any = [];
 usuario: string = '';
 user: any = [];
 titulo: string = 'Mis asistencias';
+userId: string = '';
 
   constructor(private api: ApirestService) { 
   this.fechaActual = new Date().toLocaleDateString('es-ES',{
@@ -42,20 +43,10 @@ login : boolean = false;
       this.profesor = true;
       this.titulo = "Clases registradas"
     }
-    this.getAsignaturas()
-
-    this.asistenciasUsuario = this.api.getAsistenciasId(String(sessionStorage.getItem("usuarioId")))
-    console.log(this.asistenciasUsuario)
     
-    this.api.getAsistenciasId(String(sessionStorage.getItem("usuarioId"))).subscribe(
-    (data: any) => {
-      this.asistenciasUsuario = data;
-      console.log("Datos de asistencia:", this.asistenciasUsuario);
-    },
-    (error) => {
-      console.error("Error en la comunicación con la API", error);
-    }
-  );
+    this.getAsignaturas()
+    this.getAsistencias()
+        
   if(sessionStorage.getItem('login')=='true'){
     this.login = true;
   }
@@ -84,7 +75,16 @@ login : boolean = false;
       await this.api.getAsignaturasSigla(this.siglas[i])
       this.asignaturas.push(this.api.item[0])
     }
-    console.log(this.asignaturas)
+  }
+
+  async getAsistencias(){
+    const id = sessionStorage.getItem('userId');
+    if(id){
+      this.userId = id
+    }
+    await this.api.getAsistenciasId(this.userId)
+    this.asistenciasUsuario = this.api.listado
+    console.log(this.asistenciasUsuario)
   }
   
 }
