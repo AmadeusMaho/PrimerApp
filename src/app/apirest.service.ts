@@ -8,7 +8,7 @@ export class ApirestService {
   listado = [];
   item: any;
   private urlAPi = 'http://localhost:3000/';
-  private urlAPi2 = 'http://192.168.18.126:3000/';
+  private urlAPi2 = 'http://192.168.100.5:3000/';
   
   constructor(private httpClient: HttpClient) { }
 
@@ -84,7 +84,7 @@ export class ApirestService {
 
   
   getAsignaturas(){
-    let url = this.urlAPi + "asignaturas/";
+    let url = this.urlAPi2 + "asignaturas/";
     this.listado=[];
     return new Promise((resolve, reject) => {
       this.httpClient.get<[]>(url).subscribe((data: []) => {
@@ -105,7 +105,7 @@ export class ApirestService {
     var rx = /[^-]*$/
     var seccion = rx.exec(sigla1)
     console.log(seccion)
-    let url = this.urlAPi + "asignaturas?sigla=" + sigla + "&seccion=" + seccion;
+    let url = this.urlAPi2 + "asignaturas?sigla=" + sigla + "&seccion=" + seccion;
     return new Promise((resolve, reject) => {
       this.httpClient.get(url).subscribe((data: any) => {
         resolve(data);
@@ -119,7 +119,7 @@ export class ApirestService {
   }
 
   async getHorario(id:String){
-    let url = this.urlAPi + "horario?id=" + id;
+    let url = this.urlAPi2 + "horario?id=" + id;
     return new Promise((resolve, reject) => {
       this.httpClient.get(url).subscribe((data: any) => {
         resolve(data);
@@ -128,6 +128,23 @@ export class ApirestService {
       error =>
       {
         console.log("Error en la comunicación con la API" + this.item  );
+      });
+    });
+  }
+
+  async modClave(clave:string, user:any){
+    const url = this.urlAPi2 + "usuarios/" + user["id"]
+    console.log(url)
+    user.password = clave;
+    return new Promise((resolve, reject) => {
+      this.httpClient.put(url,user).subscribe((data: any) => {
+        resolve(data);
+        this.item = data;
+      },
+      error =>
+      {
+        console.log("Error en la comunicación con la API" + this.item );
+        reject(error);
       });
     });
   }
