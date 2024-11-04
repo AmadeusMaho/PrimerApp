@@ -195,6 +195,41 @@
       "seccion": "PGY3121002D",
       "usuarioId": "1",
       "fecha": "2024-11-04T15:27:27.857Z"
+    },
+    {
+      "id": "9b74",
+      "sigla": "APY1234",
+      "seccion": "PGY4121004D",
+      "usuarioId": "1",
+      "fecha": "2024-11-04T15:29:29.128Z"
+    },
+    {
+      "id": "73bd",
+      "sigla": "APY1234",
+      "seccion": "PGY4121004D",
+      "usuarioId": "1",
+      "fecha": "2024-11-04T15:33:08.655Z"
+    },
+    {
+      "id": "fabb",
+      "sigla": "APY1234",
+      "seccion": "PGY3121002D",
+      "usuarioId": "1",
+      "fecha": "2024-11-04T15:35:18.688Z"
+    },
+    {
+      "id": "aa1f",
+      "sigla": "APY1234",
+      "seccion": "PGY3121002D",
+      "usuarioId": "1",
+      "fecha": "2024-11-04T15:36:29.016Z"
+    },
+    {
+      "id": "442f",
+      "sigla": "APY1234",
+      "seccion": "PGY4121001D",
+      "usuarioId": "1",
+      "fecha": "2024-11-04T15:49:18.303Z"
     }
   ],
   "horario": [

@@ -33,6 +33,8 @@
     "animate.css": "^4.1.1",
     "animejs": "^3.2.2",
     "ionicons": "^7.0.0",
+    "moment": "^2.30.1",
+    "moment-timezone": "^0.5.46",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.2"

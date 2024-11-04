@@ -36,10 +36,21 @@ async escanear() {
 
   const {data} = await modal.onWillDismiss();
   if (data){
-    const fechaActual = new Date();
+
+    //conseguir fecha actual
+    let fechaActual = new Date().toLocaleDateString('es-ES',{
+      day:'2-digit',
+      month: '2-digit',
+      year:'numeric'
+    })
+    let horaActual = new Date().toLocaleTimeString('es-ES', {
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+    });
     this.resultadoScan = data?.barcode?.displayValue;
     this.fueEscaneado = true;
-    this.api.addAsistencia(this.resultadoScan.substring(0,7),this.resultadoScan.substring(8,11),sessionStorage.getItem('userId') ?? '',fechaActual)
+    this.api.addAsistencia(this.resultadoScan.substring(0,7),this.resultadoScan.substring(7,11),sessionStorage.getItem('userId') ?? '',fechaActual + ' Hora: ' +horaActual)
   }
 }
 
@@ -50,15 +61,13 @@ async escanear() {
   ngOnInit() {
     const asignatura = sessionStorage.getItem('asignatura')
     this.asign = asignatura !== null ? asignatura : ''; //si asignatura es null entonces asignatura vacío
-    console.log(asignatura)
     if (sessionStorage.getItem('profesor') == "true"){
       this.profesor = true;
     }else{
       this.profesor = false;
     }
-
     this.cargarAsignaturas(this.asignaturas)
-    console.log(this.asignaturas)
+
    
   }
 
@@ -73,7 +82,7 @@ async escanear() {
   generado:boolean=false
 
 
-  // GENERAR QR, asigna la información elegida por el profesor y genera el QR para el escáneo //////////////////////////////////
+  // GENERAR QR, asigna la información elegida por el profesor y genera el QR para el escaneo //////////////////////////////////
 
   generarqr(asignatura: string,seccion: string ){
     setTimeout( () => {  this.generado = true;

@@ -73,21 +73,3 @@
 
 
 
-<ion-accordion-group>
-  <ion-accordion *ngFor="let asignatura of asignaturas " [value]="asignatura.asignatura">
-    <ion-item [button] slot="header" color="light" >
-      <ion-label>{{ asignatura.sigla }}  {{asignatura.seccion}} </ion-label>
-    </ion-item>
-    <div class="ion-padding" slot="content" style="display: flex; justify-content: space-between; align-items: center;" *ngFor="let secc of asignatura.seccion">
-      <label style="font-size: large;">{{secc.seccion}} </label>
-        <ion-button (click)="generarqr(asignatura.asignatura, secc.seccion)" color="success" slot="start"   [id]="'botonQR-' + asignatura.asignatura + '-' + secc.seccion">
-          <ion-icon slot="icon-only" name="add"></ion-icon>
-        </ion-button>
-        <ion-loading  [trigger]="'botonQR-' + asignatura.asignatura + '-' + secc.seccion" message="Generando QR..." duration="1600"></ion-loading>
-    </div>
-  </ion-accordion>
-</ion-accordion-group>
-
-
-
-
