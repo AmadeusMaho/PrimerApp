@@ -18,6 +18,10 @@ export class RegasistenciaPage implements OnInit {
 
 resultadoScan = '';
 fueEscaneado = false;
+
+
+// ESCANEO DEL QR, aquí se reciben los datos del QR del profe ///////////////
+
 async escanear() {
   const modal = await this.modalController.create({
   component: BarcodeScanningModalComponent,
@@ -35,7 +39,7 @@ async escanear() {
     const fechaActual = new Date();
     this.resultadoScan = data?.barcode?.displayValue;
     this.fueEscaneado = true;
-    this.api.addAsistencia("APY1234",this.resultadoScan,sessionStorage.getItem('userId') ?? '',fechaActual)
+    this.api.addAsistencia(this.resultadoScan.substring(0,7),this.resultadoScan.substring(8,11),sessionStorage.getItem('userId') ?? '',fechaActual)
   }
 }
 
@@ -53,17 +57,24 @@ async escanear() {
       this.profesor = false;
     }
 
-    this.cargarAsignaturas()
+    this.cargarAsignaturas(this.asignaturas)
+    console.log(this.asignaturas)
    
   }
 
-  asignaturasProfe: any = [];
   usuario : any = [];
   asignaturas : any = [];
+  siglasRes : any = [];
+  seccionesRes : any = [];
+
 
 
   seccionSeleccionada: string = '';
   generado:boolean=false
+
+
+  // GENERAR QR, asigna la información elegida por el profesor y genera el QR para el escáneo //////////////////////////////////
+
   generarqr(asignatura: string,seccion: string ){
     setTimeout( () => {  this.generado = true;
       this.asign = asignatura; this.seccionSeleccionada = seccion;
@@ -73,47 +84,20 @@ async escanear() {
 
 
 
-  async cargarAsignaturas() {
+  async cargarAsignaturas(asignaturas: Array<any>) {
     try {
       this.usuario = await this.api.getUserId(String(sessionStorage.getItem('userId')));
       this.usuario.asignaturas.forEach((asignatura: string) => {
-        this.asignaturasProfe.push(asignatura);
+        const [sigla, seccion] = asignatura.split('-'); 
+        asignaturas.push(({sigla, seccion}));
       });
-      console.log(this.asignaturasProfe);
+      console.log(this.asignaturas);
     } catch (error) {
       console.log('Error al cargar las asignaturas:', error);
     }
   }
 
   
-
-
-
-
-  asistencias = [
-  {asignatura: 'Proceso de Portafolio', 
-    secciones:[
-    {seccion: '004D', estado: true},
-    {seccion: '006D', estado: true}]
-  },
-  {asignatura: 'Programación de Base de Datos',   secciones:[
-    {seccion: '002D', estado: true},
-    {seccion: '001D', estado: true},
-    {seccion: '005D', estado: true}]},
-  {asignatura: 'Ética para el trabajo', secciones:[
-    {seccion: '007D', estado: true},
-    {seccion: '002D', estado: true}]},
-  {asignatura: 'Estadística', secciones:[
-    {seccion: '002D', estado: true},
-    {seccion: '001D', estado: true}]},
-  {asignatura: 'Programación de aplicaciones móviles', secciones:[
-    {seccion: '008D', estado: true},
-    {seccion: '004D', estado: true},
-    {seccion: '005D', estado: true}]},
-  {asignatura: 'Arquitectura', secciones:[
-    {seccion: '001D', estado: true},
-    {seccion: '002D', estado: true}]},
-]
 
 
 

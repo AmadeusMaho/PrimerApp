@@ -181,6 +181,20 @@
       "sigla": "APY1234",
       "usuarioId": "2",
       "fecha": "2024-11-04T13:19:23.608Z"
+    },
+    {
+      "id": "e29f",
+      "sigla": "APY1234",
+      "seccion": "PGY3121002D",
+      "usuarioId": "1",
+      "fecha": "2024-11-04T15:24:26.308Z"
+    },
+    {
+      "id": "2443",
+      "sigla": "APY1234",
+      "seccion": "PGY3121002D",
+      "usuarioId": "1",
+      "fecha": "2024-11-04T15:27:27.857Z"
     }
   ],
   "horario": [
