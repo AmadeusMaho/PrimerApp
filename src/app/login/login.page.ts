@@ -38,9 +38,7 @@ export class LoginPage implements OnInit {
       sessionStorage.setItem('profesor', result[0].profesor);
       sessionStorage.setItem('asignaturas', result[0].asignaturas);
       this.loading = false;
-      this.router.navigate(['/home']), {
-        queryParams: {refresh: new Date().getTime()}
-     };
+      window.location.href = window.location.protocol + '//' + window.location.host + '/home';
     }   
     else{
       this.loading = false;

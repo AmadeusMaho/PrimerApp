@@ -10,12 +10,16 @@
 <ion-content>
   <ion-grid [fixed]="true" style="--ion-grid-padding:2%">
       <ion-accordion-group>
-        <ion-accordion *ngFor="let asist of asistenciasUsuario;let i=index;">
+        <ion-accordion *ngFor="let asignatura of asignaturas;let i=index;">
           <ion-item slot="header">
             <div class="rectangulo1 ion-align-items-start" style="margin-right: 10px;" [ngStyle]="{'background-color':colores1(i)}"></div>
-            <ion-label>{{asist.sigla}}  {{asist.seccion}}</ion-label>
+            <ion-label>{{asignatura.asignatura}}  {{asignatura.seccion}}</ion-label>
           </ion-item>
-    
+          <div class="ion-padding" slot="content" *ngFor="let asistencia of filtroAsignaturas(asistenciasUsuario, asignatura.sigla+'-'+asignatura.seccion)">
+            <ion-label>{{asistencia.fecha}}</ion-label>
+            <ion-label style="vertical-align: middle; text-align: start; float: right;" *ngIf="!asistencia.estado"><ion-icon color="success" name="checkmark-circle-outline"slot="start" style="vertical-align: middle; margin-right: 5px; text-align: start;"></ion-icon>Presente</ion-label>
+            <ion-label style="vertical-align: middle; text-align: start; margin-right: 5px; float: right;" *ngIf="asistencia.estado"><ion-icon color="danger" name="close-circle-outline"slot="start" style="vertical-align: middle; margin-right: 5px; text-align: start;"></ion-icon>Ausente</ion-label>
+          </div>
         </ion-accordion>
       </ion-accordion-group>
   </ion-grid>
