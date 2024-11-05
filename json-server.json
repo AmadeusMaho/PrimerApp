@@ -190,6 +190,20 @@
       "seccion": "004D",
       "usuarioId": "2",
       "fecha": "04/11/2024 Hora: 20:01:00"
+    },
+    {
+      "id": "a184",
+      "sigla": "PGY4121",
+      "seccion": "002D",
+      "usuarioId": "2",
+      "fecha": "04/11/2024 Hora: 21:03:00"
+    },
+    {
+      "id": "191f",
+      "sigla": "PGY4121",
+      "seccion": "002D",
+      "usuarioId": "2",
+      "fecha": "04/11/2024 Hora: 21:03:39"
     }
   ],
   "horario": [
