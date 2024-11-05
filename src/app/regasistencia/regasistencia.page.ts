@@ -106,7 +106,20 @@ qrData : any = "";
       this.asign = asignatura; this.seccionSeleccionada = seccion;
       this.qrData = this.asign+this.seccionSeleccionada;
       console.log(this.asign, this.seccionSeleccionada);
-      console.log('QR generado:', this.generado);}, 1600); 
+      console.log('QR generado:', this.generado);}, 1600);
+      //conseguir fecha actual
+    let fechaActual = new Date().toLocaleDateString('es-ES',{
+      day:'2-digit',
+      month: '2-digit',
+      year:'numeric'
+    })
+    let horaActual = new Date().toLocaleTimeString('es-ES', {
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+    });
+    console.log(asignatura,seccion,sessionStorage.getItem('userId') ?? '',fechaActual + ' Hora: ' +horaActual)
+    this.api.addAsistencia(asignatura,seccion,sessionStorage.getItem('userId') ?? '',fechaActual + ' Hora: ' +horaActual)
   }
 
   confirmar(){
