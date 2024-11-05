@@ -94,142 +94,74 @@
   ],
   "asistencias": [
     {
-      "id": "11",
+      "id": "6118",
       "sigla": "APY4461",
       "seccion": "006D",
-      "usuario": 1,
-      "fecha": "30-10-2024"
-    },
-    {
-      "id": "10",
-      "sigla": "MDY3131",
-      "seccion": "004D",
-      "usuario": 1,
-      "fecha": "30-10-2024"
-    },
-    {
-      "id": "9",
-      "sigla": "EAY4450",
-      "seccion": "001D",
-      "usuario": 1,
-      "fecha": "29-10-2024"
-    },
-    {
-      "id": "8",
-      "sigla": "MAT4140",
-      "seccion": "004D",
-      "usuario": 1,
-      "fecha": "29-10-2024"
-    },
-    {
-      "id": "7",
-      "sigla": "PGY4121",
-      "seccion": "004D",
-      "usuario": 1,
-      "fecha": "28-10-2024"
-    },
-    {
-      "id": "6",
-      "sigla": "ASY4131",
-      "seccion": "004D",
-      "usuario": 1,
-      "fecha": "28-10-2024"
-    },
-    {
-      "id": "5",
-      "sigla": "MDY3131",
-      "seccion": "004D",
-      "usuario": 1,
-      "fecha": "25-10-2024"
-    },
-    {
-      "id": "4",
-      "sigla": "EAY4450",
-      "seccion": "001D",
-      "usuario": 1,
-      "fecha": "25-10-2024"
-    },
-    {
-      "id": "3",
-      "sigla": "MAT4140",
-      "seccion": "004D",
-      "usuario": 1,
-      "fecha": "25-10-2024"
-    },
-    {
-      "id": "2",
-      "sigla": "PGY4121",
-      "seccion": "004D",
-      "usuario": 1,
-      "fecha": "24-10-2024"
-    },
-    {
-      "id": "1",
-      "sigla": "ASY4131",
-      "seccion": "004D",
-      "usuario": 1,
-      "fecha": "24-10-2024"
-    },
-    {
-      "id": "6118",
-      "sigla": "APY1234",
       "usuarioId": "1",
-      "fecha": "2024-11-02T20:54:28.506Z"
-    },
-    {
-      "id": "5a71",
-      "sigla": "APY1234",
-      "usuarioId": "2",
-      "fecha": "2024-11-04T13:19:23.608Z"
+      "fecha": "14/10/2024 Hora: 10:00:00"
     },
     {
       "id": "e29f",
-      "sigla": "APY1234",
-      "seccion": "PGY3121002D",
+      "sigla": "ASY4131",
+      "seccion": "004D",
       "usuarioId": "1",
-      "fecha": "2024-11-04T15:24:26.308Z"
+      "fecha": "31/10/2024 Hora: 13:40:00"
     },
     {
       "id": "2443",
-      "sigla": "APY1234",
-      "seccion": "PGY3121002D",
+      "sigla": "MAT4140",
+      "seccion": "004D",
       "usuarioId": "1",
-      "fecha": "2024-11-04T15:27:27.857Z"
+      "fecha": "01/11/2024 Hora: 10:10:00"
     },
     {
       "id": "9b74",
-      "sigla": "APY1234",
-      "seccion": "PGY4121004D",
+      "sigla": "EAY4450",
+      "seccion": "001D",
       "usuarioId": "1",
-      "fecha": "2024-11-04T15:29:29.128Z"
+      "fecha": "01/11/2024 Hora: 08:10:00"
     },
     {
       "id": "73bd",
-      "sigla": "APY1234",
-      "seccion": "PGY4121004D",
+      "sigla": "MDY3131",
+      "seccion": "004D",
       "usuarioId": "1",
-      "fecha": "2024-11-04T15:33:08.655Z"
+      "fecha": "02/11/2024 Hora: 12:20:00"
     },
     {
       "id": "fabb",
-      "sigla": "APY1234",
-      "seccion": "PGY3121002D",
+      "sigla": "APY4461",
+      "seccion": "006D",
       "usuarioId": "1",
-      "fecha": "2024-11-04T15:35:18.688Z"
+      "fecha": "02/11/2024 Hora: 10:30:02"
     },
     {
       "id": "aa1f",
-      "sigla": "APY1234",
-      "seccion": "PGY3121002D",
+      "sigla": "PGY3121",
+      "seccion": "002D",
       "usuarioId": "1",
-      "fecha": "2024-11-04T15:36:29.016Z"
+      "fecha": "04/11/2024 Hora: 10:30:02"
+    },
+    {
+      "id": "su52",
+      "sigla": "PGY3121",
+      "seccion": "002D",
+      "usuarioId": "2",
+      "fecha": "04/11/2024 Hora: 10:30:00"
     },
     {
       "id": "442f",
-      "sigla": "APY1234",
-      "seccion": "PGY4121001D",
+      "sigla": "PGY4121",
+      "seccion": "001D",
       "usuarioId": "1",
-      "fecha": "2024-11-04T15:49:18.303Z"
+      "fecha": "04/11/2024 Hora: 10:42:02"
+    },
+    {
+      "id": "618i",
+      "sigla": "PGY4121",
+      "seccion": "001D",
+      "usuarioId": "2",
+      "fecha": "04/11/2024 Hora: 10:42:00"
     },
     {
       "id": "ead9",
@@ -239,6 +171,13 @@
       "fecha": "04/11/2024 Hora: 19:22:02"
     },
     {
+      "id": "kxh4",
+      "sigla": "PGY4121",
+      "seccion": "004D",
+      "usuarioId": "2",
+      "fecha": "04/11/2024 Hora: 19:22:00"
+    },
+    {
       "id": "5403",
       "sigla": "PGY4121",
       "seccion": "004D",
@@ -246,25 +185,11 @@
       "fecha": "04/11/2024 Hora: 20:01:19"
     },
     {
-      "id": "c951",
-      "sigla": "sdsdsd",
-      "seccion": "",
-      "usuarioId": "1",
-      "fecha": "04/11/2024 Hora: 20:16:49"
-    },
-    {
-      "id": "e9d6",
-      "sigla": "sdfdsfd",
-      "seccion": "sf",
-      "usuarioId": "1",
-      "fecha": "04/11/2024 Hora: 20:18:14"
-    },
-    {
-      "id": "0f06",
-      "sigla": "sdsdsds",
-      "seccion": "d",
-      "usuarioId": "1",
-      "fecha": "04/11/2024 Hora: 20:26:35"
+      "id": "948e",
+      "sigla": "PGY4121",
+      "seccion": "004D",
+      "usuarioId": "2",
+      "fecha": "04/11/2024 Hora: 20:01:00"
     }
   ],
   "horario": [
