@@ -204,6 +204,76 @@
       "seccion": "002D",
       "usuarioId": "2",
       "fecha": "04/11/2024 Hora: 21:03:39"
+    },
+    {
+      "id": "5d2c",
+      "sigla": "PGY4121",
+      "seccion": "004D",
+      "usuarioId": "2",
+      "fecha": "04/11/2024 Hora: 21:59:14"
+    },
+    {
+      "id": "8f1a",
+      "sigla": "PGY4121",
+      "seccion": "004D",
+      "usuarioId": "2",
+      "fecha": "04/11/2024 Hora: 22:07:18"
+    },
+    {
+      "id": "39a2",
+      "sigla": "PGY4121",
+      "seccion": "004D",
+      "usuarioId": "2",
+      "fecha": "04/11/2024 Hora: 22:08:28"
+    },
+    {
+      "id": "d0bb",
+      "sigla": "PGY4121",
+      "seccion": "001D",
+      "usuarioId": "2",
+      "fecha": "04/11/2024 Hora: 22:09:51"
+    },
+    {
+      "id": "c28e",
+      "sigla": "PGY3121",
+      "seccion": "002D",
+      "usuarioId": "2",
+      "fecha": "04/11/2024 Hora: 22:10:01"
+    },
+    {
+      "id": "ad4a",
+      "sigla": "PGY3121",
+      "seccion": "002D",
+      "usuarioId": "2",
+      "fecha": "04/11/2024 Hora: 22:14:18"
+    },
+    {
+      "id": "3f41",
+      "sigla": "PGY3121",
+      "seccion": "002D",
+      "usuarioId": "2",
+      "fecha": "04/11/2024 Hora: 22:14:59"
+    },
+    {
+      "id": "2f9b",
+      "sigla": "PGY3121",
+      "seccion": "002D",
+      "usuarioId": "2",
+      "fecha": "04/11/2024 Hora: 22:15:13"
+    },
+    {
+      "id": "ec87",
+      "sigla": "PGY4121",
+      "seccion": "001D",
+      "usuarioId": "2",
+      "fecha": "04/11/2024 Hora: 22:15:19"
+    },
+    {
+      "id": "0277",
+      "sigla": "PGY3121",
+      "seccion": "002D",
+      "usuarioId": "2",
+      "fecha": "04/11/2024 Hora: 22:15:28"
     }
   ],
   "horario": [
