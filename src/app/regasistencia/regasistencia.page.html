@@ -22,7 +22,7 @@
 
   <ion-grid fixed>
     <ion-card>
-      <div *ngIf="!generado && profesor && login" style="text-align: center; --ion-grid-padding: 2%; margin-top: 15px;">
+      <div *ngIf="!generado && profesor && login" style="text-align: center; --ion-grid-padding: 2%; margin-top: 15px; padding-bottom: 10px;">
         <h1 style="padding-left: 20px;font-size: 25px; padding-bottom: 10px;">Elige tu asignatura: </h1>
         <ion-card *ngFor="let asignatura of asignaturas" style="margin: 10px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
           <ion-item (click)="generarqr(asignatura.sigla, asignatura.seccion)" button color="light" [id]="'botonQR-' + asignatura.sigla + '-' + asignatura.seccion" >
@@ -32,7 +32,6 @@
             <ion-label style="flex: 1; font-size: 18px; font-weight: bold; text-align: right;">{{ asignatura.seccion }} </ion-label>
             <ion-loading [trigger]="'botonQR-' + asignatura.sigla + '-' + asignatura.seccion" message="Generando QR..." duration="1600"></ion-loading>
           </ion-item>
-
         </ion-card>
       </div>
     </ion-card>
@@ -55,11 +54,12 @@
         
         <ion-col size="12" class="ion-text-center">
           <div *ngIf="fueEscaneado" style="display: flex; flex-direction: column; align-items: center; margin-top: 15px;">
-            <ion-input type="text" placeholder="Resultado QR" [ngModel]="resultadoScan" style="margin-bottom: 15px; width: 80%;"></ion-input>
+            <ion-input type="text" placeholder="Resultado QR" [(ngModel)]="resultadoScan" style="margin-bottom: 15px; width: 80%;"></ion-input>
             <ion-button size="default" color="success" style="text-transform: none; width: 80%;" (click)="confirmar()">
               <ion-icon name="checkmark-circle-outline" slot="start"></ion-icon>
               Confirmar asistencia
             </ion-button>
+            <h1 *ngIf="error">No estás en esta clase</h1>
           </div>
         </ion-col>
       </ion-row>
@@ -79,7 +79,7 @@
   <h1>Sección: {{seccionSeleccionada}} </h1>
 </div>
 <div *ngIf="generado" style="text-align:center;" class="animate__animated animate__fadeInUp">
-  <qrcode [qrdata] = "qrData" [width] = "400"></qrcode>
+  <qrcode [qrdata] = "qrData" [width] = "300" ></qrcode>
   <h1>El QR contiene:</h1>
   <ion-input type="text"  [(ngModel)]="qrData"></ion-input>
   <ion-button color="success"style="margin-top: 30px;" fill="solid" shape="round" (click)="volverQR()">
