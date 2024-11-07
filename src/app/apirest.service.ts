@@ -7,13 +7,13 @@ import { Injectable } from '@angular/core';
 export class ApirestService {
   listado = [];
   item: any;
-  private urlAPi = 'http://localhost:3000/';
+  private urlAPi = 'https://registrapp-3285b-default-rtdb.firebaseio.com/';
   private urlAPi2= 'http://192.168.100.5:3000/';
   
   constructor(private httpClient: HttpClient) { }
 
   getUsers(){
-    let url = this.urlAPi + "usuarios/";
+    let url = this.urlAPi + "usuarios/.json";
     this.listado=[];
     return new Promise((resolve, reject) => {
       this.httpClient.get<[]>(url).subscribe((data: []) => {
@@ -28,7 +28,7 @@ export class ApirestService {
   }
 
   async getUserId(id:String){
-    let url = this.urlAPi + "usuarios/" + id;
+    let url = this.urlAPi + "usuarios/" + id + ".json";
     return new Promise((resolve, reject) => {
       this.httpClient.get(url).subscribe((data: any) => {
         resolve(data);
@@ -43,7 +43,7 @@ export class ApirestService {
 
   async getAsistenciasId(usuarioId:String){
     this.listado=[];
-    const url = this.urlAPi+"asistencias?usuarioId="+usuarioId;
+    const url = this.urlAPi+"asistencias?usuarioId="+usuarioId + ".json";
     return new Promise((resolve, reject) => {
       this.httpClient.get<[]>(url).subscribe((data: []) => {
         resolve(data);
@@ -57,7 +57,7 @@ export class ApirestService {
   }
 
   async getUser(username:String){
-    let url = this.urlAPi + "usuarios?username=" + username;
+    let url = this.urlAPi + "usuarios?username=" + username + ".json";
     return new Promise((resolve, reject) => {
       this.httpClient.get(url).subscribe((data: any) => {
         resolve(data);
@@ -71,7 +71,7 @@ export class ApirestService {
   }
 
   async addAsistencia(sigla:String, seccion:String, usuarioId:String, fecha:String){
-    const url = this.urlAPi + "asistencias?usuario=" + usuarioId;
+    const url = this.urlAPi + "asistencias?usuario=" + usuarioId + ".json";
     const texto = {
       sigla,
       seccion,
@@ -93,7 +93,7 @@ export class ApirestService {
 
   
   getAsignaturas(){
-    let url = this.urlAPi + "asignaturas/";
+    let url = this.urlAPi + "asignaturas/" + ".json";
     this.listado=[];
     return new Promise((resolve, reject) => {
       this.httpClient.get<[]>(url).subscribe((data: []) => {
@@ -112,7 +112,7 @@ export class ApirestService {
     var sigla = rx.exec(sigla1)
     var rx = /[^-]*$/
     var seccion = rx.exec(sigla1)
-    let url = this.urlAPi + "asignaturas?sigla=" + sigla + "&seccion=" + seccion;
+    let url = this.urlAPi + "asignaturas?sigla=" + sigla + "&seccion=" + seccion + ".json";
     return new Promise((resolve, reject) => {
       this.httpClient.get(url).subscribe((data: any) => {
         resolve(data);
@@ -126,7 +126,7 @@ export class ApirestService {
   }
 
   async getHorario(id:String){
-    let url = this.urlAPi + "horario?id=" + id;
+    let url = this.urlAPi + "horario?id=" + id + ".json";
     return new Promise((resolve, reject) => {
       this.httpClient.get(url).subscribe((data: any) => {
         resolve(data);
@@ -140,7 +140,7 @@ export class ApirestService {
   }
 
   async modClave(clave:string, user:any){
-    const url = this.urlAPi + "usuarios/" + user["id"]
+    const url = this.urlAPi + "usuarios/" + user["id"] + ".json";
     console.log(url)
     user.password = clave;
     return new Promise((resolve, reject) => {
