@@ -7,13 +7,17 @@ import { Injectable } from '@angular/core';
 export class ApirestService {
   listado = [];
   item: any;
-  private urlAPi = 'https://registrapp-3285b-default-rtdb.firebaseio.com/';
+  private urlAPi = 'http://localhost:3000/';
   private urlAPi2= 'http://192.168.100.5:3000/';
   
   constructor(private httpClient: HttpClient) { }
 
   getUsers(){
-    let url = this.urlAPi + "usuarios/.json";
+    const ip = sessionStorage.getItem('ip')
+    if(ip){
+      this.urlAPi = 'http://' + ip + ':3000/'
+    }
+    let url = this.urlAPi + "usuarios/";
     this.listado=[];
     return new Promise((resolve, reject) => {
       this.httpClient.get<[]>(url).subscribe((data: []) => {
@@ -28,7 +32,11 @@ export class ApirestService {
   }
 
   async getUserId(id:String){
-    let url = this.urlAPi + "usuarios/" + id + ".json";
+    const ip = sessionStorage.getItem('ip')
+    if(ip){
+      this.urlAPi = 'http://' + ip + ':3000/'
+    }
+    let url = this.urlAPi + "usuarios/" + id;
     return new Promise((resolve, reject) => {
       this.httpClient.get(url).subscribe((data: any) => {
         resolve(data);
@@ -42,8 +50,12 @@ export class ApirestService {
   }
 
   async getAsistenciasId(usuarioId:String){
+    const ip = sessionStorage.getItem('ip')
+    if(ip){
+      this.urlAPi = 'http://' + ip + ':3000/'
+    }
     this.listado=[];
-    const url = this.urlAPi+"asistencias?usuarioId="+usuarioId + ".json";
+    const url = this.urlAPi+"asistencias?usuarioId="+usuarioId;
     return new Promise((resolve, reject) => {
       this.httpClient.get<[]>(url).subscribe((data: []) => {
         resolve(data);
@@ -57,7 +69,11 @@ export class ApirestService {
   }
 
   async getUser(username:String){
-    let url = this.urlAPi + "usuarios?username=" + username + ".json";
+    const ip = sessionStorage.getItem('ip')
+    if(ip){
+      this.urlAPi = 'http://' + ip + ':3000/'
+    }
+    let url = this.urlAPi + "usuarios?username=" + username;
     return new Promise((resolve, reject) => {
       this.httpClient.get(url).subscribe((data: any) => {
         resolve(data);
@@ -71,7 +87,11 @@ export class ApirestService {
   }
 
   async addAsistencia(sigla:String, seccion:String, usuarioId:String, fecha:String){
-    const url = this.urlAPi + "asistencias?usuario=" + usuarioId + ".json";
+    const ip = sessionStorage.getItem('ip')
+    if(ip){
+      this.urlAPi = 'http://' + ip + ':3000/'
+    }
+    const url = this.urlAPi + "asistencias?usuario=" + usuarioId;
     const texto = {
       sigla,
       seccion,
@@ -93,7 +113,11 @@ export class ApirestService {
 
   
   getAsignaturas(){
-    let url = this.urlAPi + "asignaturas/" + ".json";
+    const ip = sessionStorage.getItem('ip')
+    if(ip){
+      this.urlAPi = 'http://' + ip + ':3000/'
+    }
+    let url = this.urlAPi + "asignaturas/";
     this.listado=[];
     return new Promise((resolve, reject) => {
       this.httpClient.get<[]>(url).subscribe((data: []) => {
@@ -108,11 +132,15 @@ export class ApirestService {
   }
 
   async getAsignaturasSigla(sigla1:string){
+    const ip = sessionStorage.getItem('ip')
+    if(ip){
+      this.urlAPi = 'http://' + ip + ':3000/'
+    }
     var rx = /^[^-]*/
     var sigla = rx.exec(sigla1)
     var rx = /[^-]*$/
     var seccion = rx.exec(sigla1)
-    let url = this.urlAPi + "asignaturas?sigla=" + sigla + "&seccion=" + seccion + ".json";
+    let url = this.urlAPi + "asignaturas?sigla=" + sigla + "&seccion=" + seccion;
     return new Promise((resolve, reject) => {
       this.httpClient.get(url).subscribe((data: any) => {
         resolve(data);
@@ -126,7 +154,11 @@ export class ApirestService {
   }
 
   async getHorario(id:String){
-    let url = this.urlAPi + "horario?id=" + id + ".json";
+    const ip = sessionStorage.getItem('ip')
+    if(ip){
+      this.urlAPi = 'http://' + ip + ':3000/'
+    }
+    let url = this.urlAPi + "horario?id=" + id;
     return new Promise((resolve, reject) => {
       this.httpClient.get(url).subscribe((data: any) => {
         resolve(data);
@@ -140,7 +172,11 @@ export class ApirestService {
   }
 
   async modClave(clave:string, user:any){
-    const url = this.urlAPi + "usuarios/" + user["id"] + ".json";
+    const ip = sessionStorage.getItem('ip')
+    if(ip){
+      this.urlAPi = 'http://' + ip + ':3000/'
+    }
+    const url = this.urlAPi + "usuarios/" + user["id"]
     console.log(url)
     user.password = clave;
     return new Promise((resolve, reject) => {

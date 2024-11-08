@@ -52,13 +52,18 @@ async escanear() {
     });
     this.resultadoScan = data?.barcode?.displayValue;
     this.fueEscaneado = true;
-    if (this.asignaturas.sigla==this.resultadoScan.substring(0,7)&&this.asignaturas.sigla==this.resultadoScan.substring(7,11)){
-      console.log("correcto")
-      this.api.addAsistencia(this.resultadoScan.substring(0,7),this.resultadoScan.substring(7,11),sessionStorage.getItem('userId') ?? '',this.fechaActual + ' Hora: ' +this.horaActual)
-      this.router.navigate(['/mis-asistencias'])
-    }
-    else{
-      console.log("error")
+    for (let asig in  this.asignaturas){
+      console.log(this.asignaturas[asig].sigla)
+      if (this.asignaturas[asig].sigla==this.resultadoScan.substring(0,7)&&this.asignaturas[asig].seccion==this.resultadoScan.substring(7,11)){
+        console.log("correcto")
+        this.error = false
+        this.api.addAsistencia(this.resultadoScan.substring(0,7),this.resultadoScan.substring(7,11),sessionStorage.getItem('userId') ?? '',this.fechaActual + ' Hora: ' +this.horaActual)
+        this.router.navigate(['/mis-asistencias'])
+      }
+      else{
+        this.error = true
+        console.log("ERROR, ASIGNATURA NO EXISTE")
+      }
     }
     
   }
