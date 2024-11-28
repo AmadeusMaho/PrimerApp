@@ -1,11 +1,10 @@
-import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, waitForAsync, TestBed } from '@angular/core/testing';
 import { RegasistenciaPage } from './regasistencia.page';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { ApirestService } from '../apirest.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { ActivatedRoute } from '@angular/router';
-
+import { RouterTestingModule } from '@angular/router/testing';
 describe('RegasistenciaPage', () => {
   let component: RegasistenciaPage;
   let fixture: ComponentFixture<RegasistenciaPage>;
@@ -18,7 +17,7 @@ describe('RegasistenciaPage', () => {
         IonicModule.forRoot(),
         FormsModule,
         HttpClientTestingModule,
-        ActivatedRoute
+        RouterTestingModule
       ],
       providers: [ApirestService]
     }).compileComponents();
@@ -32,5 +31,4 @@ describe('RegasistenciaPage', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-
 });
