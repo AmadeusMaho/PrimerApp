@@ -42,4 +42,32 @@ describe('LoginPage', () => {
     const error = fixture.componentInstance.error
     expect(error).toBeFalse()
   }));
+
+  it('Deshabilitar login si no se ha ingresado una clave', () => {
+    fixture.componentInstance.user.username = "Usuario1";
+    fixture.componentInstance.user.password = "";
+
+    document.getElementById("btnValidar")?.click();
+    fixture.detectChanges();
+
+    const btnValidar = document.getElementById("btnValidar")
+    const btnDeshabilitado = document.getElementById("btnDeshabilitado")
+    expect(btnValidar).toBeFalsy()
+    expect(btnDeshabilitado).toBeTruthy()
+
+  });
+
+  it('Deshabilitar login si no se ha ingresado un usuario', () => {
+    fixture.componentInstance.user.username = "";
+    fixture.componentInstance.user.password = "MiClav3";
+
+    document.getElementById("btnValidar")?.click();
+    fixture.detectChanges();
+
+    const btnValidar = document.getElementById("btnValidar")
+    const btnDeshabilitado = document.getElementById("btnDeshabilitado")
+    expect(btnValidar).toBeFalsy()
+    expect(btnDeshabilitado).toBeTruthy()
+
+  });
 });

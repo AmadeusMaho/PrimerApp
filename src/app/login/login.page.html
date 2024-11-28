@@ -23,10 +23,10 @@
             <ion-icon name="lock-closed-outline" slot="start"></ion-icon>
             <ion-input-password-toggle slot="end"></ion-input-password-toggle>
           </ion-input>
-        <ion-button expand="block" [disabled]="true" style="text-transform:none; height: 45px; margin-top: 20px;" *ngIf="username.errors||password.errors">
+        <ion-button expand="block" [disabled]="true" style="text-transform:none; height: 45px; margin-top: 20px;" *ngIf="username.errors||password.errors" id="btnDeshabilitado">
           Iniciar sesión
         </ion-button>
-        <ion-button (click)="validar()" expand="block" type="submit" style="text-transform:none; height: 45px; margin-top: 20px;" *ngIf="!username.errors&&!password.errors">
+        <ion-button (click)="validar()" expand="block" type="submit" style="text-transform:none; height: 45px; margin-top: 20px;" *ngIf="!username.errors&&!password.errors" id="btnValidar">
           <ion-text *ngIf="loading==false">Iniciar sesión</ion-text>
           <ion-spinner name="dots" *ngIf="loading==true"></ion-spinner>
         </ion-button>
