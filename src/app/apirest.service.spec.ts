@@ -8,12 +8,12 @@ describe('ApirestService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
-        HttpClientTestingModule, // For mocking HTTP requests
+        HttpClientTestingModule, 
       ],
-      providers: [ApirestService], // Provide the service
+      providers: [ApirestService], 
     });
 
-    apirestService = TestBed.inject(ApirestService); // Inject the service
+    apirestService = TestBed.inject(ApirestService); 
   });
 
   it('should be created', () => {
