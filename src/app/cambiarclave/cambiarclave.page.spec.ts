@@ -5,6 +5,7 @@ import { IonicModule } from '@ionic/angular';
 import { ApirestService } from '../apirest.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import { By } from '@angular/platform-browser';
 
 describe('CambiarclavePage', () => {
   let component: CambiarclavePage;
@@ -29,9 +30,37 @@ describe('CambiarclavePage', () => {
     fixture.detectChanges();
   }));
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+
+  it('Habilitar botón si se llenaron todos los campos', () => {
+    fixture.componentInstance.user.password = "nuevaClave";
+    fixture.componentInstance.user.password2 = "nuevaClave";
+    fixture.componentInstance.user.passwordActual = "Miclav3";
+    fixture.componentInstance.login = true;
+    
+    document.getElementById("btnEnviar")?.click();
+    fixture.detectChanges();
+
+    const btnEnviar = document.getElementById("btnEnviar")
+    const btnDeshabilitado = document.getElementById("btnDeshabilitado")
+
+    expect(btnEnviar).toBeTruthy();
+    expect(btnDeshabilitado).toBeFalsy();
   });
 
+<<<<<<< HEAD
 
+=======
+  it('Cambiar clave correctamente', fakeAsync(() => {
+    sessionStorage.setItem('userId','1');
+    component.user.password = 'contraseñaNueva';
+    component.user.password2 = 'contraseñaNueva';
+    component.user.passwordActual = 'MiClav3';
+    component.enviar();
+    document.getElementById("btnEnviar")?.click();
+    fixture.detectChanges();
+    tick();
+    const exito = fixture.componentInstance.exito
+    expect(exito).toBeTrue;
+}))
+>>>>>>> 6bc4a72b29773b8e3747cd43875d361ebe8ef9e9
 });

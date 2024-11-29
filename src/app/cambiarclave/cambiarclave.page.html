@@ -19,22 +19,22 @@
       <ion-col>
         <form>
           <h1 style="text-align: center; padding-bottom: 20px;">Restablecer contraseña</h1>
-          <ion-input required #password="ngModel" type="password" placeholder="Contraseña actual" fill="outline" class="ion-margin-bottom" required [(ngModel)]="user.passwordActual" name="passwordActual">
+          <ion-input required #passwordActual="ngModel" type="password" placeholder="Contraseña actual" fill="outline" class="ion-margin-bottom" required [(ngModel)]="user.passwordActual" name="passwordActual" id="passwordActual">
             <ion-icon name="lock-closed-outline" slot="start"></ion-icon>
             <ion-input-password-toggle slot="end"></ion-input-password-toggle>
           </ion-input>
-          <ion-input required #password="ngModel" type="password" placeholder="Contraseña nueva" fill="outline" class="ion-margin-bottom" required [(ngModel)]="user.password" name="password">
+          <ion-input required #password="ngModel" type="password" placeholder="Contraseña nueva" fill="outline" class="ion-margin-bottom" required [(ngModel)]="user.password" name="password" id="password">
             <ion-icon name="lock-closed-outline" slot="start"></ion-icon>
             <ion-input-password-toggle slot="end"></ion-input-password-toggle>
           </ion-input>
-          <ion-input required #password2="ngModel" type="password" placeholder="Confirme nueva contraseña" fill="outline" class="ion-margin-bottom" required [(ngModel)]="user.password2" name="password2">
+          <ion-input required #password2="ngModel" type="password" placeholder="Confirme nueva contraseña" fill="outline" class="ion-margin-bottom" required [(ngModel)]="user.password2" name="password2" id="password2">
             <ion-icon name="lock-closed-outline" slot="start"></ion-icon>
             <ion-input-password-toggle slot="end"></ion-input-password-toggle>
           </ion-input>
-        <ion-button expand="block" [disabled]="true" style="text-transform:none; height: 45px; margin-top: 20px;" *ngIf="password.errors||password2.errors">
+        <ion-button expand="block" [disabled]="true" style="text-transform:none; height: 45px; margin-top: 20px;" *ngIf="password.errors||password2.errors||passwordActual.errors" id="btnDeshabilitado">
           Aceptar
         </ion-button>
-        <ion-button (click)="enviar()" id="btnEnviar" expand="block" type="submit" style="text-transform:none; height: 45px; margin-top: 20px;" *ngIf="!password.errors&&!password2.errors">
+        <ion-button (click)="enviar()" expand="block" type="submit" style="text-transform:none; height: 45px; margin-top: 20px;" *ngIf="!password.errors&&!password2.errors&&!passwordActual.errors" id="btnEnviar">
           <ion-text *ngIf="loading==false">Aceptar</ion-text>
           <ion-spinner name="dots" *ngIf="loading==true"></ion-spinner>
         </ion-button>

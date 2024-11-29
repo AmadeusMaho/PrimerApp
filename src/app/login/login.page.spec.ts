@@ -27,10 +27,6 @@ describe('LoginPage', () => {
     fixture.detectChanges();
   }));
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-
   it('Login funciona', fakeAsync( () => {
     fixture.componentInstance.user.username = "Usuario1";
     fixture.componentInstance.user.password = "MiClav3";

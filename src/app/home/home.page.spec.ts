@@ -31,10 +31,6 @@ describe('HomePage', () => {
     fixture.detectChanges();
   }));
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-
   it('Debe guardar asignatura en el session storage para mostrar al usuario (almasign())', () => {
     const asignatura = 'ASIG123';
     component.almAsign(asignatura);
@@ -69,5 +65,19 @@ describe('HomePage', () => {
     
     expect(component.usuario).toBe('Oppen Heimer');
     expect(component.profesor).toBe(true);
+  it('Mostrar contenido distinto si el usuario no ha iniciado sesión',() => {
+    
+    fixture.componentInstance.login = false;
+    fixture.detectChanges();
+
+    const navbarLogin = document.getElementById("navbarLogin")
+    const navbar = document.getElementById("navbar")
+    const saludo = document.getElementById("saludo")
+    const horario = document.getElementById("horario")
+    expect(navbar).toBeTruthy()
+    expect(navbarLogin).toBeFalsy()
+    expect(saludo).toBeFalsy()
+    expect(horario).toBeFalsy()
   });
+});
 });
