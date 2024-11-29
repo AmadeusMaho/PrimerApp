@@ -5,6 +5,7 @@ import { IonicModule } from '@ionic/angular';
 import { ApirestService } from '../apirest.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import { By } from '@angular/platform-browser';
 
 describe('CambiarclavePage', () => {
   let component: CambiarclavePage;
@@ -29,7 +30,20 @@ describe('CambiarclavePage', () => {
     fixture.detectChanges();
   }));
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+
+  it('Habilitar botón si se llenaron todos los campos', () => {
+    fixture.componentInstance.user.password = "nuevaClave";
+    fixture.componentInstance.user.password2 = "nuevaClave";
+    fixture.componentInstance.user.passwordActual = "Miclav3";
+    fixture.componentInstance.login = true;
+    
+    document.getElementById("btnValidar")?.click();
+    fixture.detectChanges();
+
+    const btnValidar = document.getElementById("btnValidar")
+    const btnDeshabilitado = document.getElementById("btnDeshabilitado")
+
+    expect(btnValidar).toBeTruthy();
+    expect(btnDeshabilitado).toBeFalsy();
   });
 });
