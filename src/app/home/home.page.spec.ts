@@ -65,6 +65,8 @@ describe('HomePage', () => {
     
     expect(component.usuario).toBe('Oppen Heimer');
     expect(component.profesor).toBe(true);
+
+  });
   it('Mostrar contenido distinto si el usuario no ha iniciado sesión',() => {
     
     fixture.componentInstance.login = false;
@@ -80,4 +82,4 @@ describe('HomePage', () => {
     expect(horario).toBeFalsy()
   });
 });
-});
+

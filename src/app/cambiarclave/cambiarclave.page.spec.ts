@@ -47,9 +47,6 @@ describe('CambiarclavePage', () => {
     expect(btnDeshabilitado).toBeFalsy();
   });
 
-<<<<<<< HEAD
-
-=======
   it('Cambiar clave correctamente', fakeAsync(() => {
     sessionStorage.setItem('userId','1');
     component.user.password = 'contraseñaNueva';
@@ -62,5 +59,4 @@ describe('CambiarclavePage', () => {
     const exito = fixture.componentInstance.exito
     expect(exito).toBeTrue;
 }))
->>>>>>> 6bc4a72b29773b8e3747cd43875d361ebe8ef9e9
 });
