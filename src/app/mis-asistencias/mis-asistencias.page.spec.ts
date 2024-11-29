@@ -5,13 +5,18 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { ApirestService } from '../apirest.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { of } from 'rxjs';
 
 describe('MisAsistenciasPage', () => {
   let component: MisAsistenciasPage;
   let fixture: ComponentFixture<MisAsistenciasPage>;
   let apirestService: ApirestService;
+  let mockApi: jasmine.SpyObj<ApirestService>;
+  
 
   beforeEach(waitForAsync(() => {
+
+    mockApi = jasmine.createSpyObj('ApirestService', ['getAsistenciasId']);
     TestBed.configureTestingModule({
       declarations: [MisAsistenciasPage],
       imports: [
@@ -31,6 +36,4 @@ describe('MisAsistenciasPage', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-
-  
 });

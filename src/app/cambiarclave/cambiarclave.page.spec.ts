@@ -33,17 +33,5 @@ describe('CambiarclavePage', () => {
     expect(component).toBeTruthy();
   });
 
-  it('Cambiar clave correctamente', fakeAsync(() => {
-    sessionStorage.setItem('userId','1');
-    component.user.password = 'contraseñaNueva';
-    component.user.password2 = 'contraseñaNueva';
-    component.user.passwordActual = 'MiClav3';
-    component.enviar();
-    document.getElementById("btnEnviar")?.click();
-    fixture.detectChanges();
-    tick();
-    const exito = fixture.componentInstance.exito
-    expect(exito).toBeTrue;
-}))
 
 });

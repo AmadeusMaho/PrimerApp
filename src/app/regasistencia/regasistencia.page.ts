@@ -172,62 +172,6 @@ qrData : any = "";
     }
   }
 
-  
-
-
-
-/* async mostrarAlerta(asignatura: string) {
-  const alert = await this.alertController.create({
-    header: 'Selecciona la sección para ' + asignatura,
-    buttons:  [
-      {
-        text: 'Cancelar',
-        role: 'cancelar',
-        handler: () => {
-          console.log('Generación cancelada');
-        }
-      },
-      {
-        text: 'Aceptar',
-        role: 'aceptar',
-        handler: () => {
-          sessionStorage.setItem('asignatura', this.asign);
-          console.log(sessionStorage.getItem('asignatura'));
-          this.generado = true;
-          this.generarqr(); 
-        }
-      }
-    ]
-  });
-  this.asign = asignatura;
-  sessionStorage.setItem('asignatura', this.asign);
-  console.log(sessionStorage.getItem('asignatura'));
-
-  await alert.present();
-
-
-
-
-
-
-  this.http.get<any[]>('http://localhost:3000/usuarios').subscribe(
-      (data: any[]) => {
-        this.usuario = this.api.getUserId(String(sessionStorage.getItem('userId')));
-        console.log(this.usuario)
-        console.log(this.usuario.asignaturas)
-
-        this.usuario.asignaturas.forEach((asignaturas: string) => {
-          this.asignaturasProfe.push(asignaturas);
-          console.log(this.asignaturas);
-      });
-        
-      },
-      (error) => {
-        console.log('error al obtener el listado de usuarios', error);
-      }
-    )
-} */
-
 botonVolver(){
   this.router.navigate(['/home'])
   this.generado = false;
@@ -272,19 +216,6 @@ accordionGroupChange = (ev: any) => {
 
 
 usuarios : any = [];
-
-
-secciones=[
-  {asignatura: 'Proceso de Portafolio', secciones:[
-    { seccion: '006D', estado: true},
-    { seccion: '007D', estado: true},
-  ], estado: true},
-  {asignatura: 'Programación de Base de Datos', secciones:[
-    { seccion: '004D', estado: true},
-    { seccion: '002D', estado: true},
-    { seccion: '001D', estado: true},
-  ], estado: true},
-]
 
 
 }
