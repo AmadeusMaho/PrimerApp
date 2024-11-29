@@ -34,7 +34,7 @@
         <ion-button expand="block" [disabled]="true" style="text-transform:none; height: 45px; margin-top: 20px;" *ngIf="password.errors||password2.errors">
           Aceptar
         </ion-button>
-        <ion-button (click)="enviar()" expand="block" type="submit" style="text-transform:none; height: 45px; margin-top: 20px;" *ngIf="!password.errors&&!password2.errors">
+        <ion-button (click)="enviar()" id="btnEnviar" expand="block" type="submit" style="text-transform:none; height: 45px; margin-top: 20px;" *ngIf="!password.errors&&!password2.errors">
           <ion-text *ngIf="loading==false">Aceptar</ion-text>
           <ion-spinner name="dots" *ngIf="loading==true"></ion-spinner>
         </ion-button>
