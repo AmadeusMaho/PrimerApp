@@ -26,9 +26,15 @@ describe('MisAsignaturasPage', () => {
     apirestService = TestBed.inject(ApirestService);
     fixture.detectChanges();
   }));
+  it('Mostrar información adicional si el usuario no es profesor',() => {
+    
+    fixture.componentInstance.profesor = false;
+    fixture.componentInstance.login = true;
+    fixture.detectChanges();
 
+    const profe = document.getElementById("profe")
+    const asigProfe = document.getElementById("asigProfe")
+    expect(profe).toBeTruthy()
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
   });
 });

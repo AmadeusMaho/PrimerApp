@@ -16,11 +16,8 @@ export class CambiarclavePage implements OnInit {
       this.login = true;
     }
   }
-
   tempUser : string = 'Usuario1'
   tempPass : string = 'MiClav3'
- 
-
   user: any = {
     password: '',
     password2: '',

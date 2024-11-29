@@ -44,7 +44,7 @@
 
 <div class="ion-page" id="menu-content">
   <ion-header>
-    <ion-toolbar *ngIf="login==true">
+    <ion-toolbar *ngIf="login==true" id="navbarLogin">
       <ion-buttons slot="start">
         <ion-menu-button menu="menu-content"></ion-menu-button>
       </ion-buttons>
@@ -59,7 +59,7 @@
       </ion-alert>
     </ion-toolbar>
 
-    <ion-toolbar *ngIf="login==false">
+    <ion-toolbar *ngIf="login==false" id="navbar">
       <ion-buttons slot="start">
         <ion-menu-button menu="menu-content"></ion-menu-button>
       </ion-buttons>
@@ -80,11 +80,11 @@
     <div class="logoduoc ion-margin-top align-items-center" style="margin-top: 12px;">
       <img src={{imgUrl}} alt="logo">
     </div>
-    <div class="txtbienv" *ngIf="login==true">
+    <div class="txtbienv" *ngIf="login==true" id="saludo">
       <h1 class="ion-text-center">{{saludo}}{{ usuario }}</h1>
     </div>
     
-    <div class="cards" *ngIf="login==true">
+    <div class="cards" *ngIf="login==true" id="horario">
       <ion-card>
         <ion-card-header>
           <ion-card-title class="ion-text-center">Tus asignaturas hoy</ion-card-title>

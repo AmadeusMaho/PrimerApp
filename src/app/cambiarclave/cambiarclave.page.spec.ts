@@ -37,13 +37,26 @@ describe('CambiarclavePage', () => {
     fixture.componentInstance.user.passwordActual = "Miclav3";
     fixture.componentInstance.login = true;
     
-    document.getElementById("btnValidar")?.click();
+    document.getElementById("btnEnviar")?.click();
     fixture.detectChanges();
 
-    const btnValidar = document.getElementById("btnValidar")
+    const btnEnviar = document.getElementById("btnEnviar")
     const btnDeshabilitado = document.getElementById("btnDeshabilitado")
 
-    expect(btnValidar).toBeTruthy();
+    expect(btnEnviar).toBeTruthy();
     expect(btnDeshabilitado).toBeFalsy();
   });
+
+  it('Cambiar clave correctamente', fakeAsync(() => {
+    sessionStorage.setItem('userId','1');
+    component.user.password = 'contraseñaNueva';
+    component.user.password2 = 'contraseñaNueva';
+    component.user.passwordActual = 'MiClav3';
+    component.enviar();
+    document.getElementById("btnEnviar")?.click();
+    fixture.detectChanges();
+    tick();
+    const exito = fixture.componentInstance.exito
+    expect(exito).toBeTrue;
+}))
 });

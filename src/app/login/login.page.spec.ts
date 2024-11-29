@@ -26,7 +26,7 @@ describe('LoginPage', () => {
     apirestService = TestBed.inject(ApirestService);
     fixture.detectChanges();
   }));
-  
+
   it('Login funciona', fakeAsync( () => {
     fixture.componentInstance.user.username = "Usuario1";
     fixture.componentInstance.user.password = "MiClav3";

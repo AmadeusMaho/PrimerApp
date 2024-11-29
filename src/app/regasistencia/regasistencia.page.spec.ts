@@ -1,4 +1,4 @@
-import { ComponentFixture, waitForAsync, TestBed } from '@angular/core/testing';
+import { ComponentFixture, waitForAsync, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { RegasistenciaPage } from './regasistencia.page';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
@@ -28,7 +28,24 @@ describe('RegasistenciaPage', () => {
     fixture.detectChanges();
   }));
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+  it('Agregar asistencia (usuario)', fakeAsync( () => {
+    fixture.componentInstance.resultadoScan = "TEST041224F";
+    component.confirmar();
+    document.getElementById("confirmarAsist")?.click();
+    fixture.detectChanges();
+    tick(2000);
+    const error = fixture.componentInstance.error
+    expect(error).toBeFalse()
+  }));
+
+
+  it('debe generar un QR correctamente', fakeAsync(() => {
+    const asignatura = 'TEST041';
+    const seccion = '224F';
+    
+    component.generarqr(asignatura, seccion);
+    tick(1600);
+    expect(component.qrData).toEqual(asignatura + seccion);
+    expect(component.generado).toBeTrue();
+  }));
 });

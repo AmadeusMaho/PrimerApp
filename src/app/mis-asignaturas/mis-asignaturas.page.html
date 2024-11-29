@@ -30,14 +30,14 @@
 
           <ion-item>
             <ion-label class="asigntext fixedLabel" fixed style="min-width: 40%; text-align: start; font-weight: bold; margin-right: 10px;">Asignatura</ion-label>
-            <ion-label class="asigntext fixedLabel" fixed style="min-width: 30%; text-align: center; font-weight: bold;" *ngIf="!profesor">Profesor</ion-label>
+            <ion-label class="asigntext fixedLabel" fixed style="min-width: 30%; text-align: center; font-weight: bold;" *ngIf="!profesor" id="profe">Profesor</ion-label>
             <ion-label class="asigntext fixedLabel" fixed style="min-width: 25%; text-align: center; font-weight: bold;">Sección</ion-label>
           </ion-item>
 
           <ion-item *ngFor="let asignatura of asignaturas; let i = index;">
             <div class="rectangulo1 ion-align-items-start" [ngStyle]="{'background-color':colores1(i)}"></div>
             <ion-label  class="asigntext fixedLabel" fixed style="min-width: 40%; text-align: start;"> {{ asignatura.asignatura}} </ion-label>
-            <ion-label  class="asigntext fixedLabel" fixed style="min-width: 30%; text-align: center;" *ngIf="!profesor"> {{ asignatura.profesor}} </ion-label>
+            <ion-label  class="asigntext fixedLabel" fixed style="min-width: 30%; text-align: center;" *ngIf="!profesor" id="asigProfe"> {{ asignatura.profesor}} </ion-label>
             <ion-label  class="asigntext fixedLabel" fixed style="min-width: 25%; text-align: center;"> {{asignatura.seccion}} </ion-label>
           </ion-item>
           
