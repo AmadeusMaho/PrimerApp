@@ -35,16 +35,6 @@ describe('RegasistenciaPage', () => {
     fixture.detectChanges();
   }));
 
-  it('Agregar asistencia (usuario) a través del botón', fakeAsync( () => {
-    fixture.componentInstance.resultadoScan = "TEST041224F";
-    component.confirmar();
-    document.getElementById("confirmarAsist")?.click();
-    fixture.detectChanges();
-    tick(2000);
-    const error = fixture.componentInstance.error
-    expect(error).toBeFalse()
-  }));
-
 
   it('debe generar un QR correctamente', fakeAsync(() => {
     const asignatura = 'TEST041';

@@ -276,25 +276,25 @@
       "fecha": "04/11/2024 Hora: 22:15:28"
     },
     {
-      "id": "1e05",
-      "sigla": "MDY3131",
-      "seccion": "004D",
-      "usuarioId": "1",
-      "fecha": "11/12/2024 Hora: 14:16:12"
-    },
-    {
-      "id": "3b3a",
+      "id": "a799",
       "sigla": "PGY4121",
       "seccion": "004D",
       "usuarioId": "1",
-      "fecha": "11/12/2024 Hora: 17:52:18"
+      "fecha": "11/12/2024 Hora: 14:44:56"
     },
     {
-      "id": "1bee",
+      "id": "fb2b",
+      "sigla": "MDY3131",
+      "seccion": "004D",
+      "usuarioId": "1",
+      "fecha": "11/12/2024 Hora: 17:22:00"
+    },
+    {
+      "id": "78e5",
       "sigla": "MAT4140",
       "seccion": "004D",
       "usuarioId": "1",
-      "fecha": "11/12/2024 Hora: 17:52:59"
+      "fecha": "11/12/2024 Hora: 17:23:53"
     }
   ],
   "horario": [
