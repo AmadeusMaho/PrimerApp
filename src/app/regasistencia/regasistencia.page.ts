@@ -24,60 +24,26 @@ fechaActual: string = ""
 horaActual: string = ""
 
 // ESCANEO DEL QR, aquí se reciben los datos del QR del profe ///////////////
-async escanear() {
-  const modal = await this.modalController.create({
-  component: BarcodeScanningModalComponent,
-  showBackdrop: false,
-  cssClass: 'barcode-scanning-modal',
-  componentProps: { formats: [],
-    lensFacing: LensFacing.Back
-   }
-  });
-
-  await modal.present();
-
-  const {data} = await modal.onWillDismiss();
-  if (data){
-
-    //conseguir fecha actual
-    this.fechaActual = new Date().toLocaleDateString('es-ES',{
-      day:'2-digit',
-      month: '2-digit',
-      year:'numeric'
-    })
-    this.horaActual = new Date().toLocaleTimeString('es-ES', {
-      hour: '2-digit',
-      minute: '2-digit',
-      second: '2-digit',
-    });
-    this.resultadoScan = data?.barcode?.displayValue;
-    this.fueEscaneado = true;
-    for (let asig in  this.asignaturas){
-      console.log(this.asignaturas[asig].sigla)
-      if (this.asignaturas[asig].sigla==this.resultadoScan.substring(0,7)&&this.asignaturas[asig].seccion==this.resultadoScan.substring(7,11)){
-        console.log("correcto")
-        this.error = false
-        this.api.addAsistencia(this.resultadoScan.substring(0,7),this.resultadoScan.substring(7,11),sessionStorage.getItem('userId') ?? '',this.fechaActual + ' Hora: ' +this.horaActual)
-        this.router.navigate(['/mis-asistencias'])
-      }
-      else{
-        this.error = true
-        console.log("ERROR, ASIGNATURA NO EXISTE")
-      }
-    }
-    
-  }
-  else{
-    this.fueEscaneado = false;
-  }
-}
+asignExiste : boolean = false;
+asistRegistrada : boolean = false;
+error2 : boolean = false;
 
   seleccionado: boolean = false;
   asign: string = '';
   profesor : boolean = false;
   login : boolean = false;
+  
   ngOnInit() {
-    
+
+    this.api.getAsistenciasId(sessionStorage.getItem("userId") ?? '').then((asistencias) => {
+      this.userAsistencias = asistencias;
+      console.log(this.userAsistencias);
+    })
+    .catch((error) => {
+      console.error('Error al obtener asistencias:', error);
+    });
+
+
     const asignatura = sessionStorage.getItem('asignatura')
     this.asign = asignatura !== null ? asignatura : ''; //si asignatura es null entonces asignatura vacío
     if (sessionStorage.getItem('profesor') == "true"){
@@ -98,6 +64,7 @@ async escanear() {
     if(sessionStorage.getItem('login')=='true'){
       this.login = true;
     }
+
   }
 
 
@@ -106,6 +73,7 @@ async escanear() {
   siglasRes : any = [];
   seccionesRes : any = [];
   error:boolean=false
+  userAsistencias : any = [];
 
 
 
@@ -137,28 +105,132 @@ qrData : any = "";
     this.api.addAsistencia(asignatura,seccion,sessionStorage.getItem('userId') ?? '',fechaActual + ' Hora: ' +horaActual)
   }
 
+ 
   confirmar(){
-    
     if(this.resultadoScan.toString().trim().length>0){
       console.log(this.resultadoScan.toString().trim())
-      for (let asig in  this.asignaturas){
+      this.asignExiste = false;
+      this.asistRegistrada = false;
+      this.error = false;
+      this.error2 = false;
+      //comprobación si existe asignatura
+      for (let asig in this.asignaturas){
         console.log(this.asignaturas[asig].sigla)
-        if (this.asignaturas[asig].sigla==this.resultadoScan.substring(0,7)&&this.asignaturas[asig].seccion==this.resultadoScan.substring(7,11)){
-          console.log("correcto")
-          this.error = false
-          this.api.addAsistencia(this.resultadoScan.substring(0,7),this.resultadoScan.substring(7,11),sessionStorage.getItem('userId') ?? '',this.fechaActual + ' Hora: ' +this.horaActual)
-          this.router.navigate(['/mis-asistencias'])
+        if (this.asignaturas[asig].sigla==this.resultadoScan.substring(0,7)&&
+        this.asignaturas[asig].seccion==this.resultadoScan.substring(7,11)){
+          console.log("Asignatura existe")
+          this.asignExiste = true;
+          break;
+         }}
+         if (!this.asignExiste){
+          console.log("Asignatura no existe")
+          this.error = true;
+         }
+         }
+        
+      //comprobación fecha ( si existe la asistencia ya registrada hoy para no duplicarse)
+      for (let asist in this.userAsistencias){
+          if (this.userAsistencias[asist].fecha.substring(0,10) == this.fechaActual && 
+          this.userAsistencias[asist].sigla == this.resultadoScan.substring(0,7) &&
+          this.userAsistencias[asist].seccion == this.resultadoScan.substring(7,11)){
+            console.log("asistencia ya registrada hoy")
+            this.asistRegistrada = true;
+            this.error2 = true;
+            console.log(this.userAsistencias[asist].seccion +"="+ this.resultadoScan.substring(7,11))
+            console.log(this.userAsistencias[asist].sigla + "=" + this.resultadoScan.substring(0,7))
+            console.log(this.userAsistencias[asist].fecha.substring(0,10) +"="+this.fechaActual)
+            break;
+          }
+      }
+      if (this.asignExiste == true && this.asistRegistrada == false){
+        this.error = false;
+        this.error2 = false;
+        console.log("INGRESANDO")
+        this.api.addAsistencia(this.resultadoScan.substring(0,7),this.resultadoScan.substring(7,11),sessionStorage.getItem('userId') ?? '',
+        this.fechaActual + ' Hora: ' +this.horaActual)
+        window.location.href = window.location.protocol + '//' + window.location.host + '/mis-asistencias';
+      }
+         
         }
-        else{
-          this.error = true
-          console.log("ERROR, ASIGNATURA NO EXISTE")
-        }
+       
+    
+  async escanear() {
+    const modal = await this.modalController.create({
+    component: BarcodeScanningModalComponent,
+    showBackdrop: false,
+    cssClass: 'barcode-scanning-modal',
+    componentProps: { formats: [],
+      lensFacing: LensFacing.Back
+      }
+    });
+  
+    await modal.present();
+  
+    const {data} = await modal.onWillDismiss();
+    if (data){
+  
+      //conseguir fecha actual
+      this.fechaActual = new Date().toLocaleDateString('es-ES',{
+        day:'2-digit',
+        month: '2-digit',
+        year:'numeric'
+      })
+      this.horaActual = new Date().toLocaleTimeString('es-ES', {
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+      });
+      this.resultadoScan = data?.barcode?.displayValue;
+      this.fueEscaneado = true;
+      console.log(this.resultadoScan.toString().trim())
+      this.asignExiste = false;
+      this.asistRegistrada = false;
+      this.error = false;
+      this.error2 = false;
+      //comprobación si existe asignatura
+      for (let asig in this.asignaturas){
+        console.log(this.asignaturas[asig].sigla)
+        if (this.asignaturas[asig].sigla==this.resultadoScan.substring(0,7)&&
+        this.asignaturas[asig].seccion==this.resultadoScan.substring(7,11)){
+          console.log("Asignatura existe")
+          this.asignExiste = true;
+          break;
+         }}
+         if (!this.asignExiste){
+          console.log("Asignatura no existe")
+          this.error = true;
+         }
+         
+        
+      //comprobación fecha ( si existe la asistencia ya registrada hoy para no duplicarse)
+      for (let asist in this.userAsistencias){
+          if (this.userAsistencias[asist].fecha.substring(0,10) == this.fechaActual && 
+          this.userAsistencias[asist].sigla == this.resultadoScan.substring(0,7) &&
+          this.userAsistencias[asist].seccion == this.resultadoScan.substring(7,11)){
+            console.log("asistencia ya registrada hoy")
+            this.asistRegistrada = true;
+            this.error2 = true;
+            console.log(this.userAsistencias[asist].seccion +"="+ this.resultadoScan.substring(7,11))
+            console.log(this.userAsistencias[asist].sigla + "=" + this.resultadoScan.substring(0,7))
+            console.log(this.userAsistencias[asist].fecha.substring(0,10) +"="+this.fechaActual)
+            break;
+          }
+      }
+      if (this.asignExiste == true && this.asistRegistrada == false){
+        this.error = false;
+        this.error2 = false;
+        console.log("INGRESANDO")
+        this.api.addAsistencia(this.resultadoScan.substring(0,7),this.resultadoScan.substring(7,11),sessionStorage.getItem('userId') ?? '',
+        this.fechaActual + ' Hora: ' +this.horaActual)
+        window.location.href = window.location.protocol + '//' + window.location.host + '/mis-asistencias';
       }
       
     }
+    else{
+      this.fueEscaneado = false;
+    }
   }
-
-
+        
   async cargarAsignaturas(asignaturas: Array<any>) {
     try {
       this.usuario = await this.api.getUserId(String(sessionStorage.getItem('userId')));
