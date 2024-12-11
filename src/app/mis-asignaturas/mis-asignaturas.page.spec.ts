@@ -37,4 +37,13 @@ describe('MisAsignaturasPage', () => {
     expect(profe).toBeTruthy()
 
   });
+  it('debe mostrar el mensaje "Inicia sesión para ver tus asignaturas" si el usuario no está logueado', () => {
+    component.login = false; 
+    fixture.detectChanges();
+  
+    const mensaje = fixture.debugElement.nativeElement.querySelector('.ion-text-center h1');
+    expect(mensaje).toBeTruthy();
+    expect(mensaje.textContent.trim()).toBe('Inicia sesión para ver tus asignaturas');
+  });
+ 
 });

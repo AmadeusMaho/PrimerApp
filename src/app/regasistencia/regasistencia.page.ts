@@ -146,7 +146,8 @@ qrData : any = "";
         this.error = false;
         this.error2 = false;
         console.log("INGRESANDO")
-        await this.api.addAsistencia(this.resultadoScan.substring(0,7),this.resultadoScan.substring(7,11),sessionStorage.getItem('userId') ?? '',this.fechaActual + ' Hora: ' +this.horaActual)
+       await this.api.addAsistencia(this.resultadoScan.substring(0,7),this.resultadoScan.substring(7,11),sessionStorage.getItem('userId') ?? '',
+        this.fechaActual + ' Hora: ' +this.horaActual)
         window.location.href = window.location.protocol + '//' + window.location.host + '/mis-asistencias';
       }
          
@@ -219,7 +220,7 @@ qrData : any = "";
         this.error = false;
         this.error2 = false;
         console.log("INGRESANDO")
-        await this.api.addAsistencia(this.resultadoScan.substring(0,7),this.resultadoScan.substring(7,11),sessionStorage.getItem('userId') ?? '',
+       await this.api.addAsistencia(this.resultadoScan.substring(0,7),this.resultadoScan.substring(7,11),sessionStorage.getItem('userId') ?? '',
         this.fechaActual + ' Hora: ' +this.horaActual)
         window.location.href = window.location.protocol + '//' + window.location.host + '/mis-asistencias';
       }

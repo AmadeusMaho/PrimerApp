@@ -81,5 +81,36 @@ describe('HomePage', () => {
     expect(saludo).toBeFalsy()
     expect(horario).toBeFalsy()
   });
+
+  it('Debe mostrar contenido de usuario autenticado si login es true', () => {
+    component.login = true;
+    component.usuario = 'Juan Pérez';
+    fixture.detectChanges();
+  
+    const headerLabel = fixture.debugElement.nativeElement.querySelector('.header-content ion-label h1');
+    const emailLabel = fixture.debugElement.nativeElement.querySelector('.header-content ion-label p');
+  
+    expect(headerLabel.textContent).toContain('Juan Pérez');
+    expect(emailLabel.textContent).toContain('Juan Pérez@duocuc.cl');
+  });
+
+  it('Debe mostrar "Registrar clase" si profesor es true', () => {
+    component.profesor = true;
+    component.login = true;
+    fixture.detectChanges();
+  
+    const botonRegistrar = fixture.debugElement.nativeElement.querySelector('.botonRegistrar ion-text');
+    expect(botonRegistrar.textContent).toContain('Registrar clase');
+  });
+
+  it('Debe mostrar "Registrar asistencia" si profesor es false', () => {
+    component.profesor = false;
+    component.login = true;
+    fixture.detectChanges();
+  
+    const botonRegistrar = fixture.debugElement.nativeElement.querySelector('.botonRegistrar ion-text');
+    expect(botonRegistrar.textContent).toContain('Registrar asistencia');
+  });
+
 });
 

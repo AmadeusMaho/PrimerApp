@@ -31,5 +31,45 @@ describe('CambiarclavePage', () => {
   }));
 
 
+  // it('Habilitar botón si se llenaron todos los campos', () => {
+  //   fixture.componentInstance.user.password = "nuevaClave";
+  //   fixture.componentInstance.user.password2 = "nuevaClave";
+  //   fixture.componentInstance.user.passwordActual = "Miclav3";
+  //   fixture.componentInstance.login = true;
+    
+  //   document.getElementById("btnEnviar")?.click();
+  //   fixture.detectChanges();
 
+  //   const btnEnviar = document.getElementById("btnEnviar")
+  //   const btnDeshabilitado = document.getElementById("btnDeshabilitado")
+
+  //   expect(btnEnviar).toBeTruthy();
+  //   expect(btnDeshabilitado).toBeFalsy();
+  // });
+
+  it('Cambiar clave correctamente', fakeAsync(() => {
+    sessionStorage.setItem('userId','1');
+    component.user.password = 'contraseñaNueva';
+    component.user.password2 = 'contraseñaNueva';
+    component.user.passwordActual = 'MiClav3';
+    fixture.detectChanges();
+    component.enviar();
+    document.getElementById("btnEnviar")?.click();
+    tick();
+    const exito = fixture.componentInstance.exito
+    expect(exito).toBeTrue;
+}))
+
+it('Verificar que las nuevas claves coincidan', fakeAsync(() => {
+  sessionStorage.setItem('userId','1');
+  component.user.password = 'contraseñaNueva';
+  component.user.password2 = 'contraseñaDistinta';
+  component.user.passwordActual = 'MiClav3';
+  fixture.detectChanges();
+  component.enviar();
+  document.getElementById("btnEnviar")?.click();
+  tick();
+  const exito = fixture.componentInstance.exito
+  expect(exito).toBeFalse;
+}))
 });
