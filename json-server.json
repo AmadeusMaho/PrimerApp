@@ -281,6 +281,20 @@
       "seccion": "004D",
       "usuarioId": "1",
       "fecha": "11/12/2024 Hora: 14:16:12"
+    },
+    {
+      "id": "3b3a",
+      "sigla": "PGY4121",
+      "seccion": "004D",
+      "usuarioId": "1",
+      "fecha": "11/12/2024 Hora: 17:52:18"
+    },
+    {
+      "id": "1bee",
+      "sigla": "MAT4140",
+      "seccion": "004D",
+      "usuarioId": "1",
+      "fecha": "11/12/2024 Hora: 17:52:59"
     }
   ],
   "horario": [
